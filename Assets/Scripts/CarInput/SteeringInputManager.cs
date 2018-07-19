@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteInEditMode]
-public class BoxInputManager : MonoBehaviour {
+public class SteeringInputManager : MonoBehaviour {
 
-	public BoxController box;
+	public CarSteering steering;
 	public Vector3 boxForward = Vector3.one;
 
 	private Vector2 screenSize;
-
-	public string debugShit;
 
 	// Use this for initialization
 	void Start () 
@@ -33,11 +31,10 @@ public class BoxInputManager : MonoBehaviour {
 		ratio = new Vector2(touchPos.x / screenSize.x, touchPos.y / screenSize.y);
 
 		ratio = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-		debugShit = ratio.sqrMagnitude.ToString();
 
 		if (ratio.sqrMagnitude > 0)
 		{
-			box.move(ratio.x, ratio.y);
+			steering.move(ratio.x, ratio.y);
 		}
 
 		boxForward = transform.forward;

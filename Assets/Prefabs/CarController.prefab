@@ -72,8 +72,9 @@ GameObject:
   - component: {fileID: 114355226410473922}
   - component: {fileID: 114762176304596202}
   - component: {fileID: 54482662186605866}
+  - component: {fileID: 65643365397338688}
   m_Layer: 0
-  m_Name: New Prefab
+  m_Name: CarController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -464,6 +465,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.97, y: 2.23, z: 8.76}
   m_Center: {x: -0.15, y: 0.77, z: -0.63}
+--- !u!65 &65643365397338688
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1445283499525904}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.97, y: 2.23, z: 8.76}
+  m_Center: {x: -0.15, y: 0.77, z: -0.63}
 --- !u!114 &114355226410473922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -475,9 +488,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8069f87b932f0e3468e6c52c65fcc10d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  box: {fileID: 114762176304596202}
-  boxForward: {x: 0, y: 0, z: 1}
-  debugShit: 0
+  steering: {fileID: 0}
+  boxForward: {x: 1, y: 1, z: 1}
 --- !u!114 &114762176304596202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -492,6 +504,6 @@ MonoBehaviour:
   MAX_ROT_DIR: 75
   rotSpeed: 0.2
   rotTime: 0.3
-  MAX_SPEED: 2
+  MAX_SPEED: 4
   useCoroutine: 1
   targ: {x: 0, y: 0, z: 0}

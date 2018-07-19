@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoxController : MonoBehaviour {
+public class CarSteering : MonoBehaviour {
 
 	public float MAX_ROT_DIR = 75.0f;
 	public float rotSpeed = 0.2f;
