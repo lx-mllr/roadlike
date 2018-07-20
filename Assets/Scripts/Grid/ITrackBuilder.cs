@@ -5,4 +5,5 @@ using UnityEngine;
 public interface ITrackBuilder {
 
 	void Generate();
+	void Despawn();
 }

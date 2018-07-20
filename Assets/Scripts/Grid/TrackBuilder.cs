@@ -2,30 +2,40 @@
 using UnityEngine;
 using Zenject;
 
-public class TrackBuilder : ITrackBuilder  {
+public class TrackBuilder : ITrackBuilder, IInitializable  {
 	
-	readonly SignalBus _signalBus;
     readonly Tile.Factory _tileFactory;
 
-	enum TrackSkin {
-		DEFAULT
-	};
+	private Tile _previousTile = null;
+	private Tile _currentTile = null;
 
-	public TrackBuilder(SignalBus signalBus, Tile.Factory tileFactory)
+	public TrackBuilder(Tile.Factory tileFactory)
 	{
 		_tileFactory = tileFactory;
-		_signalBus = signalBus;
+	}
 
-		_signalBus.Subscribe<SpawnTileSignal>(Generate);
+	public void Initialize()
+	{
+		_currentTile = _tileFactory.Create();
+		_currentTile.transform.position = _currentTile.transform.localScale / 2;
 	}
 
 	public void Generate()
 	{
-		Tile t = _tileFactory.Create();
-		t.transform.rotation = Quaternion.Euler(-45, 0, 45);
-		t.transform.position = new Vector3(0, 0, 60);
-		Debug.Log("TESTING");
-		
-		_signalBus.Unsubscribe<SpawnTileSignal>(Generate);
+		_previousTile = _currentTile;
+		_currentTile = _tileFactory.Create();
+
+		Vector3 pos = _previousTile.transform.position;
+		Vector3 size = _previousTile.GetComponent<Collider>().bounds.size;
+		_currentTile.transform.position = new Vector3(pos.x, pos.y, pos.z + size.z);
+	}
+
+	public void Despawn()
+	{
+		if (_previousTile)
+		{
+			Debug.Log("On Destory");
+			GameObject.Destroy(_previousTile.gameObject);
+		}
 	}
 }
