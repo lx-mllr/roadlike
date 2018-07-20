@@ -35,7 +35,6 @@ public class CarSteering : MonoBehaviour {
 
 	private void applyMovement(float yRatio)
 	{
-		Debug.Log("yRatio " + yRatio);
 		speed = yRatio * MAX_SPEED;
 		transform.position += transform.forward * speed;
 	}
