@@ -10,6 +10,7 @@ public class TriggerSpawnTile : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
+		Debug.Log("Spawn Signal");
 		signalBus.Fire<SpawnTileSignal>();
 		
 		Collider trigger = GetComponent<Collider>();

@@ -78,7 +78,7 @@ public class FollowCam : MonoBehaviour {
 		Vector3 fwd = eyeTarget - targetState.position;
 		fwd.Normalize();
 	
-		Vector3 up = m_rigidBody.rotation * Vector3.up;
+		//Vector3 up = m_rigidBody.rotation * Vector3.up;
 		targetState.rotation = Quaternion.LookRotation(fwd);
 	}
 

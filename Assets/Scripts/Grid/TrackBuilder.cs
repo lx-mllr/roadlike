@@ -16,14 +16,14 @@ public class TrackBuilder : ITrackBuilder, IInitializable  {
 
 	public void Initialize()
 	{
-		_currentTile = _tileFactory.Create();
+		_currentTile = (Tile) _tileFactory.Create();
 		_currentTile.transform.position = _currentTile.transform.localScale / 2;
 	}
 
 	public void Generate()
 	{
 		_previousTile = _currentTile;
-		_currentTile = _tileFactory.Create();
+		_currentTile = (Tile) _tileFactory.Create();
 
 		Vector3 pos = _previousTile.transform.position;
 		Vector3 size = _previousTile.GetComponent<Collider>().bounds.size;

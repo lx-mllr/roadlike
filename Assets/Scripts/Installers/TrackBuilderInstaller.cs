@@ -1,9 +1,15 @@
+using System;
 using UnityEngine;
 using Zenject;
 
 public class TrackBuilderInstaller : MonoInstaller<TrackBuilderInstaller>
 {
-    public Tile tile;
+    public Settings settings;
+
+    [Serializable]
+    public class Settings {
+        public RandomTileFactory.RTFSettings tileFactorySettings;
+    }
 
     public override void InstallBindings()
     {
@@ -17,7 +23,9 @@ public class TrackBuilderInstaller : MonoInstaller<TrackBuilderInstaller>
 
     public void InstallSimplePathSystem()
     {
-        Container.BindFactory<Tile, Tile.Factory>().FromComponentInNewPrefab(tile);
+        //Container.BindFactory<Tile, Tile.Factory>().FromComponentInNewPrefab(tile);
+        Container.BindInstance(settings.tileFactorySettings);
+        Container.BindFactory<Tile, Tile.Factory>().FromFactory<RandomTileFactory>();
         Container.BindInterfacesAndSelfTo<TrackBuilder>().AsSingle();
 
         Container.BindSignal<SpawnTileSignal>().ToMethod<ITrackBuilder>(x => x.Generate).FromResolve();
