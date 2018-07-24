@@ -9,6 +9,8 @@ public class TrackBuilder : ITrackBuilder, IInitializable  {
 	private Tile _previousTile = null;
 	private Tile _currentTile = null;
 
+	private Quaternion rotation;
+
 	public TrackBuilder(Tile.Factory tileFactory)
 	{
 		_tileFactory = tileFactory;
@@ -17,7 +19,6 @@ public class TrackBuilder : ITrackBuilder, IInitializable  {
 	public void Initialize()
 	{
 		_currentTile = (Tile) _tileFactory.Create();
-		_currentTile.transform.position = _currentTile.transform.localScale / 2;
 	}
 
 	public void Generate()
@@ -25,9 +26,17 @@ public class TrackBuilder : ITrackBuilder, IInitializable  {
 		_previousTile = _currentTile;
 		_currentTile = (Tile) _tileFactory.Create();
 
-		Vector3 pos = _previousTile.transform.position;
-		Vector3 size = _previousTile.GetComponent<Collider>().bounds.size;
-		_currentTile.transform.position = new Vector3(pos.x, pos.y, pos.z + size.z);
+		rotation *= Quaternion.Euler(_previousTile.nextTileEuler);
+		Vector3 pPos = _previousTile.transform.position;
+		Vector3 tSize = _previousTile.meshCollider.bounds.size;
+		Vector3 nextOffset = rotation * _previousTile.nextGridPos;
+		nextOffset = new Vector3(nextOffset.x * tSize.x, 
+											nextOffset.y * tSize.y,
+											nextOffset.z * tSize.z);
+
+		_currentTile.transform.position = new Vector3(pPos.x + nextOffset.x, pPos.y + nextOffset.y, pPos.z + nextOffset.z);
+		_currentTile.transform.rotation = Quaternion.Euler(_previousTile.nextTileEuler) * _currentTile.transform.rotation;
+
 	}
 
 	public void Despawn()

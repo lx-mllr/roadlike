@@ -13,7 +13,7 @@ public class TriggerSpawnTile : MonoBehaviour {
 		Debug.Log("Spawn Signal");
 		signalBus.Fire<SpawnTileSignal>();
 		
-		Collider trigger = GetComponent<Collider>();
+		Collider trigger = GetComponent<BoxCollider>();
 		trigger.enabled = false;
 	}
 }
