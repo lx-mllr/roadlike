@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarSteering : MonoBehaviour {
+public class CarSteering : MonoBehaviour, ISteering 
+{
 
-	public float MAX_ROT_DIR = 75.0f;
-	public float rotSpeed = 0.2f;
+	public float rotSpeed = 0.1f;
 	public float rotTime = 0.3f;
 
 	public float MAX_SPEED = 4.0f;
@@ -47,23 +47,12 @@ public class CarSteering : MonoBehaviour {
 		fwd = Vector3.RotateTowards(transform.forward, transform.right, rotDir, 1.0f);
 		targetRot = Quaternion.FromToRotation(transform.forward, fwd);
 
-		if (useCoroutine)
-		{
-			if (!coroutineRunning)
-			{
-				StartCoroutine( rotateTo());
-			}
-		}
-		else
-		{
 			transform.rotation = targetRot;
 			transform.forward = fwd;
 		}
-	}
 
 	private IEnumerator rotateTo()
 	{
-		coroutineRunning = true;
 		float startTime = Time.time;
 		while(Time.time > startTime + rotTime)
 		{
@@ -73,6 +62,5 @@ public class CarSteering : MonoBehaviour {
 		}
 		transform.rotation = targetRot;
 		transform.forward = fwd;
-		coroutineRunning = false;
 	}
 }

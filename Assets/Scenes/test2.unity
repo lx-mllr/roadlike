@@ -117,57 +117,7 @@ NavMeshSettings:
 Rigidbody:
   m_PrefabParentObject: {fileID: 54482662186605866, guid: c6bb2f23e171232458112edc6ad4bf69,
     type: 2}
-  m_PrefabInternal: {fileID: 887022972}
---- !u!1001 &887022972
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4109095906553494, guid: c6bb2f23e171232458112edc6ad4bf69, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4109095906553494, guid: c6bb2f23e171232458112edc6ad4bf69, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4109095906553494, guid: c6bb2f23e171232458112edc6ad4bf69, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4109095906553494, guid: c6bb2f23e171232458112edc6ad4bf69, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4109095906553494, guid: c6bb2f23e171232458112edc6ad4bf69, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4109095906553494, guid: c6bb2f23e171232458112edc6ad4bf69, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4109095906553494, guid: c6bb2f23e171232458112edc6ad4bf69, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4109095906553494, guid: c6bb2f23e171232458112edc6ad4bf69, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1445283499525904, guid: c6bb2f23e171232458112edc6ad4bf69, type: 2}
-      propertyPath: m_Name
-      value: Car
-      objectReference: {fileID: 0}
-    - target: {fileID: 1165389454948228, guid: c6bb2f23e171232458112edc6ad4bf69, type: 2}
-      propertyPath: m_Name
-      value: AnimWrapper
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: c6bb2f23e171232458112edc6ad4bf69, type: 2}
-  m_IsPrefabParent: 0
+  m_PrefabInternal: {fileID: 1427773934}
 --- !u!1 &1063333633
 GameObject:
   m_ObjectHideFlags: 0
@@ -198,6 +148,7 @@ MonoBehaviour:
   _installers: []
   _installerPrefabs:
   - {fileID: 114533516015318118, guid: 845fbd9b6c192234abdfaf7db72290d4, type: 2}
+  - {fileID: 114722983248724224, guid: 18945d3a71c78074997c4a130e4a4124, type: 2}
   _scriptableObjectInstallers: []
   _autoRun: 1
   _parentNewObjectsUnderRoot: 0
@@ -315,6 +266,52 @@ MonoBehaviour:
   camDist_magnitude: 10
   smoothingPos: 0.55
   smoothingRot: 0.35
+--- !u!1001 &1427773934
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4109095906553494, guid: c6bb2f23e171232458112edc6ad4bf69, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4109095906553494, guid: c6bb2f23e171232458112edc6ad4bf69, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4109095906553494, guid: c6bb2f23e171232458112edc6ad4bf69, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4109095906553494, guid: c6bb2f23e171232458112edc6ad4bf69, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4109095906553494, guid: c6bb2f23e171232458112edc6ad4bf69, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4109095906553494, guid: c6bb2f23e171232458112edc6ad4bf69, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4109095906553494, guid: c6bb2f23e171232458112edc6ad4bf69, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4109095906553494, guid: c6bb2f23e171232458112edc6ad4bf69, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1445283499525904, guid: c6bb2f23e171232458112edc6ad4bf69, type: 2}
+      propertyPath: m_Name
+      value: Car
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: c6bb2f23e171232458112edc6ad4bf69, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &2092237747
 GameObject:
   m_ObjectHideFlags: 0

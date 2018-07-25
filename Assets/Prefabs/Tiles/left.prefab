@@ -247,6 +247,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4cdaca7ea08c804a8e6021ba0c07dc7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextGridPos: {x: 1, y: 0, z: 0}
-  nextTileEuler: {x: 0, y: 90, z: 0}
+  nextGridPos: {x: -1, y: 0, z: 0}
+  nextTileEuler: {x: 0, y: -90, z: 0}
   meshCollider: {fileID: 64605412565848560}
