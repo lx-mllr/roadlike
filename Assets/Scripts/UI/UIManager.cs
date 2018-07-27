@@ -5,19 +5,24 @@ using Zenject;
 public class UIManager : MonoBehaviour {
 
     Canvas _canvas;
-    MainScreen.Factory _factory;
+    Screens _screens;
+    BaseScreen.Factory _factory;
 
     [Inject]
-    public void Init(Canvas canvas, MainScreen.Factory factory)
+    public void Init(Canvas canvas, 
+                    Screens screens,
+                    BaseScreen.Factory factory)
     {
         _canvas = canvas;
+        _screens = screens;
         _factory = factory;
 
         AddMainScreen();
     }
 
     public void AddMainScreen () {
-        MainScreen screen = _factory.Create();
+        _screens.toCreate = _screens.mainScreen;
+        BaseScreen screen = _factory.Create();
         screen.transform.SetParent(_canvas.transform, false);
     }
 }

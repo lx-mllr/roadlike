@@ -15,11 +15,13 @@ public class UISystemInstaller : MonoInstaller<UISystemInstaller>
         Container.BindInstance(screens);
         Container.Bind<Canvas>().FromComponentSibling();
         Container.Bind<UIManager>().FromComponentSibling();
-        Container.BindFactory<MainScreen, MainScreen.Factory>().FromFactory<MainScreenFactory>();
+        Container.BindFactory<BaseScreen, BaseScreen.Factory>().FromFactory<ScreenFactory>();
     }
 }
 
 [Serializable]
 public class Screens {
     public CanvasRenderer mainScreen;
+
+    public CanvasRenderer toCreate;
 }
