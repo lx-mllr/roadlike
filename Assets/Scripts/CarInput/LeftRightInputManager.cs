@@ -5,6 +5,7 @@ using Zenject;
 
 public class LeftRightInputManager : IInputManager {
 
+    public bool Enabled { get; set; }
 	private ISteering _steering;
 
 	public float rotPadding = 0.5f;
@@ -26,6 +27,10 @@ public class LeftRightInputManager : IInputManager {
 	
 	public void Tick ()
 	{
+		if (!Enabled) {
+			return;
+		}
+
 		Vector2 touchPos, ratio = touchPos = Vector2.zero;
 
 		if (Input.touchCount > 0)

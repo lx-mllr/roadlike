@@ -12,9 +12,7 @@ public class TrackBuilderInstaller : MonoInstaller<TrackBuilderInstaller>
     }
 
     public override void InstallBindings()
-    {
-        SignalBusInstaller.Install(Container);
-        
+    {        
         Container.DeclareSignal<SpawnTileSignal>().OptionalSubscriber();
         Container.DeclareSignal<DespawnTileSignal>().OptionalSubscriber();
 

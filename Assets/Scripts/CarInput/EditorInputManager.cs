@@ -2,7 +2,8 @@ using UnityEngine;
 using Zenject;
 
 public class EditorInputManager : IInputManager
- {
+{
+    public bool Enabled { get; set; }
 	public float yAcc = 0.002f;
 
     private ISteering _steering;
@@ -19,6 +20,10 @@ public class EditorInputManager : IInputManager
 
     public void Tick ()
     {
+        if (!Enabled) {
+            return;
+        }
+
         Vector2 inputRatio = new Vector2(Input.GetAxis("Horizontal"),  Mathf.Min(1, _prevRatio.y + yAcc));
         _steering.move(inputRatio.x, inputRatio.y);
         _prevRatio = inputRatio;

@@ -19,8 +19,6 @@ public class CarSteering : MonoBehaviour, ISteering
 	private Quaternion targetRot;
 	private Vector3 fwd;
 
-	private bool coroutineRunning = false;
-
 	// Use this for initialization
 	void Start () 
 	{
