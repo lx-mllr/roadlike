@@ -10,7 +10,6 @@ public class TriggerDespawnTile : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		Debug.Log("on Despawn");
 		signalBus.Fire<DespawnTileSignal>();
 	}
 }
