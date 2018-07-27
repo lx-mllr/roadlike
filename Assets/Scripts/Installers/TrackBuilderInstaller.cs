@@ -15,6 +15,8 @@ public class TrackBuilderInstaller : MonoInstaller<TrackBuilderInstaller>
     {        
         Container.DeclareSignal<SpawnTileSignal>().OptionalSubscriber();
         Container.DeclareSignal<DespawnTileSignal>().OptionalSubscriber();
+        
+        Container.DeclareSignal<GameEndSignal>().OptionalSubscriber();
 
         InstallSimplePathSystem();
     }
@@ -28,5 +30,6 @@ public class TrackBuilderInstaller : MonoInstaller<TrackBuilderInstaller>
 
         Container.BindSignal<SpawnTileSignal>().ToMethod<ITrackBuilder>(x => x.Generate).FromResolve();
         Container.BindSignal<DespawnTileSignal>().ToMethod<ITrackBuilder>(x => x.Despawn).FromResolve();
+        Container.BindSignal<GameEndSignal>().ToMethod<ITrackBuilder>(x => x.Reset).FromResolve();
     }
 }

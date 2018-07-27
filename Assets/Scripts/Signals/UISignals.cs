@@ -1,7 +1,7 @@
 using System;
 
-public interface ISignal {
-}
+public struct StartButtonSignal {
+};
 
-public class StartButtonSignal : ISignal {
-}
+public struct ShowMainScreenSignal {
+};

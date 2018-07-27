@@ -8,8 +8,6 @@ public class RandomTileFactory : IFactory<Tile> {
     DiContainer _container;
     RTFSettings _settings;
 
-    private int startingCounter;
-
     public RandomTileFactory(DiContainer container, RTFSettings settings)
     {
         _container = container;
@@ -19,10 +17,10 @@ public class RandomTileFactory : IFactory<Tile> {
     public Tile Create()
     {
         Tile toCreate;
-        if (startingCounter < _settings.startingTiles.Length)
+        if (_settings.startingCounter < _settings.startingTiles.Length)
         {
-            toCreate = _settings.startingTiles[startingCounter];
-            startingCounter++;
+            toCreate = _settings.startingTiles[_settings.startingCounter];
+            _settings.startingCounter++;
         }
         else
         {
@@ -37,5 +35,7 @@ public class RandomTileFactory : IFactory<Tile> {
     public class RTFSettings {
         public Tile[] randomTiles;
         public Tile[] startingTiles;
+        
+        public int startingCounter;
     }
 }

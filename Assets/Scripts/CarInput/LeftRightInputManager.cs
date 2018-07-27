@@ -12,7 +12,7 @@ public class LeftRightInputManager : IInputManager {
 	public float yAcc = 0.002f;
 
 	private Vector2 screenSize;
-	private Vector2 prevRatio = Vector2.zero;
+	private Vector2 _prevRatio = Vector2.zero;
 
 	public LeftRightInputManager (ISteering steering)
 	{
@@ -23,7 +23,13 @@ public class LeftRightInputManager : IInputManager {
 	public void Initialize () 
 	{
 		screenSize = new Vector2(Screen.width, Screen.height);
+        Enabled = false;
 	}
+	
+    public void Reset () {
+        _prevRatio = Vector2.zero;
+        Enabled = false;
+    }
 	
 	public void Tick ()
 	{
@@ -38,11 +44,11 @@ public class LeftRightInputManager : IInputManager {
 			touchPos = Input.GetTouch(0).position;
 			ratio.x = -1 + ((touchPos.x / screenSize.x) * 2);
 		}
-		ratio.y = Mathf.Min(1, prevRatio.y + yAcc);
+		ratio.y = Mathf.Min(1, _prevRatio.y + yAcc);
 
-		ratio = Vector2.Lerp(prevRatio, ratio, rotPadding);
-		_steering.move(ratio.x, ratio.y);
+		ratio = Vector2.Lerp(_prevRatio, ratio, rotPadding);
+		_steering.Move(ratio.x, ratio.y);
 
-		prevRatio = ratio;
+		_prevRatio = ratio;
 	}
 }

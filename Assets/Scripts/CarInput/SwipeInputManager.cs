@@ -20,6 +20,12 @@ public class SwipeInputManager : IInputManager {
     {
         _screenSize = new Vector2(Screen.width, Screen.height);
         _prevRatio = _touchStart = Vector2.zero;
+        Enabled = false;
+    }
+    
+    public void Reset () {
+        _touchStart = _prevRatio = Vector2.zero;
+        Enabled = false;
     }
 
     public void Tick ()
@@ -53,7 +59,7 @@ public class SwipeInputManager : IInputManager {
             ratio.x = ((drag.x / _screenSize.x) * 2);
         }
         ratio.y = Mathf.Min(1.0f, _prevRatio.y + yAcc);
-        _steering.move(ratio.x, ratio.y);
+        _steering.Move(ratio.x, ratio.y);
         _prevRatio = ratio;
     }
 }

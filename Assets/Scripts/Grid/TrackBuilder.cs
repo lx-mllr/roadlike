@@ -5,22 +5,36 @@ using Zenject;
 public class TrackBuilder : ITrackBuilder, IInitializable  {
 	
     readonly Tile.Factory _tileFactory;
+	readonly RandomTileFactory.RTFSettings _factorySettings;
 
 	private Tile _previousTile = null;
 	private Tile _currentTile = null;
 
-	public TrackBuilder(Tile.Factory tileFactory)
-	{
+	public TrackBuilder (Tile.Factory tileFactory,
+						RandomTileFactory.RTFSettings settings) {
 		_tileFactory = tileFactory;
+		_factorySettings = settings;
 	}
 
-	public void Initialize()
-	{
+	public void Initialize () {
+		Start();
+	}
+
+	public void Start () {
 		_currentTile = (Tile) _tileFactory.Create();
 	}
 
-	public void Generate()
-	{
+	public void Reset () {
+		CleanUpTile(_previousTile);
+		CleanUpTile(_currentTile);
+		_previousTile = null;
+		_currentTile = null;
+		_factorySettings.startingCounter = 0;
+
+		Start();
+	}
+
+	public void Generate () {
 		_previousTile = _currentTile;
 		_currentTile = (Tile) _tileFactory.Create();
 		
@@ -37,12 +51,13 @@ public class TrackBuilder : ITrackBuilder, IInitializable  {
 
 	}
 
-	public void Despawn()
-	{
-		if (_previousTile)
-		{
-			Debug.Log("On Destory");
-			GameObject.Destroy(_previousTile.gameObject);
+	public void Despawn () {
+		CleanUpTile(_previousTile);
+	}
+
+	private void CleanUpTile (Tile t) {
+		if (t) {
+			GameObject.Destroy(t.gameObject);
 		}
 	}
 }

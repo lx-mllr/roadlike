@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 224325598306669492}
   - component: {fileID: 222810631626284826}
   - component: {fileID: 114065649340909390}
-  - component: {fileID: 114677979290066220}
+  - component: {fileID: 114879537126342336}
   m_Layer: 5
   m_Name: MainScreen
   m_TagString: Untagged
@@ -169,7 +169,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 114677979290066220}
+      - m_Target: {fileID: 114879537126342336}
         m_MethodName: DestroyScreen
         m_Mode: 1
         m_Arguments:
@@ -215,7 +215,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Start
---- !u!114 &114677979290066220
+--- !u!114 &114879537126342336
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1636891264310014}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4d457841acc3374db0cd77070a72a33, type: 3}
+  m_Script: {fileID: 11500000, guid: 71b6cf2b956a4bb4ea245622ddeaf876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114884236905493634

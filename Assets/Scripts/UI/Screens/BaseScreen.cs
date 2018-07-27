@@ -16,16 +16,21 @@ public class BaseScreen : MonoBehaviour {
 public class ScreenFactory : IFactory<BaseScreen> {
 
     DiContainer _container;
-    Screens _screens;
+    ScreenFactory.Settings _settings;
     
-    public ScreenFactory(DiContainer container, Screens screens)
+    public ScreenFactory(DiContainer container,
+                            ScreenFactory.Settings settings)
     {
         _container = container;
-        _screens = screens;
+        _settings = settings;
     }
 
     public BaseScreen Create()
     {
-        return _container.InstantiatePrefabForComponent<BaseScreen>(_screens.toCreate);
+        return _container.InstantiatePrefabForComponent<BaseScreen>(_settings.toCreate);
+    }
+
+    public class Settings {
+        public CanvasRenderer toCreate;
     }
 }

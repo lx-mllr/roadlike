@@ -14,8 +14,13 @@ public class EditorInputManager : IInputManager
         _steering = steering;
     }
 
-    public void Initialize ()
-    {
+    public void Initialize () {
+        Enabled = false;
+    }
+
+    public void Reset () {
+        _prevRatio = Vector2.zero;
+        Enabled = false;
     }
 
     public void Tick ()
@@ -25,7 +30,7 @@ public class EditorInputManager : IInputManager
         }
 
         Vector2 inputRatio = new Vector2(Input.GetAxis("Horizontal"),  Mathf.Min(1, _prevRatio.y + yAcc));
-        _steering.move(inputRatio.x, inputRatio.y);
+        _steering.Move(inputRatio.x, inputRatio.y);
         _prevRatio = inputRatio;
     }
 }

@@ -1,4 +1,8 @@
+using UnityEngine;
+
 public interface ISteering
 {
-    void move(float xRatio, float yRatio);
+    void Move(float xRatio, float yRatio);
+    void Reset();
+    Transform transform {get;}
 }

@@ -17,5 +17,6 @@ public class CameraInstaller : MonoInstaller<CameraInstaller>
         Container.BindInterfacesAndSelfTo<CamManager>().AsSingle().NonLazy();
 
         Container.BindSignal<StartButtonSignal>().ToMethod<CamManager>(x => x.onStartButton).FromResolve();
+        Container.BindSignal<ShowMainScreenSignal>().ToMethod<CamManager>(x => x.onShowMainScreen).FromResolve();
     }
 }

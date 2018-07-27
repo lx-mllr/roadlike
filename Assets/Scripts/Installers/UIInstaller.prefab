@@ -9,48 +9,49 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1892992283022092}
+  m_RootGameObject: {fileID: 1742410598681560}
   m_IsPrefabParent: 1
---- !u!1 &1892992283022092
+--- !u!1 &1742410598681560
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 4839173484434618}
-  - component: {fileID: 114582863722017038}
+  - component: {fileID: 4372525368530282}
+  - component: {fileID: 114785130370631290}
   m_Layer: 0
-  m_Name: GamePlayInstaller
+  m_Name: UIInstaller
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4839173484434618
+--- !u!4 &4372525368530282
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1892992283022092}
+  m_GameObject: {fileID: 1742410598681560}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 437.5, y: 220, z: 0}
+  m_LocalPosition: {x: -0.14999998, y: 2.9027379, z: -0.6300001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114582863722017038
+--- !u!114 &114785130370631290
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1892992283022092}
+  m_GameObject: {fileID: 1742410598681560}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efeca8dd7a66b254f8f46efa1933b3b0, type: 3}
+  m_Script: {fileID: 11500000, guid: 036e1d2e6d8964646b57e487a8806dd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _settings:
-    screenReseter: {fileID: 114878031733202544, guid: 94d7847fbd9b3c044b832ce84b2f82b3,
+  screens:
+    mainScreen: {fileID: 222810631626284826, guid: 9c6592cd800af5442833eccb6f5b48cb,
       type: 2}
+  canvas: {fileID: 0}

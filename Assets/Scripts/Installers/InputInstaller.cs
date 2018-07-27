@@ -10,5 +10,7 @@ public class InputInstaller : MonoInstaller<InputInstaller>
         #else
             Container.BindInterfacesAndSelfTo<LeftRightInputManager>().AsSingle();
         #endif
+
+        Container.BindSignal<GameEndSignal>().ToMethod<IInputManager>(x => x.Reset).FromResolve();
     }
 }
