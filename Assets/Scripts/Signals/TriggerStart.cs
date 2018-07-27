@@ -4,11 +4,16 @@ using Zenject;
 
 public class TriggerStart : MonoBehaviour {
 
-	[Inject]
-	SignalBus signalBus {get; set;}
+    SignalBus _signalBus;
+
+    [Inject]
+    public void Init (SignalBus signalBus)
+    {
+        _signalBus = signalBus;
+    }
 
     public void OnClick ()
     {
-        signalBus.Fire<StartButtonSignal>();
+        _signalBus.Fire<StartButtonSignal>();
     }
 }

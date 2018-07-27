@@ -18,6 +18,7 @@ public class CamManager {
     }
 
     public void onStartButton() {
+        Debug.Log("IN CAM MAN");
         _settings.uiCam.enabled = false;
         _settings.gameplayCam.enabled = true;
     }

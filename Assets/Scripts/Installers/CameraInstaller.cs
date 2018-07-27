@@ -13,9 +13,6 @@ public class CameraInstaller : MonoInstaller<CameraInstaller>
 
     public override void InstallBindings()
     {
-        SignalBusInstaller.Install(Container);
-        Container.DeclareSignal<StartButtonSignal>().OptionalSubscriber();
-
         Container.BindInstance(settings.CamSettings);
         Container.BindInterfacesAndSelfTo<CamManager>().AsSingle().NonLazy();
 
