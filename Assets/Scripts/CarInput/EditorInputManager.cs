@@ -3,11 +3,11 @@ using Zenject;
 
 public class EditorInputManager : IInputManager
 {
-    public bool Enabled { get; set; }
 	public float yAcc = 0.002f;
 
     private ISteering _steering;
 	private Vector2 _prevRatio = Vector2.zero;
+    private bool Enabled { get; set; }
 
     public EditorInputManager(ISteering steering)
     {
@@ -21,6 +21,10 @@ public class EditorInputManager : IInputManager
     public void Reset () {
         _prevRatio = Vector2.zero;
         Enabled = false;
+    }
+
+    public void Enable () {
+        Enabled = true;
     }
 
     public void Tick ()

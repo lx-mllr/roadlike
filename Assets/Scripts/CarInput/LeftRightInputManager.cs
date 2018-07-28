@@ -5,7 +5,6 @@ using Zenject;
 
 public class LeftRightInputManager : IInputManager {
 
-    public bool Enabled { get; set; }
 	private ISteering _steering;
 
 	public float rotPadding = 0.5f;
@@ -13,6 +12,7 @@ public class LeftRightInputManager : IInputManager {
 
 	private Vector2 screenSize;
 	private Vector2 _prevRatio = Vector2.zero;
+    private bool Enabled { get; set; }
 
 	public LeftRightInputManager (ISteering steering)
 	{
@@ -25,6 +25,10 @@ public class LeftRightInputManager : IInputManager {
 		screenSize = new Vector2(Screen.width, Screen.height);
         Enabled = false;
 	}
+	
+    public void Enable () {
+        Enabled = true;
+    }
 	
     public void Reset () {
         _prevRatio = Vector2.zero;

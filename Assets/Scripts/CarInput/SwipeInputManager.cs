@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class SwipeInputManager : IInputManager {
     
-    public bool Enabled { get; set; }
 	public float yAcc = 0.002f;
 
     private ISteering _steering;
@@ -10,6 +9,7 @@ public class SwipeInputManager : IInputManager {
 
     private Vector2 _touchStart;
     private Vector2 _prevRatio;
+    private bool Enabled { get; set; }
 
     public SwipeInputManager(ISteering steering)
     {
@@ -21,6 +21,10 @@ public class SwipeInputManager : IInputManager {
         _screenSize = new Vector2(Screen.width, Screen.height);
         _prevRatio = _touchStart = Vector2.zero;
         Enabled = false;
+    }
+	
+    public void Enable () {
+        Enabled = true;
     }
     
     public void Reset () {
