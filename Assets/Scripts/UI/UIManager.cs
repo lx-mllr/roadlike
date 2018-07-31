@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using Zenject;
 
-public class UIManager : MonoBehaviour {
+public class UIManager : IInitializable {
 
     [Inject]
     Canvas _canvas;
@@ -10,7 +10,13 @@ public class UIManager : MonoBehaviour {
     [Inject]
     Screens _screens;
 
-    public void AddMainScreen () {
-        Instantiate(_screens.mainScreen, _canvas.transform, false);
+    public void Initialize () {
+        CreateScreen(new CreateScreenSignal() {
+            toCreate = _screens.mainScreen
+        });
+    }
+
+    public void CreateScreen (CreateScreenSignal signal) {
+        CanvasRenderer.Instantiate(signal.toCreate, _canvas.transform, false);
     }
 }

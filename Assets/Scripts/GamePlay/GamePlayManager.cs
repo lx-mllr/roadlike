@@ -4,33 +4,26 @@ using Zenject;
 
 public class GamePlayManager : IInitializable {
 
-    private ShowMainScreenTrigger _reseter;
-
+    [Inject]
     SignalBus _signalBus;
+
+    [Inject]
     ISteering _steering;
-    ShowMainScreenTrigger.Factory _reseterFactory;
 
-    public GamePlayManager(ISteering steering,
-                            ShowMainScreenTrigger.Factory factory,
-                            SignalBus signalBus) {
-        _steering = steering;
-        _reseterFactory = factory;
-
-        _signalBus = signalBus;
-    }
+    [Inject]
+    Screens _screens;
 
     public void Initialize () {
-        _signalBus.Fire<ShowMainScreenSignal>();
+        _signalBus.Fire(new CreateScreenSignal () {
+            toCreate = _screens.mainScreen
+        });
     }
 
     public void OnGameStart () {
-        _reseter = _reseterFactory.Create();
+
     }
 
     public void Reset () {
         _steering.Reset();
-        if (_reseter) {
-            _reseter.CleanUp();
-        }
     }
 }
