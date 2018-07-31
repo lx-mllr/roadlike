@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 300917357}
   - component: {fileID: 300917356}
   - component: {fileID: 300917355}
+  - component: {fileID: 300917359}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -206,6 +207,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &300917359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 300917354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30c5f15602b524643a08e14ed56ce348, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &435396589
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,7 +475,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1245831266
 MonoBehaviour:
@@ -519,7 +531,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4109095906553494, guid: c6bb2f23e171232458112edc6ad4bf69, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1445283499525904, guid: c6bb2f23e171232458112edc6ad4bf69, type: 2}
       propertyPath: m_Name
@@ -565,7 +577,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4372525368530282, guid: 7d44d7d8e7f0d504b90710856e654917, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 114785130370631290, guid: 7d44d7d8e7f0d504b90710856e654917,
         type: 2}
@@ -654,7 +666,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2076702640 stripped
 MonoBehaviour:
@@ -725,5 +737,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 37.2, y: 67.2, z: 0}

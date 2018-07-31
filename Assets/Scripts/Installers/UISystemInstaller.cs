@@ -15,12 +15,11 @@ public class UISystemInstaller : MonoInstaller<UISystemInstaller>
         Container.DeclareSignal<StartButtonSignal>().OptionalSubscriber();
         Container.DeclareSignal<ShowMainScreenSignal>().OptionalSubscriber();
 
-        Container.BindInstance(new ScreenFactory.Settings());
-        Container.BindFactory<BaseScreen, BaseScreen.Factory>().FromFactory<ScreenFactory>();
-
         Container.BindInstance(screens);
         Container.BindInstance(canvas);
-        Container.BindInterfacesAndSelfTo<UIManager>().AsSingle();
+
+        Container.Bind<UIManager>().FromComponentOn(canvas.gameObject).AsSingle();
+
         Container.BindSignal<ShowMainScreenSignal>().ToMethod<UIManager>(x => x.AddMainScreen).FromResolve();
     }
 }
