@@ -23,14 +23,14 @@ public class CarSteering : MonoBehaviour, ISteering
 	}
 
 	public void Reset () {
-		transform.position = resetPosition;
-		fwd = Vector3.zero;
-		transform.rotation = targetRot = Quaternion.identity;
-
 		Rigidbody rb = GetComponent<Rigidbody>();
 		rb.velocity = Vector3.zero;
+		rb.angularVelocity = Vector3.zero;
 		
 		speed = 0.0f;
+
+		transform.position = resetPosition;
+		transform.rotation = Quaternion.identity;
 	}
 
 	/// xRatio [-1, 1]
