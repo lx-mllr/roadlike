@@ -11,9 +11,6 @@ public class UIManager : IInitializable {
     Screens _screens;
 
     public void Initialize () {
-        CreateScreen(new CreateScreenSignal() {
-            toCreate = _screens.mainScreen
-        });
     }
 
     public void CreateScreen (CreateScreenSignal signal) {

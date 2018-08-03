@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4920923531584066}
   - component: {fileID: 65746214979422860}
-  - component: {fileID: 114656611798381526}
+  - component: {fileID: 114465700277350564}
   m_Layer: 0
   m_Name: DespawnPrevious
   m_TagString: Untagged
@@ -37,7 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4812080668397422}
   - component: {fileID: 65756510683021288}
-  - component: {fileID: 114647774343112540}
+  - component: {fileID: 114156267235392984}
   m_Layer: 0
   m_Name: SpawnNextTrigger
   m_TagString: Untagged
@@ -214,7 +214,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 10, z: 120}
   m_Center: {x: 65.29, y: 0, z: 0}
---- !u!114 &114647774343112540
+--- !u!114 &114156267235392984
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -222,10 +222,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1739878686739588}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1331b4fc30b555345921abf8f1c59bc7, type: 3}
+  m_Script: {fileID: 11500000, guid: 2385457adacbd51409051174ad6e14b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114656611798381526
+--- !u!114 &114465700277350564
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -233,7 +233,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1578895032128880}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e59153eb030a8fa47bf80209e100de4a, type: 3}
+  m_Script: {fileID: 11500000, guid: 10debb0f494009540b27a2a907a2f755, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114953672640614098

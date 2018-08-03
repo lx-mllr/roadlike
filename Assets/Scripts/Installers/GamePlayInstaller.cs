@@ -12,9 +12,21 @@ public class GamePlayInstaller : MonoInstaller<GamePlayInstaller>
 
     public override void InstallBindings()
     {
+        Container.DeclareSignal<CollectCoinSignal>();
+
+        Container.Bind<SaveManager>().AsSingle();
+
+// User
+        Container.BindInterfacesAndSelfTo<User>().AsSingle().NonLazy();
+
+        Container.BindSignal<CollectCoinSignal>().ToMethod<User>(x => x.IncreaseCoinCount).FromResolve();
+        Container.BindSignal<GameEndSignal>().ToMethod<User>(x => x.SaveState).FromResolve();
+
+// GP
+        Container.BindInterfacesAndSelfTo<GamePlayManager>().AsSingle();
+
         Container.BindSignal<StartButtonSignal>().ToMethod<GamePlayManager>(x => x.OnGameStart).FromResolve();
         Container.BindSignal<GameEndSignal>().ToMethod<GamePlayManager>(x => x.Reset).FromResolve();
 
-        Container.BindInterfacesAndSelfTo<GamePlayManager>().AsSingle();
     }
 }

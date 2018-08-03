@@ -13,7 +13,6 @@ public class UISystemInstaller : MonoInstaller<UISystemInstaller>
         SignalBusInstaller.Install(Container);
 
         Container.DeclareSignal<StartButtonSignal>().OptionalSubscriber();
-        Container.DeclareSignal<ShowMainScreenSignal>().OptionalSubscriber();
         Container.DeclareSignal<CreateScreenSignal>().OptionalSubscriber();
 
         Container.BindInstance(screens);

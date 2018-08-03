@@ -59,3 +59,6 @@ MonoBehaviour:
       - {fileID: 114953672640614098, guid: e9e63a11124f5b94292ef4a011e4e830, type: 2}
       startingTiles:
       - {fileID: 114008922178044368, guid: e722eeecd5cea9b469a4dc482b9a99dc, type: 2}
+      startingCounter: 0
+    coinPrefab: {fileID: 114446679961222884, guid: 393303465d08ff9478302eb69e8100e0,
+      type: 2}
