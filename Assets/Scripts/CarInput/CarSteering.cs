@@ -15,11 +15,15 @@ public class CarSteering : MonoBehaviour, ISteering
 	private float speed;
 	private Quaternion targetRot;
 	private Vector3 fwd;
+	private bool applyDrive;
 
 	void Awake () {
 		if (resetPosition.sqrMagnitude == 0) {
 			resetPosition = transform.position;
 		}
+	}
+
+	void Update () {
 	}
 
 	public void Reset () {
@@ -51,18 +55,6 @@ public class CarSteering : MonoBehaviour, ISteering
 		fwd = Vector3.RotateTowards(transform.forward, transform.right, rotDir, 1.0f);
 		targetRot = Quaternion.FromToRotation(transform.forward, fwd);
 
-		transform.rotation = targetRot;
-		transform.forward = fwd;
-	}
-
-	private IEnumerator RotateTo () {
-		float startTime = Time.time;
-		while(Time.time > startTime + rotTime)
-		{
-			transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, Time.time - startTime);
-			transform.forward = Vector3.Lerp(transform.forward, fwd, Time.time - startTime);
-			yield return null;
-		}
 		transform.rotation = targetRot;
 		transform.forward = fwd;
 	}

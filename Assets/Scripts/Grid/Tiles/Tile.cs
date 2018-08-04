@@ -19,7 +19,7 @@ public class Tile : MonoBehaviour {
 	public void SpawnCoin () {
 		_coin = _coinFactory.Create();
 		Vector3 tSize = meshCollider.bounds.size;
-		Vector3 pPos = transform.position + (UnityEngine.Random.Range(-0.7f, 0.7f) * tSize);
+		Vector3 pPos = transform.position;// + (UnityEngine.Random.Range(-0.5f, 0.5f) * tSize);
 		pPos.y = 1;
 		_coin.transform.position = pPos;
 	}

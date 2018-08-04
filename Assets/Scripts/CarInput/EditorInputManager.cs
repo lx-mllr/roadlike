@@ -3,7 +3,7 @@ using Zenject;
 
 public class EditorInputManager : IInputManager
 {
-	public float yAcc = 0.002f;
+	public float yAcc = 0.0015f;
 
     private ISteering _steering;
 	private Vector2 _prevRatio = Vector2.zero;

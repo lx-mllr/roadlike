@@ -7,10 +7,12 @@ public class LeftRightInputManager : IInputManager {
 
 	private ISteering _steering;
 
-	public float rotPadding = 0.5f;
-	public float yAcc = 0.002f;
+	public float padding = 0.5f;
+	public float yAcc = 0.015f;
+	public float dragSensitivity = 25;
 
 	private Vector2 screenSize;
+	private Vector2 _prevTouch;
 	private Vector2 _prevRatio = Vector2.zero;
     private bool Enabled { get; set; }
 
@@ -41,18 +43,32 @@ public class LeftRightInputManager : IInputManager {
 			return;
 		}
 
-		Vector2 touchPos, ratio = touchPos = Vector2.zero;
+		Vector2 touchPos = Vector2.zero;
+		Vector2 ratio = Vector2.zero;
+		Vector2 drag = Vector2.zero;
 
 		if (Input.touchCount > 0)
 		{
 			touchPos = Input.GetTouch(0).position;
-			ratio.x = -1 + ((touchPos.x / screenSize.x) * 2);
+			// [-1, 1]
+			float scaledX = -1 + ((touchPos.x / screenSize.x) * 2);
+			drag = touchPos - _prevTouch;
+
+			if (drag.sqrMagnitude > dragSensitivity)
+			{
+				if (Mathf.Sign(drag.x) != Mathf.Sign(scaledX))
+				{
+					scaledX *= -1;
+				}
+			}
+			ratio.x = scaledX;
 		}
 		ratio.y = Mathf.Min(1, _prevRatio.y + yAcc);
 
-		ratio = Vector2.Lerp(_prevRatio, ratio, rotPadding);
+		ratio = Vector2.Lerp(_prevRatio, ratio, padding);
 		_steering.Move(ratio.x, ratio.y);
 
 		_prevRatio = ratio;
+		_prevTouch = touchPos;
 	}
 }
