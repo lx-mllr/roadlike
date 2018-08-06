@@ -5,6 +5,7 @@ using UnityEngine;
 public class CarSteering : MonoBehaviour, ISteering 
 {
 	public Vector3 resetPosition = Vector3.zero;
+	public float rotPadding = 1f;
 	public float rotSpeed = 0.1f;
 	public float rotTime = 0.3f;
 
@@ -13,7 +14,9 @@ public class CarSteering : MonoBehaviour, ISteering
 	//public bool useCoroutine = true;
 
 	private float speed;
+	private Quaternion _prevTargRot;
 	private Quaternion targetRot;
+	private Vector3 _prevFwd;
 	private Vector3 fwd;
 	private bool applyDrive;
 
@@ -55,7 +58,13 @@ public class CarSteering : MonoBehaviour, ISteering
 		fwd = Vector3.RotateTowards(transform.forward, transform.right, rotDir, 1.0f);
 		targetRot = Quaternion.FromToRotation(transform.forward, fwd);
 
-		transform.rotation = targetRot;
-		transform.forward = fwd;
+		transform.rotation = Quaternion.Lerp(_prevTargRot, targetRot, rotPadding);
+		transform.forward =  Vector3.Lerp(_prevFwd, fwd, rotPadding);
+
+		// transform.rotation = targetRot;
+		// transform.forward = fwd;
+
+		_prevFwd = fwd;
+		_prevTargRot = targetRot;
 	}
 }

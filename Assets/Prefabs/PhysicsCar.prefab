@@ -611,8 +611,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.97, y: 2.23, z: 8.76}
-  m_Center: {x: -0.15, y: 0.77, z: -0.63}
+  m_Size: {x: 3.17, y: 1.61, z: 8.01}
+  m_Center: {x: -0.15, y: 0.92, z: -0.63}
 --- !u!114 &114403950346808104
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -665,7 +665,7 @@ WheelCollider:
     damper: 4500
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
-  m_ForceAppPointDistance: 1
+  m_ForceAppPointDistance: 1.28
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
@@ -673,7 +673,7 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1
+    m_Stiffness: 0
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
@@ -694,7 +694,7 @@ WheelCollider:
     damper: 4500
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
-  m_ForceAppPointDistance: 1
+  m_ForceAppPointDistance: 1.28
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
@@ -702,7 +702,7 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1
+    m_Stiffness: 0
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
@@ -723,7 +723,7 @@ WheelCollider:
     damper: 4500
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
-  m_ForceAppPointDistance: 1
+  m_ForceAppPointDistance: 1.28
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
@@ -731,7 +731,7 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1
+    m_Stiffness: 0
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1
@@ -752,7 +752,7 @@ WheelCollider:
     damper: 4500
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
-  m_ForceAppPointDistance: 1
+  m_ForceAppPointDistance: 1.28
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
@@ -760,7 +760,7 @@ WheelCollider:
     m_ExtremumValue: 1
     m_AsymptoteSlip: 0.8
     m_AsymptoteValue: 0.5
-    m_Stiffness: 1
+    m_Stiffness: 0
   m_SidewaysFriction:
     m_ExtremumSlip: 0.2
     m_ExtremumValue: 1

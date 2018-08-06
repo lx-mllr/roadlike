@@ -7,13 +7,13 @@ public class LeftRightInputManager : IInputManager {
 
 	private ISteering _steering;
 
-	public float padding = 0.5f;
-	public float yAcc = 0.015f;
-	public float dragSensitivity = 25;
+	public float yAcc = 0.005f;
+	public float dragSensitivity = 5;
 
 	private Vector2 screenSize;
 	private Vector2 _prevTouch;
 	private Vector2 _prevRatio = Vector2.zero;
+	private Vector2 _prevDrag = Vector3.zero;
     private bool Enabled { get; set; }
 
 	public LeftRightInputManager (ISteering steering)
@@ -59,13 +59,18 @@ public class LeftRightInputManager : IInputManager {
 				if (Mathf.Sign(drag.x) != Mathf.Sign(scaledX))
 				{
 					scaledX *= -1;
+					_prevDrag = drag;
 				}
 			}
 			ratio.x = scaledX;
 		}
+		else if (Input.touchCount == 0)
+		{
+			_prevDrag = Vector3.zero;
+		}
+
 		ratio.y = Mathf.Min(1, _prevRatio.y + yAcc);
 
-		ratio = Vector2.Lerp(_prevRatio, ratio, padding);
 		_steering.Move(ratio.x, ratio.y);
 
 		_prevRatio = ratio;

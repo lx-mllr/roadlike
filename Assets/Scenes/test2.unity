@@ -113,12 +113,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!54 &81170409 stripped
-Rigidbody:
-  m_PrefabParentObject: {fileID: 54482662186605866, guid: c6bb2f23e171232458112edc6ad4bf69,
-    type: 2}
-  m_PrefabInternal: {fileID: 280335915}
---- !u!1001 &280335915
+--- !u!1001 &172699864
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -157,31 +152,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
-    - target: {fileID: 23686536189804850, guid: c6bb2f23e171232458112edc6ad4bf69,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 68551c4690a6962449bc7b9a466eef94, type: 2}
-    - target: {fileID: 23590282003324306, guid: c6bb2f23e171232458112edc6ad4bf69,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 68551c4690a6962449bc7b9a466eef94, type: 2}
-    - target: {fileID: 23110983436224844, guid: c6bb2f23e171232458112edc6ad4bf69,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 68551c4690a6962449bc7b9a466eef94, type: 2}
-    - target: {fileID: 23173072347357480, guid: c6bb2f23e171232458112edc6ad4bf69,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 68551c4690a6962449bc7b9a466eef94, type: 2}
-    - target: {fileID: 23350955601300606, guid: c6bb2f23e171232458112edc6ad4bf69,
-        type: 2}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 68551c4690a6962449bc7b9a466eef94, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c6bb2f23e171232458112edc6ad4bf69, type: 2}
   m_IsPrefabParent: 0
@@ -340,6 +310,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &531106304 stripped
+Rigidbody:
+  m_PrefabParentObject: {fileID: 54482662186605866, guid: c6bb2f23e171232458112edc6ad4bf69,
+    type: 2}
+  m_PrefabInternal: {fileID: 172699864}
 --- !u!1001 &558050991
 Prefab:
   m_ObjectHideFlags: 0
@@ -543,7 +518,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 833994fadb578434b8de6d9d6b596079, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_rigidBody: {fileID: 81170409}
+  m_rigidBody: {fileID: 531106304}
   camDist_direction: {x: -0.2, y: 6, z: -5.75}
   camTarg: {x: -0.4, y: 1, z: 10}
   camDist_magnitude: 10
