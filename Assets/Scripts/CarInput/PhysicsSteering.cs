@@ -14,6 +14,13 @@ public class PhysicsSteering : MonoBehaviour, ISteering {
 	private float _currSteering;
 	private float _currTorque;
 	private Rigidbody _rb;
+	private bool _grounded;
+
+	public bool Grounded { 
+		get {
+			return _grounded;
+		} 
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -31,6 +38,7 @@ public class PhysicsSteering : MonoBehaviour, ISteering {
 		_currTorque = yRatio * maxTorque;
 		_currSteering = xRatio * maxSteering;
 
+		_grounded = false;
 		ForEachAxel(SetSteering);
 		ForEachAxel(SetTorque);
 		ForEachAxel(AntiRoll);
@@ -79,6 +87,8 @@ public class PhysicsSteering : MonoBehaviour, ISteering {
 		if (groundedR) {
 			_rb.AddForceAtPosition(axel.rightWheel.transform.up * antiRollForce, axel.rightWheel.transform.position);
 		}
+
+		_grounded |= (groundedL || groundedR);
 	}
 }
 

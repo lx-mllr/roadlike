@@ -8,7 +8,8 @@ public class InputInstaller : MonoInstaller<InputInstaller>
         #if UNITY_EDITOR
             Container.BindInterfacesAndSelfTo<EditorInputManager>().AsSingle();
         #else
-            Container.BindInterfacesAndSelfTo<LeftRightInputManager>().AsSingle();
+            // Container.BindInterfacesAndSelfTo<LeftRightInputManager>().AsSingle();
+            Container.BindInterfacesAndSelfTo<SwipeInputManager>().AsSingle();
         #endif
 
         Container.BindSignal<StartButtonSignal>().ToMethod<IInputManager>(x => x.Enable).FromResolve();

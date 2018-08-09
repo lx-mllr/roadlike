@@ -3,10 +3,13 @@ using Zenject;
 
 public class EditorInputManager : IInputManager
 {
+    public float airSlowDuration = 30.0f;
 	public float yAcc = 0.0015f;
 
     private ISteering _steering;
 	private Vector2 _prevRatio = Vector2.zero;
+    private float airTime;
+    private float speedTarget;
     private bool Enabled { get; set; }
 
     public EditorInputManager(ISteering steering)
@@ -33,7 +36,20 @@ public class EditorInputManager : IInputManager
             return;
         }
 
-        Vector2 inputRatio = new Vector2(Input.GetAxis("Horizontal"),  Mathf.Min(1, _prevRatio.y + yAcc));
+        Vector2 inputRatio = Vector2.zero;
+        inputRatio.x = Input.GetAxis("Horizontal");
+
+		if (_steering.Grounded)
+		{
+            inputRatio.y = Mathf.Min(1, _prevRatio.y + yAcc);
+			airTime = airSlowDuration;
+		}
+		else
+		{
+			airTime -= yAcc;
+			inputRatio.y = Mathf.Lerp(0.0f, _prevRatio.y, airTime / airSlowDuration);
+		}
+        
         _steering.Move(inputRatio.x, inputRatio.y);
         _prevRatio = inputRatio;
     }

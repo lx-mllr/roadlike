@@ -48,14 +48,21 @@ public class FollowCam : MonoBehaviour {
 	private CamState currentState;
 	private CamState targetState;
 
+	private Camera _camera;
+
 	// Use this for initialization
 	void Start () {
+		_camera = GetComponent<Camera>();
+
 		currentState = new CamState(transform.position, transform.rotation);
 		targetState = new CamState(transform.position, transform.rotation);
 	}
 	
 	// Update is called once per frame
 	void LateUpdate () {
+		if (!_camera.enabled) {
+			return;
+		}
 		// update if editor changed these values
 		camDist_direction.Normalize();
 		camDist_direction *= camDist_magnitude;
@@ -63,8 +70,8 @@ public class FollowCam : MonoBehaviour {
 		updateTargetState();
 
 		currentState.lerpTo(targetState, smoothingPos, smoothingRot, Time.deltaTime);
-		currentState.DrawLines();
-		DrawCamVecs();
+		//currentState.DrawLines();
+		//DrawCamVecs();
 		currentState.updateToTransform(transform);
 	}
 
