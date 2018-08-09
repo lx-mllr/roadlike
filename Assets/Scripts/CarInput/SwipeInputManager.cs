@@ -66,18 +66,10 @@ public class SwipeInputManager : IInputManager {
             ratio.x = ((drag.x / _screenSize.x) * 4);
         }
         
-        if (_steering.Grounded)
-		{
+
             ratio.y = Mathf.Min(1, _prevRatio.y + yAcc);
-			airTime = airSlowDuration;
-		}
-		else
-		{
-			airTime -= yAcc;
-			ratio.y = Mathf.Lerp(0.0f, _prevRatio.y, airTime / airSlowDuration);
-		}
         
-        _steering.Move(ratio.x, ratio.y);
+        _steering.Move(ratio.x, ratio.y, 0.0f, 0.0f);
         _prevRatio = ratio;
-    }
+    }   
 }

@@ -7,7 +7,7 @@ public class LeftRightInputManager : IInputManager {
 
 	private ISteering _steering;
 
-	public float yAcc = 0.005f;
+	public float yAcc = 0.05f;
 	public float dragSensitivity = 5;
 
 	private Vector2 screenSize;
@@ -71,7 +71,7 @@ public class LeftRightInputManager : IInputManager {
 
 		ratio.y = Mathf.Min(1, _prevRatio.y + yAcc);
 
-		_steering.Move(ratio.x, ratio.y);
+		_steering.Move(ratio.x, ratio.y, 0.0f, 0.0f);
 
 		_prevRatio = ratio;
 		_prevTouch = touchPos;

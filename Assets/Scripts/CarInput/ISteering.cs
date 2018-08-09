@@ -2,8 +2,7 @@ using UnityEngine;
 
 public interface ISteering
 {
-    void Move(float xRatio, float yRatio);
+    void Move(float steering, float accel, float footbrake, float handbrake);
     void Reset();
     Transform transform {get;}
-    bool Grounded { get; }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarSteering : MonoBehaviour, ISteering 
+public class CarSteering : MonoBehaviour 
 {
 	public Vector3 resetPosition = Vector3.zero;
 	public float rotPadding = 0.8f;

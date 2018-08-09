@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-public class PhysicsSteering : MonoBehaviour, ISteering {
+public class PhysicsSteering : MonoBehaviour {
 
 	public AxleInfo[] axels;
 	public float maxTorque;

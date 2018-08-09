@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using UnityEngine;
 using Zenject;
 
@@ -9,11 +10,13 @@ public class TrackBuilder : ITrackBuilder, IInitializable  {
 
 	private Tile _previousTile = null;
 	private Tile _currentTile = null;
+	private ArrayList _tiles;
 
 	public TrackBuilder (Tile.Factory tileFactory,
 						RandomTileFactory.RTFSettings settings) {
 		_tileFactory = tileFactory;
 		_factorySettings = settings;
+		_tiles = new ArrayList();
 	}
 
 	public void Initialize () {
@@ -21,22 +24,28 @@ public class TrackBuilder : ITrackBuilder, IInitializable  {
 	}
 
 	public void Start () {
-		_currentTile = (Tile) _tileFactory.Create();
+		_tiles.Add((Tile) _tileFactory.Create());
 	}
 
 	public void Reset () {
-		CleanUpTile(_previousTile);
-		CleanUpTile(_currentTile);
-		_previousTile = null;
-		_currentTile = null;
+		Tile toDestroy;
+		while (_tiles.Count > 0)
+		{
+			toDestroy = (Tile) _tiles[0];
+			_tiles.RemoveAt(0);
+			CleanUpTile(toDestroy);
+		}
+
+		_tiles.Clear();
 		_factorySettings.startingCounter = 0;
 
 		Start();
 	}
 
 	public void Generate () {
-		_previousTile = _currentTile;
+		_previousTile = (Tile) _tiles[_tiles.Count - 1];
 		_currentTile = (Tile) _tileFactory.Create();
+		_tiles.Add(_currentTile);
 		
 		Quaternion rot = _previousTile.transform.rotation;
 		Vector3 pPos = _previousTile.transform.position;
@@ -53,7 +62,9 @@ public class TrackBuilder : ITrackBuilder, IInitializable  {
 	}
 
 	public void Despawn () {
-		CleanUpTile(_previousTile);
+			Tile toDestroy = (Tile) _tiles[0];
+			_tiles.RemoveAt(0);
+			CleanUpTile(toDestroy);
 	}
 
 	private void CleanUpTile (Tile t) {
