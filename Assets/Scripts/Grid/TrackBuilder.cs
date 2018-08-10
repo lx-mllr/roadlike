@@ -5,17 +5,22 @@ using Zenject;
 
 public class TrackBuilder : ITrackBuilder, IInitializable  {
 	
+	readonly TrackBuilderSettings _settings;
     readonly Tile.Factory _tileFactory;
 	readonly RandomTileFactory.RTFSettings _factorySettings;
+
 
 	private Tile _previousTile = null;
 	private Tile _currentTile = null;
 	private ArrayList _tiles;
 
 	public TrackBuilder (Tile.Factory tileFactory,
-						RandomTileFactory.RTFSettings settings) {
+						RandomTileFactory.RTFSettings RTFsettings,
+						TrackBuilderSettings TBsettings) 
+	{
+		_settings = TBsettings;
 		_tileFactory = tileFactory;
-		_factorySettings = settings;
+		_factorySettings = RTFsettings;
 		_tiles = new ArrayList();
 	}
 
@@ -25,6 +30,10 @@ public class TrackBuilder : ITrackBuilder, IInitializable  {
 
 	public void Start () {
 		_tiles.Add((Tile) _tileFactory.Create());
+		for (int i = 0; i < _settings.generateAheadCount; i++)
+		{
+			Generate();
+		}
 	}
 
 	public void Reset () {
@@ -71,5 +80,10 @@ public class TrackBuilder : ITrackBuilder, IInitializable  {
 		if (t) {
 			GameObject.Destroy(t.gameObject);
 		}
+	}
+
+	 [Serializable]
+    public struct TrackBuilderSettings {
+		public int generateAheadCount;
 	}
 }

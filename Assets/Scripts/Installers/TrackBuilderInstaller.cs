@@ -4,11 +4,12 @@ using Zenject;
 
 public class TrackBuilderInstaller : MonoInstaller<TrackBuilderInstaller>
 {
-    public Settings settings;
+    public SimpleTrackSettings settings;
 
     [Serializable]
-    public class Settings {
+    public class SimpleTrackSettings {
         public RandomTileFactory.RTFSettings tileFactorySettings;
+        public TrackBuilder.TrackBuilderSettings tbSettings;
         
         public CoinView coinPrefab;
     }
@@ -29,6 +30,8 @@ public class TrackBuilderInstaller : MonoInstaller<TrackBuilderInstaller>
         //Container.BindFactory<Tile, Tile.Factory>().FromComponentInNewPrefab(tile);
         Container.BindInstance(settings.tileFactorySettings);
         Container.BindFactory<Tile, Tile.Factory>().FromFactory<RandomTileFactory>();
+
+        Container.BindInstance(settings.tbSettings);
         Container.BindInterfacesAndSelfTo<TrackBuilder>().AsSingle();
 
         Container.BindSignal<SpawnTileSignal>().ToMethod<ITrackBuilder>(x => x.Generate).FromResolve();
