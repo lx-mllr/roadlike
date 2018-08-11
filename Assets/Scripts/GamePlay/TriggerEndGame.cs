@@ -7,6 +7,8 @@ public class TriggerEndGame : MonoBehaviour {
     SignalBus _signalBus;
 
 	void OnTriggerEnter(Collider other) {
+        Collider c = GetComponent<Collider>();
         _signalBus.Fire<GameEndSignal>();
+        c.enabled = false;
     }
 }

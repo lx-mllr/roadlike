@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 internal enum CarDriveType
@@ -44,6 +45,7 @@ public class CarController : MonoBehaviour, ISteering
     private float m_CurrentTorque;
     private Rigidbody m_Rigidbody;
     private const float k_ReversingThreshold = 0.01f;
+    private bool finishReset;
 
     
     private Vector3 _resetPosition = Vector3.zero;
@@ -75,14 +77,18 @@ public class CarController : MonoBehaviour, ISteering
     }
 
     public void Reset() {
-        m_Rigidbody.position = _resetPosition;
         for (int i = 0; i < m_WheelColliders.Length; i++)
         {
             m_WheelColliders[i].brakeTorque = Mathf.Infinity;
+            m_WheelColliders[i].motorTorque = 0.0f;
         }
-        m_Rigidbody.isKinematic = true;
+        
+        m_Rigidbody.position = _resetPosition;
+        m_Rigidbody.rotation = Quaternion.identity;
+        m_Rigidbody.velocity = m_Rigidbody.angularVelocity = Vector3.zero;
+        
+        finishReset = true;
     }
-
 
     private void GearChanging()
     {
@@ -140,9 +146,12 @@ public class CarController : MonoBehaviour, ISteering
 
     public void Move(float steering, float accel, float footbrake, float handbrake)
     {
-        if (m_Rigidbody.isKinematic)
+        if (finishReset)
         {
-            m_Rigidbody.isKinematic = false;
+            for (int i = 0; i < m_WheelColliders.Length; i++) {
+                m_WheelColliders[i].brakeTorque = 0.0f;
+            }
+            finishReset = false;
         }
         
         // for (int i = 0; i < 4; i++)
