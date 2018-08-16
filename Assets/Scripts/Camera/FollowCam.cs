@@ -14,7 +14,7 @@ public class FollowCam : MonoBehaviour {
 			rotation = rot;
 		}
 
-		public void lerpTo(CamState targCam, float smoothingPos, float smoothingRot, float dt)
+		public void lerpTo(CamState targCam, float smoothingPos, float smoothingRot)
 		{
 			position = Vector3.Lerp(position, targCam.position,  smoothingPos);
 			rotation = Quaternion.Lerp(rotation, targCam.rotation, smoothingRot);
@@ -45,17 +45,12 @@ public class FollowCam : MonoBehaviour {
 	[Range(0.0f, 1.0f)]
 	public float smoothingRot = 0.35f;
 
-	private CamState currentState;
-	private CamState targetState;
-
 	private Camera _camera;
 
 	// Use this for initialization
 	void Start () {
 		_camera = GetComponent<Camera>();
 
-		currentState = new CamState(transform.position, transform.rotation);
-		targetState = new CamState(transform.position, transform.rotation);
 	}
 	
 	// Update is called once per frame
@@ -63,30 +58,34 @@ public class FollowCam : MonoBehaviour {
 		if (!_camera.enabled) {
 			return;
 		}
+		
+		CamState currentState = new CamState(transform.position, transform.rotation);
+
 		// update if editor changed these values
 		camDist_direction.Normalize();
 		camDist_direction *= camDist_magnitude;
 
-		updateTargetState();
+		CamState targetState = updateTargetState();
 
-		currentState.lerpTo(targetState, smoothingPos, smoothingRot, Time.deltaTime);
+		currentState.lerpTo(targetState, smoothingPos, smoothingRot);
 		//currentState.DrawLines();
 		//DrawCamVecs();
 		currentState.updateToTransform(transform);
 	}
 
-	private void updateTargetState()
+	private CamState updateTargetState()
 	{
 		Vector3 pos = m_rigidBody.rotation * camDist_direction;
-		targetState.position = pos + m_rigidBody.transform.position;
+		pos += m_rigidBody.transform.position;
 
 		Vector3 eyeTarget = m_rigidBody.rotation * camTarg;
 		eyeTarget += m_rigidBody.position;
-		Vector3 fwd = eyeTarget - targetState.position;
+		Vector3 fwd = eyeTarget - pos;
 		fwd.Normalize();
 	
 		//Vector3 up = m_rigidBody.rotation * Vector3.up;
-		targetState.rotation = Quaternion.LookRotation(fwd);
+		CamState targetState = new CamState(pos, Quaternion.LookRotation(fwd));
+		return targetState;
 	}
 
 	private void DrawCamVecs()
