@@ -80,7 +80,8 @@ public class CarController : MonoBehaviour, ISteering
         for (int i = 0; i < m_WheelColliders.Length; i++)
         {
             m_WheelColliders[i].brakeTorque = Mathf.Infinity;
-            m_WheelColliders[i].motorTorque = 0.0f;
+            m_WheelColliders[i].motorTorque = Mathf.Infinity;
+            m_WheelColliders[i].steerAngle = 0.0f;
         }
         
         m_Rigidbody.position = _resetPosition;
@@ -150,6 +151,7 @@ public class CarController : MonoBehaviour, ISteering
         {
             for (int i = 0; i < m_WheelColliders.Length; i++) {
                 m_WheelColliders[i].brakeTorque = 0.0f;
+                m_WheelColliders[i].motorTorque = 0.0f;
             }
             finishReset = false;
         }

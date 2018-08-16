@@ -59,6 +59,6 @@ MonoBehaviour:
       - {fileID: 114008922178044368, guid: e722eeecd5cea9b469a4dc482b9a99dc, type: 2}
       startingCounter: 0
     tbSettings:
-      generateAheadCount: 3
+      generateAheadCount: 1
     coinPrefab: {fileID: 114446679961222884, guid: 393303465d08ff9478302eb69e8100e0,
       type: 2}

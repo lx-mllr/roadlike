@@ -10,7 +10,7 @@ public class EditorInputManager : IInputManager
 	private Vector2 _prevRatio = Vector2.zero;
     private float airTime;
     private float speedTarget;
-    private bool Enabled { get; set; }
+    private bool _enabled;
 
     public EditorInputManager(ISteering steering)
     {
@@ -18,21 +18,21 @@ public class EditorInputManager : IInputManager
     }
 
     public void Initialize () {
-        Enabled = false;
+        _enabled = false;
     }
 
     public void Reset () {
         _prevRatio = Vector2.zero;
-        Enabled = false;
+        _enabled = false;
     }
 
     public void Enable () {
-        Enabled = true;
+        _enabled = true;
     }
 
     public void Tick ()
     {
-        if (!Enabled) {
+        if (!_enabled) {
             return;
         }
 

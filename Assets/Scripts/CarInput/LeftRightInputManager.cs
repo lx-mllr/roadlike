@@ -14,7 +14,7 @@ public class LeftRightInputManager : IInputManager {
 	private Vector2 _prevTouch;
 	private Vector2 _prevRatio = Vector2.zero;
 	private Vector2 _prevDrag = Vector3.zero;
-    private bool Enabled { get; set; }
+    private bool _enabled;
 
 	public LeftRightInputManager (ISteering steering)
 	{
@@ -25,21 +25,21 @@ public class LeftRightInputManager : IInputManager {
 	public void Initialize () 
 	{
 		screenSize = new Vector2(Screen.width, Screen.height);
-        Enabled = false;
+        _enabled = false;
 	}
 	
     public void Enable () {
-        Enabled = true;
+        _enabled = true;
     }
 	
     public void Reset () {
-        _prevRatio = Vector2.zero;
-        Enabled = false;
+        _prevTouch = _prevRatio = Vector2.zero;
+        _enabled = false;
     }
 	
 	public void Tick ()
 	{
-		if (!Enabled) {
+		if (!_enabled) {
 			return;
 		}
 

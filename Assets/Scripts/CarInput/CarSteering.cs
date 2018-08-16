@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarSteering : MonoBehaviour 
+public class CarSteering : MonoBehaviour, ISteering
 {
 	public Vector3 resetPosition = Vector3.zero;
 	public float rotPadding = 0.8f;
@@ -48,10 +48,10 @@ public class CarSteering : MonoBehaviour
 	}
 
 	/// xRatio [-1, 1]
-	public void Move (float xRatio, float yRatio) {
+	public void Move (float steering, float accel, float footbrake, float handbrake) {
 		_grounded = Physics.Raycast(transform.position, transform.up * -1, 1.0f);
-		ApplyRotation(xRatio);
-		ApplyMovement(yRatio);
+		ApplyRotation(steering);
+		ApplyMovement(accel);
 	}
 
 	private void ApplyMovement (float yRatio) {

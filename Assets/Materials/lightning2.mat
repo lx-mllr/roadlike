@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: TileAndScroll
-  m_Shader: {fileID: 4800000, guid: 985a14c6710483246b397cbabbb0a3fb, type: 3}
+  m_Name: lightning2
+  m_Shader: {fileID: 4800000, guid: 0502aa907ed6a9c489a5f574934af1c9, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -18,14 +18,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture_18611E0A:
-        m_Texture: {fileID: 2800000, guid: b5ed1d258b13a7644b5e1e636a338ac4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - Texture_B6E68359:
-        m_Texture: {fileID: 2800000, guid: b5ed1d258b13a7644b5e1e636a338ac4, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _BumpMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -67,9 +59,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_8E59D67B: 0
-    - Vector1_E5F41FE9: 0
-    - Vector1_FE1BB61D: 4
+    - Vector1_4DD87225: 0.5
+    - Vector1_8DB4374: 90
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -91,10 +82,10 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_4BAE6CD8: {r: 0, g: 0, b: 0, a: 0}
-    - Color_E03887BE: {r: 1, g: 1, b: 1, a: 0}
-    - Vector2_45461553: {r: 7, g: 3, b: 0, a: 0}
-    - Vector3_118CBA82: {r: 24.2, g: 9.98, b: -5.12, a: 0}
+    - Vector2_1B1DE25B: {r: 1, g: 1, b: 0, a: 0}
+    - Vector4_3950067F: {r: 15, g: 12, b: 10, a: 12}
+    - Vector4_ADA49050: {r: 1, g: 1, b: -0, a: 5}
+    - Vector4_B072A538: {r: 0.5, g: 0, b: 0.5, a: 0}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}

@@ -494,6 +494,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resetPosition: {x: 0, y: 0, z: 0}
   rotPadding: 0.6
-  rotSpeed: 0.1
-  speedPadding: 0.96
-  MAX_SPEED: 3
+  rotSpeed: 0.03
+  speedPadding: 0.2
+  MAX_SPEED: 1.3
