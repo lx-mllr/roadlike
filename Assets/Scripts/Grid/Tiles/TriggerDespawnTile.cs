@@ -11,7 +11,5 @@ public class TriggerDespawnTile : MonoBehaviour {
 	void OnTriggerEnter(Collider other)
 	{
 		signalBus.Fire<DespawnTileSignal>();
-		Collider thisCollider = GetComponent<Collider>();
-		thisCollider.enabled = false;
 	}
 }

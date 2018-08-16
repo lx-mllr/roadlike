@@ -11,8 +11,5 @@ public class TriggerSpawnTile : MonoBehaviour {
 	void OnTriggerEnter(Collider other)
 	{
 		signalBus.Fire<SpawnTileSignal>();
-		
-		Collider trigger = GetComponent<BoxCollider>();
-		trigger.enabled = false;
 	}
 }
