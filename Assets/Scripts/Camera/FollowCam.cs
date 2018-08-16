@@ -45,12 +45,16 @@ public class FollowCam : MonoBehaviour {
 	[Range(0.0f, 1.0f)]
 	public float smoothingRot = 0.35f;
 
+	[Range(-1.0f, 1.0f)]
+	public float horizontalOblique = 0.0f;
+	[Range(-1.0f, 1.0f)]
+	public float verticalOblique = 0.0f;
+
 	private Camera _camera;
 
 	// Use this for initialization
 	void Start () {
 		_camera = GetComponent<Camera>();
-
 	}
 	
 	// Update is called once per frame
@@ -71,6 +75,12 @@ public class FollowCam : MonoBehaviour {
 		//currentState.DrawLines();
 		//DrawCamVecs();
 		currentState.updateToTransform(transform);
+
+		
+		Matrix4x4 proj = _camera.projectionMatrix;
+		proj[0, 2] = horizontalOblique;
+		proj[1, 2] = verticalOblique;
+		_camera.projectionMatrix = proj;
 	}
 
 	private CamState updateTargetState()
