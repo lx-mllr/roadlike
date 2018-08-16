@@ -39,6 +39,7 @@ public class FollowCam : MonoBehaviour {
 	public Vector3 camDist_direction = new Vector3(-0.2f, 6.0f, -5.75f);
 	public Vector3 camTarg = new Vector3(-0.4f, 1.0f, 10.0f);
 	public float camDist_magnitude = 10;
+	public bool drawCamVectors = false;
 
 	[Range(0.0f, 1.0f)]
 	public float smoothingPos = 0.55f;
@@ -49,18 +50,25 @@ public class FollowCam : MonoBehaviour {
 	public float horizontalOblique = 0.0f;
 	[Range(-1.0f, 1.0f)]
 	public float verticalOblique = 0.0f;
+	public bool updateObliqueness = false;
 
 	private Camera _camera;
 
 	// Use this for initialization
 	void Start () {
 		_camera = GetComponent<Camera>();
+
+		SetObliqueness();
 	}
 	
 	// Update is called once per frame
 	void LateUpdate () {
 		if (!_camera.enabled) {
 			return;
+		}
+
+		if (updateObliqueness) {
+			SetObliqueness();
 		}
 		
 		CamState currentState = new CamState(transform.position, transform.rotation);
@@ -76,11 +84,9 @@ public class FollowCam : MonoBehaviour {
 		//DrawCamVecs();
 		currentState.updateToTransform(transform);
 
-		
-		Matrix4x4 proj = _camera.projectionMatrix;
-		proj[0, 2] = horizontalOblique;
-		proj[1, 2] = verticalOblique;
-		_camera.projectionMatrix = proj;
+		if (drawCamVectors) {
+			DrawCamVecs();
+		}
 	}
 
 	private CamState updateTargetState()
@@ -105,5 +111,12 @@ public class FollowCam : MonoBehaviour {
 
 		Vector3 rotatedTarg = m_rigidBody.rotation * camTarg;
 		Debug.DrawLine(m_rigidBody.position, m_rigidBody.position + rotatedTarg, Color.black, 0.0f);
+	}
+
+	private void SetObliqueness() {
+		Matrix4x4 proj = _camera.projectionMatrix;
+		proj[0, 2] = horizontalOblique;
+		proj[1, 2] = verticalOblique;
+		_camera.projectionMatrix = proj;
 	}
 }
