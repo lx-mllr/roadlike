@@ -12,6 +12,8 @@ public class TrackBuilderInstaller : MonoInstaller<TrackBuilderInstaller>
         public TrackBuilder.TrackBuilderSettings tbSettings;
         
         public CoinView coinPrefab;
+
+        public ObstacleView hammerPrefab;
     }
 
     public override void InstallBindings()
@@ -22,6 +24,7 @@ public class TrackBuilderInstaller : MonoInstaller<TrackBuilderInstaller>
         Container.DeclareSignal<GameEndSignal>().OptionalSubscriber();
 
         InstallCoinSystem();
+        InstallObstacleSystem();
         InstallSimplePathSystem();
     }
 
@@ -42,5 +45,10 @@ public class TrackBuilderInstaller : MonoInstaller<TrackBuilderInstaller>
     public void InstallCoinSystem() 
     {
         Container.BindFactory<CoinView, CoinView.Factory>().FromComponentInNewPrefab(settings.coinPrefab);
+    }
+
+    public void InstallObstacleSystem() 
+    {
+        Container.BindFactory<ObstacleView, ObstacleView.Factory>().FromComponentInNewPrefab(settings.hammerPrefab);
     }
 }

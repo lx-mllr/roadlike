@@ -56,6 +56,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4017196043651786}
   - component: {fileID: 95542073904224688}
+  - component: {fileID: 114276143641203588}
   m_Layer: 0
   m_Name: hammer
   m_TagString: Untagged
@@ -232,6 +233,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea9abd7243863bf4fb4d9c0fa1891560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114276143641203588
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1820636114603234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f3282d84a805c9409aea76d3ae280a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114285250151326420
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -243,8 +255,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7f0aed7a180f2d49868b12324192f09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceDirection: {x: 1, y: 0, z: 0}
-  forceMagnitude: 5
+  impactPower: 75
+  forceRadius: 1
+  upwardsMod: 1.5
 --- !u!114 &114337966710072488
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -267,8 +280,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7f0aed7a180f2d49868b12324192f09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceDirection: {x: -1, y: 0, z: 0}
-  forceMagnitude: 5
+  impactPower: 75
+  forceRadius: 1
+  upwardsMod: 1.5
 --- !u!114 &114678534256419698
 MonoBehaviour:
   m_ObjectHideFlags: 1

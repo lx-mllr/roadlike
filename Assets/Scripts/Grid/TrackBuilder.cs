@@ -67,7 +67,16 @@ public class TrackBuilder : ITrackBuilder, IInitializable  {
 		_currentTile.transform.position = new Vector3(pPos.x + nextOffset.x, pPos.y + nextOffset.y, pPos.z + nextOffset.z);
 		_currentTile.transform.rotation = Quaternion.Euler(_previousTile.nextTileEuler) * rot;
 
-		_currentTile.SpawnCoin();
+		
+		if (_factorySettings.startingCounter < _tiles.Count)
+		{
+			if (UnityEngine.Random.Range(0.0f, 1.0f) > 0.5f) {
+				_currentTile.SpawnCoin();
+			}
+			else {
+				_currentTile.SpawnHammer();
+			}
+		}
 	}
 
 	public void Despawn () {
