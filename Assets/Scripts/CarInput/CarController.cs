@@ -36,6 +36,8 @@ public class CarController : MonoBehaviour, ISteering
     [SerializeField] private float m_SlipLimit;
     [SerializeField] private float m_BrakeTorque;
 
+    private Rigidbody m_Rigidbody;
+	public Rigidbody rigidBody { get { return m_Rigidbody; } }
     private Quaternion[] m_WheelMeshLocalRotations;
     private Vector3 m_Prevpos, m_Pos;
     private float m_SteerAngle;
@@ -43,7 +45,6 @@ public class CarController : MonoBehaviour, ISteering
     private float m_GearFactor;
     private float m_OldRotation;
     private float m_CurrentTorque;
-    private Rigidbody m_Rigidbody;
     private const float k_ReversingThreshold = 0.01f;
     private bool finishReset;
 

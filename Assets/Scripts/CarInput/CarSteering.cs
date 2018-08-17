@@ -16,15 +16,9 @@ public class CarSteering : MonoBehaviour, ISteering
 	private Quaternion targetRot;
 	private Vector3 _prevFwd;
 	private Vector3 fwd;
-	private bool _grounded;
 
 	private Rigidbody _rigidBody;
-
-	public bool Grounded { 
-		get {
-			return _grounded;
-		} 
-	}
+	public Rigidbody rigidBody { get { return _rigidBody; } }
 
 	void Awake () {
 		if (resetPosition.sqrMagnitude == 0) {
@@ -49,7 +43,6 @@ public class CarSteering : MonoBehaviour, ISteering
 
 	/// xRatio [-1, 1]
 	public void Move (float steering, float accel, float footbrake, float handbrake) {
-		_grounded = Physics.Raycast(transform.position, transform.up * -1, 1.0f);
 		ApplyRotation(steering);
 		ApplyMovement(accel);
 	}
@@ -57,14 +50,6 @@ public class CarSteering : MonoBehaviour, ISteering
 	private void ApplyMovement (float yRatio) {
 		Vector3 dir = transform.forward;
 		speed = Mathf.Lerp(speed, yRatio * MAX_SPEED, speedPadding);
-
-		// //Vector3 targOrentation = Quaternion.Euler(0.0f, transform.rotation.eulerAngles.y, 0.0f) * transform.forward;
-
-		// if (_grounded)
-		// {
-		// 	//dir = Vector3.Lerp(dir, ((transform.up * -3f) + (targOrentation * 2f)).normalized, 0.1f);
-		// 	_rigidBody.velocity = dir * speed;
-		// }
 
 		transform.position += dir * speed;
 	}
@@ -78,9 +63,6 @@ public class CarSteering : MonoBehaviour, ISteering
 
 		transform.rotation = Quaternion.Lerp(_prevTargRot, targetRot, rotPadding);
 		transform.forward =  Vector3.Lerp(_prevFwd, fwd, rotPadding);
-
-		// transform.rotation = targetRot;
-		// transform.forward = fwd;
 
 		_prevFwd = fwd;
 		_prevTargRot = targetRot;

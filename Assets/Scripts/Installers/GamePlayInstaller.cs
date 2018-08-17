@@ -13,6 +13,7 @@ public class GamePlayInstaller : MonoInstaller<GamePlayInstaller>
     public override void InstallBindings()
     {
         Container.DeclareSignal<CollectCoinSignal>();
+        Container.DeclareSignal<ApplyForceToCarSignal>();
 
         Container.Bind<SaveManager>().AsSingle();
 
@@ -27,6 +28,7 @@ public class GamePlayInstaller : MonoInstaller<GamePlayInstaller>
 
         Container.BindSignal<StartButtonSignal>().ToMethod<GamePlayManager>(x => x.OnGameStart).FromResolve();
         Container.BindSignal<GameEndSignal>().ToMethod<GamePlayManager>(x => x.Reset).FromResolve();
+        Container.BindSignal<ApplyForceToCarSignal>().ToMethod<GamePlayManager>(x => x.ApplyForce).FromResolve();
 
     }
 }

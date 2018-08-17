@@ -25,4 +25,8 @@ public class GamePlayManager : IInitializable {
     public void Reset () {
         _steering.Reset();
     }
+
+    public void ApplyForce (ApplyForceToCarSignal signal) {
+        _steering.rigidBody.AddExplosionForce(signal.power, signal.impactPoint, signal.radius, 1.5f, ForceMode.Impulse);
+    }
 }
