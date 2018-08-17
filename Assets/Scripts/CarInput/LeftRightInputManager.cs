@@ -14,6 +14,7 @@ public class LeftRightInputManager : IInputManager {
 	private Vector2 _prevTouch;
 	private Vector2 _prevRatio = Vector2.zero;
     private bool _enabled;
+	public bool Enabled { get { return _enabled; } }
 
 	public LeftRightInputManager (ISteering steering)
 	{

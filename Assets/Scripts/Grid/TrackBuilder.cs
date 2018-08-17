@@ -68,7 +68,7 @@ public class TrackBuilder : ITrackBuilder, IInitializable  {
 		_currentTile.transform.rotation = Quaternion.Euler(_previousTile.nextTileEuler) * rot;
 
 		
-		if (_factorySettings.startingCounter < _tiles.Count)
+		if (_factorySettings.startingCounter >= _factorySettings.startingTiles.Length)
 		{
 			if (UnityEngine.Random.Range(0.0f, 1.0f) > 0.5f) {
 				_currentTile.SpawnCoin();

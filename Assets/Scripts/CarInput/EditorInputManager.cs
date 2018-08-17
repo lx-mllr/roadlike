@@ -11,6 +11,7 @@ public class EditorInputManager : IInputManager
     private float airTime;
     private float speedTarget;
     private bool _enabled;
+    public bool Enabled { get { return _enabled; } }
 
     public EditorInputManager(ISteering steering)
     {

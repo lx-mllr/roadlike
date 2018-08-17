@@ -2,28 +2,42 @@ using System;
 using UnityEngine;
 using Zenject;
 
-public class GamePlayManager : IInitializable {
+public class GamePlayManager : IInitializable, ITickable {
 
-    [Inject]
-    ISteering _steering;
+    [Serializable]
+    public struct GMSettings {
+        public float reEnableInputThreshold;
+    }
 
-    [Inject]
-    Screens _screens;
+    [Inject] ISteering _steering;
+    [Inject] IInputManager _inputManager;
+    [Inject] GMSettings _settings;
+    [Inject] SignalBus _signalBus;
 
-    [Inject]
-    SignalBus _signalBus;
+    private bool _gameActive;
 
     public void Initialize () {
-        _signalBus.Fire(new CreateScreenSignal() {
-            toCreate = _screens.mainScreen
-        });
     }
 
     public void OnGameStart () {
+        _gameActive = true;
     }
 
     public void Reset () {
+        _gameActive = false;
         _steering.Reset();
+    }
+
+    public void Tick () {
+        if (_gameActive)
+        {
+            Debug.Log(_steering.rigidBody.velocity.sqrMagnitude);
+            if (!_inputManager.Enabled &&
+                    _steering.rigidBody.velocity.sqrMagnitude < _settings.reEnableInputThreshold) {
+                _signalBus.Fire<EnableInputSignal>();
+            }
+        }
+
     }
 
     public void ApplyForce (ApplyForceToCarSignal signal) {

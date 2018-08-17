@@ -8,6 +8,7 @@ public class GamePlayInstaller : MonoInstaller<GamePlayInstaller>
     
     [Serializable]
     public struct Settings {
+        public GamePlayManager.GMSettings gmSettings;
     }
 
     public override void InstallBindings()
@@ -25,6 +26,7 @@ public class GamePlayInstaller : MonoInstaller<GamePlayInstaller>
 
 // GP
         Container.BindInterfacesAndSelfTo<GamePlayManager>().AsSingle();
+        Container.BindInstance<GamePlayManager.GMSettings>(_settings.gmSettings);
 
         Container.BindSignal<StartButtonSignal>().ToMethod<GamePlayManager>(x => x.OnGameStart).FromResolve();
         Container.BindSignal<GameEndSignal>().ToMethod<GamePlayManager>(x => x.Reset).FromResolve();

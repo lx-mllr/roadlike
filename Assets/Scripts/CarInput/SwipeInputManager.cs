@@ -12,7 +12,8 @@ public class SwipeInputManager : IInputManager {
     private Vector2 _prevRatio;
     private float airTime;
     private float speedTarget;
-    private bool Enabled { get; set; }
+    private bool _enabled;
+    public bool Enabled { get { return _enabled; } }
 
     public SwipeInputManager(ISteering steering)
     {
@@ -23,21 +24,21 @@ public class SwipeInputManager : IInputManager {
     {
         _screenSize = new Vector2(Screen.width, Screen.height);
         _prevRatio = _touchStart = Vector2.zero;
-        Enabled = false;
+        _enabled = false;
     }
 	
     public void Enable () {
-        Enabled = true;
+        _enabled = true;
     }
     
     public void Reset () {
         _touchStart = _prevRatio = Vector2.zero;
-        Enabled = false;
+        _enabled = false;
     }
 
     public void Tick ()
     {
-        if (!Enabled) {
+        if (!_enabled) {
             return;
         }
 

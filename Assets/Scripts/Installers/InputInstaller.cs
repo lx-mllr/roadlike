@@ -6,6 +6,7 @@ public class InputInstaller : MonoInstaller<InputInstaller>
     public override void InstallBindings()
     {
         Container.DeclareSignal<DisableInputSignal>();
+        Container.DeclareSignal<EnableInputSignal>();
 
         #if UNITY_EDITOR
             Container.BindInterfacesAndSelfTo<EditorInputManager>().AsSingle();
@@ -15,6 +16,7 @@ public class InputInstaller : MonoInstaller<InputInstaller>
         #endif
 
         Container.BindSignal<StartButtonSignal>().ToMethod<IInputManager>(x => x.Enable).FromResolve();
+        Container.BindSignal<EnableInputSignal>().ToMethod<IInputManager>(x => x.Enable).FromResolve();
         Container.BindSignal<DisableInputSignal>().ToMethod<IInputManager>(x => x.Reset).FromResolve();
     }
 }

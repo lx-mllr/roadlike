@@ -4,6 +4,9 @@ using UnityEngine;
 public struct DisableInputSignal {
 }
 
+public struct EnableInputSignal {
+}
+
 public struct GameEndSignal {
 }
 
