@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: lightning2
-  m_Shader: {fileID: 4800000, guid: 0502aa907ed6a9c489a5f574934af1c9, type: 3}
+  m_Name: ToonColor
+  m_Shader: {fileID: 4800000, guid: 7ac0032b2f8e6b74795f79a3091fcd7f, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -59,8 +59,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_4DD87225: 0.5
-    - Vector1_8DB4374: 90
+    - Vector1_D7ECFCC: -0.2
+    - Vector1_FBD788B3: 4
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -82,10 +82,10 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Vector2_1B1DE25B: {r: 1, g: 1, b: 0, a: 0}
-    - Vector4_3950067F: {r: 15, g: 12, b: 10, a: 12}
-    - Vector4_ADA49050: {r: 1, g: 1, b: -0, a: 5}
-    - Vector4_B072A538: {r: 0.5, g: 0, b: 0.5, a: 0}
+    - Color_2509FED: {r: 0.2264151, g: 0.2264151, b: 0.2264151, a: 0}
+    - Color_FF21898B: {r: 0.066037714, g: 0.032084364, b: 0.032084364, a: 0}
+    - Vector3_9614AE9B: {r: 1.79, g: 0.91, b: -0.49, a: 0}
+    - Vector4_5CFD2A73: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
