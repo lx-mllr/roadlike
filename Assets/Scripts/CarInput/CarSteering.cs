@@ -11,21 +11,18 @@ public class CarSteering : MonoBehaviour, ISteering
 	public float speedPadding = 0.8f;
 	public float MAX_SPEED = 3.0f;
 
-	private float speed;
+	private float _speed;
 	private Quaternion _prevTargRot;
 	private Quaternion targetRot;
 	private Vector3 _prevFwd;
-	private Vector3 fwd;
+	private Vector3 _fwd;
 
 	private Rigidbody _rigidBody;
 	public Rigidbody rigidBody { get { return _rigidBody; } }
 
 	void Awake () {
-		if (resetPosition.sqrMagnitude == 0) {
-			resetPosition = transform.position;
-		}
-
 		_rigidBody = GetComponent<Rigidbody>();
+		Reset();
 	}
 
 	void Update () {
@@ -35,10 +32,14 @@ public class CarSteering : MonoBehaviour, ISteering
 		_rigidBody.velocity = Vector3.zero;
 		_rigidBody.angularVelocity = Vector3.zero;
 		
-		speed = 0.0f;
+		_speed = 0.0f;
 
 		transform.position = resetPosition;
-		transform.rotation = Quaternion.identity;
+
+		int xRot = (Random.value > 0.5f) ? 1 : -1;
+		int zRot = (Random.value > 0.5f) ? 1 : -1;
+		Quaternion resetRotation = Quaternion.Euler(xRot, 0, zRot);
+		transform.rotation = resetRotation;
 	}
 
 	/// xRatio [-1, 1]
@@ -49,22 +50,22 @@ public class CarSteering : MonoBehaviour, ISteering
 
 	private void ApplyMovement (float yRatio) {
 		Vector3 dir = transform.forward;
-		speed = Mathf.Lerp(speed, yRatio * MAX_SPEED, speedPadding);
+		_speed = Mathf.Lerp(_speed, yRatio * MAX_SPEED, speedPadding);
 
-		transform.position += dir * speed;
+		transform.position += dir * _speed;
 	}
 
 	private void ApplyRotation (float xRatio) {
 		float rotDir = xRatio;
 		rotDir *= rotSpeed;
 
-		fwd = Vector3.RotateTowards(transform.forward, transform.right, rotDir, 1.0f);
-		targetRot = Quaternion.FromToRotation(transform.forward, fwd);
+		_fwd = Vector3.RotateTowards(transform.forward, transform.right, rotDir, 1.0f);
+		targetRot = Quaternion.FromToRotation(transform.forward, _fwd);
 
 		transform.rotation = Quaternion.Lerp(_prevTargRot, targetRot, rotPadding);
-		transform.forward =  Vector3.Lerp(_prevFwd, fwd, rotPadding);
+		transform.forward =  Vector3.Lerp(_prevFwd, _fwd, rotPadding);
 
-		_prevFwd = fwd;
+		_prevFwd = _fwd;
 		_prevTargRot = targetRot;
 	}
 }
