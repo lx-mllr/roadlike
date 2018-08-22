@@ -127,7 +127,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4109095906553494, guid: c6bb2f23e171232458112edc6ad4bf69, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4109095906553494, guid: c6bb2f23e171232458112edc6ad4bf69, type: 2}
       propertyPath: m_LocalPosition.z
@@ -166,6 +166,34 @@ Prefab:
     - target: {fileID: 114185402617376102, guid: c6bb2f23e171232458112edc6ad4bf69,
         type: 2}
       propertyPath: visualOffset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4109095906553494, guid: c6bb2f23e171232458112edc6ad4bf69, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4109095906553494, guid: c6bb2f23e171232458112edc6ad4bf69, type: 2}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114762176304596202, guid: c6bb2f23e171232458112edc6ad4bf69,
+        type: 2}
+      propertyPath: resetPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114185402617376102, guid: c6bb2f23e171232458112edc6ad4bf69,
+        type: 2}
+      propertyPath: intensity
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 114185402617376102, guid: c6bb2f23e171232458112edc6ad4bf69,
+        type: 2}
+      propertyPath: flashTreshold
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114185402617376102, guid: c6bb2f23e171232458112edc6ad4bf69,
+        type: 2}
+      propertyPath: timeTillFlash
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

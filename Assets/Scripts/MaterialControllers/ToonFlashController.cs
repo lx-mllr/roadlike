@@ -15,7 +15,9 @@ public class ToonFlashController : MonoBehaviour {
 	public Vector3 visualOffset = Vector3.zero;
 
 	public float baseIntensity = 0.001f;
+	[Range(0.0f, 1.0f)]
 	public float intensity = 0.5f;
+	[Range(0.0f, 1.0f)]
 	public float flashTreshold = 0.5f;
 	public float timeTillFlash = 0.5f;
 
@@ -46,7 +48,7 @@ public class ToonFlashController : MonoBehaviour {
 		Vector3 carToLeft = transform.position - lWallPos;
 		Vector3 carToRight = rWallPos - transform.position;
 
-		float totalSqrMag = carToLeft.sqrMagnitude + carToRight.sqrMagnitude;
+		float halfSqrMag = (carToLeft.sqrMagnitude + carToRight.sqrMagnitude) / 2;
 
 		if (Time.time - lastFlash > timeTillFlash)
 		{
@@ -55,10 +57,10 @@ public class ToonFlashController : MonoBehaviour {
 			flashRight = Random.value > flashTreshold;
 
 			if (flashLeft) {
-				lFlashStrengh = (1 - (carToLeft.sqrMagnitude / totalSqrMag)) * intensity;
+				lFlashStrengh = (1 - (carToLeft.sqrMagnitude / halfSqrMag)) * intensity;
 			}
 			if (flashRight) {
-				rFlashStrength = (1 - (carToRight.sqrMagnitude / totalSqrMag)) * intensity;
+				rFlashStrength = (1 - (carToRight.sqrMagnitude / halfSqrMag)) * intensity;
 			}
 
 			lWallPos = transform.InverseTransformPoint(lWallPos);
