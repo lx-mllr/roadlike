@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4492981940019824}
   - component: {fileID: 33620315658445798}
   - component: {fileID: 23973489021483022}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: geom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   - component: {fileID: 114448250069738216}
   - component: {fileID: 114873099597261648}
   - component: {fileID: 114678534256419698}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: LeftDestroyer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ GameObject:
   - component: {fileID: 114285250151326420}
   - component: {fileID: 114189168060992298}
   - component: {fileID: 114337966710072488}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: RightDestroyer
   m_TagString: Untagged
   m_Icon: {fileID: 0}

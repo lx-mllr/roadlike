@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Zenject;
 
 public class FollowCam : MonoBehaviour {
 
@@ -34,7 +35,7 @@ public class FollowCam : MonoBehaviour {
 
 	}
 
-	public Rigidbody m_rigidBody;
+	[Inject] ISteering _steering;
 	
 	public Vector3 camDist_direction = new Vector3(-0.2f, 6.0f, -5.75f);
 	public Vector3 camTarg = new Vector3(-0.4f, 1.0f, 10.0f);
@@ -91,11 +92,11 @@ public class FollowCam : MonoBehaviour {
 
 	private CamState updateTargetState()
 	{
-		Vector3 pos = m_rigidBody.rotation * camDist_direction;
-		pos += m_rigidBody.transform.position;
+		Vector3 pos = _steering.transform.rotation * camDist_direction;
+		pos += _steering.transform.position;
 
-		Vector3 eyeTarget = m_rigidBody.rotation * camTarg;
-		eyeTarget += m_rigidBody.position;
+		Vector3 eyeTarget = _steering.transform.rotation * camTarg;
+		eyeTarget += _steering.transform.position;
 		Vector3 fwd = eyeTarget - pos;
 		fwd.Normalize();
 	
@@ -106,11 +107,11 @@ public class FollowCam : MonoBehaviour {
 
 	private void DrawCamVecs()
 	{
-		Vector3 rotatedDir = m_rigidBody.rotation * camDist_direction;
-		Debug.DrawLine(m_rigidBody.position, m_rigidBody.position + rotatedDir, Color.blue, 0.0f);
+		Vector3 rotatedDir = _steering.transform.rotation * camDist_direction;
+		Debug.DrawLine(_steering.transform.position, _steering.transform.position + rotatedDir, Color.blue, 0.0f);
 
-		Vector3 rotatedTarg = m_rigidBody.rotation * camTarg;
-		Debug.DrawLine(m_rigidBody.position, m_rigidBody.position + rotatedTarg, Color.black, 0.0f);
+		Vector3 rotatedTarg = _steering.transform.rotation * camTarg;
+		Debug.DrawLine(_steering.transform.position, _steering.transform.position + rotatedTarg, Color.black, 0.0f);
 	}
 
 	private void SetObliqueness() {

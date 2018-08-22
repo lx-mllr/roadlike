@@ -31,7 +31,6 @@ public class GamePlayManager : IInitializable, ITickable {
     public void Tick () {
         if (_gameActive)
         {
-            Debug.Log(_steering.rigidBody.velocity.sqrMagnitude);
             if (!_inputManager.Enabled &&
                     _steering.rigidBody.velocity.sqrMagnitude < _settings.reEnableInputThreshold) {
                 _signalBus.Fire<EnableInputSignal>();

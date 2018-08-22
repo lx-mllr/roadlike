@@ -53,4 +53,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _settings:
     gmSettings:
-      reEnableInputThreshold: 25
+      reEnableInputThreshold: 200
