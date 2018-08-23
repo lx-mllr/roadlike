@@ -40,6 +40,9 @@ public class CarSteering : MonoBehaviour, ISteering
 		int zRot = (Random.value > 0.5f) ? 1 : -1;
 		Quaternion resetRotation = Quaternion.Euler(xRot, 0, zRot);
 		transform.rotation = resetRotation;
+
+		_prevFwd = Vector3.forward;
+		_prevTargRot = Quaternion.identity;
 	}
 
 	/// xRatio [-1, 1]
