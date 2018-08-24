@@ -513,6 +513,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1245831265}
   - component: {fileID: 1245831264}
+  - component: {fileID: 1245831268}
   - component: {fileID: 1245831266}
   - component: {fileID: 1245831263}
   - component: {fileID: 1245831262}
@@ -624,10 +625,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _components:
   - {fileID: 1245831266}
+  - {fileID: 1245831268}
   _identifier: 
   _useSceneContext: 1
   _context: {fileID: 0}
   _bindType: 0
+--- !u!114 &1245831268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1245831261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ee3e89277984748b19281383b290a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoothingPos: 0.1
 --- !u!1001 &1463198560
 Prefab:
   m_ObjectHideFlags: 0

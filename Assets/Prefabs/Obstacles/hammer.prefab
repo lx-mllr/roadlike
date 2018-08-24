@@ -255,7 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7f0aed7a180f2d49868b12324192f09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactPower: 75
+  impactPower: 50
   forceRadius: 1
   upwardsMod: 1.5
 --- !u!114 &114337966710072488
@@ -280,7 +280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7f0aed7a180f2d49868b12324192f09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  impactPower: 75
+  impactPower: 50
   forceRadius: 1
   upwardsMod: 1.5
 --- !u!114 &114678534256419698
