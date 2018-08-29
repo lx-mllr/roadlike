@@ -11,19 +11,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf2edee5c58d82540a51f03df9d42094, type: 3}
   m_Name: LWRP-HighQuality
   m_EditorClassIdentifier: 
-  kAssetVersion: 2
+  k_AssetVersion: 3
   m_MaxPixelLights: 4
   m_SupportsVertexLight: 1
   m_RequireDepthTexture: 0
   m_RequireSoftParticles: 0
+  m_RequireOpaqueTexture: 0
+  m_OpaqueDownsampling: 1
   m_SupportsHDR: 1
-  m_MSAA: 8
+  m_MSAA: 4
   m_RenderScale: 1
-  m_ShadowType: 0
+  m_SupportsDynamicBatching: 1
+  m_DirectionalShadowsSupported: 1
   m_ShadowAtlasResolution: 1024
-  m_ShadowNearPlaneOffset: 2
-  m_ShadowDistance: 64
-  m_ShadowCascades: 1
-  m_Cascade2Split: 0.15539369
-  m_Cascade4Split: {x: 0.067, y: 0.2, z: 0.467}
+  m_ShadowDistance: 200
+  m_ShadowCascades: 0
+  m_Cascade2Split: 0.31513813
+  m_Cascade4Split: {x: 0.05467146, y: 0.19201729, z: 0.39820665}
+  m_LocalShadowsSupported: 1
+  m_LocalShadowsAtlasResolution: 256
+  m_SoftShadowsSupported: 1
+  m_KeepAdditionalLightVariants: 1
+  m_KeepVertexLightVariants: 1
+  m_KeepDirectionalShadowVariants: 1
+  m_KeepLocalShadowVariants: 1
+  m_KeepSoftShadowVariants: 1
   m_ResourcesAsset: {fileID: 11400000, guid: aac5a08c32552a14c89394b703f1978a, type: 2}
+  m_SavedXRConfig:
+    renderScale: 1
+    viewportScale: 1
+    useOcclusionMesh: 1
+    occlusionMaskScale: 1
+    showDeviceView: 1
+    gameViewRenderMode: 3
+  m_ShadowType: 0
