@@ -29,7 +29,11 @@ public class TrackBuilder : ITrackBuilder, IInitializable  {
 	}
 
 	public void Start () {
-		_tiles.Add((Tile) _tileFactory.Create());
+		Tile start = (Tile) _tileFactory.Create();
+		float initZ = -1 * start.meshCollider.bounds.size.z;
+		start.transform.position = new Vector3(0.0f, 0.0f, initZ);
+		_tiles.Add(start);
+
 		for (int i = 0; i < _settings.generateAheadCount; i++)
 		{
 			Generate();
@@ -40,9 +44,7 @@ public class TrackBuilder : ITrackBuilder, IInitializable  {
 		Tile toDestroy;
 		while (_tiles.Count > 0)
 		{
-			toDestroy = (Tile) _tiles[0];
-			_tiles.RemoveAt(0);
-			CleanUpTile(toDestroy);
+			RemoveTile();
 		}
 
 		_tiles.Clear();
@@ -68,7 +70,8 @@ public class TrackBuilder : ITrackBuilder, IInitializable  {
 		_currentTile.transform.rotation = Quaternion.Euler(_previousTile.nextTileEuler) * rot;
 
 		
-		if (_factorySettings.startingCounter >= _factorySettings.startingTiles.Length)
+		if (_factorySettings.startingCounter >= _factorySettings.startingTiles.Length
+			&& _tiles.Count > _settings.generateAheadCount)
 		{
 			if (UnityEngine.Random.Range(0.0f, 1.0f) > 0.5f) {
 				_currentTile.SpawnCoin();
@@ -80,14 +83,16 @@ public class TrackBuilder : ITrackBuilder, IInitializable  {
 	}
 
 	public void Despawn () {
-			Tile toDestroy = (Tile) _tiles[0];
-			_tiles.RemoveAt(0);
-			CleanUpTile(toDestroy);
+		RemoveTile();
 	}
 
-	private void CleanUpTile (Tile t) {
-		if (t) {
-			GameObject.Destroy(t.gameObject);
+	private void RemoveTile (int index = 0) {
+		if (index >= 0
+			 && index < _tiles.Count)
+		{
+			Tile toDestroy = (Tile) _tiles[0];
+			_tiles.RemoveAt(0);
+			GameObject.Destroy(toDestroy.gameObject);
 		}
 	}
 
