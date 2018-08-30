@@ -9,8 +9,7 @@ public class Tile : MonoBehaviour {
 	[Inject] ObstacleView.Factory _hammerFactory;
 
 	// Use this for initialization
-	public Vector3 nextGridPos;
-	public Vector3 nextTileEuler;
+	public Vector3 placementOffset;
 
 	public MeshCollider meshCollider;
 

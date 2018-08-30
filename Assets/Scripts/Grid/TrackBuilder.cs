@@ -58,16 +58,14 @@ public class TrackBuilder : ITrackBuilder, IInitializable  {
 		_currentTile = (Tile) _tileFactory.Create();
 		_tiles.Add(_currentTile);
 		
-		Quaternion rot = _previousTile.transform.rotation;
-		Vector3 pPos = _previousTile.transform.position;
-		Vector3 tSize = _previousTile.meshCollider.bounds.size;
-		Vector3 nextOffset = rot * _previousTile.nextGridPos;
-		nextOffset = new Vector3(nextOffset.x * tSize.x, 
-											nextOffset.y * tSize.y,
-											nextOffset.z * tSize.z);
+		Vector3 pTilePos = _previousTile.transform.position;
 
-		_currentTile.transform.position = new Vector3(pPos.x + nextOffset.x, pPos.y + nextOffset.y, pPos.z + nextOffset.z);
-		_currentTile.transform.rotation = Quaternion.Euler(_previousTile.nextTileEuler) * rot;
+		Vector3 pTileSize = _previousTile.meshCollider.bounds.size;
+		Vector3 nextOffset = _previousTile.transform.rotation * _currentTile.placementOffset;
+		nextOffset = Vector3.Scale(pTileSize, nextOffset);
+
+		_currentTile.transform.position = pTilePos + nextOffset;
+		_currentTile.transform.rotation = _previousTile.transform.rotation * _currentTile.transform.rotation;
 
 		
 		if (_factorySettings.startingCounter >= _factorySettings.startingTiles.Length
