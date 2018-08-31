@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class CarSteering : MonoBehaviour, ISteering
 {
+	public WheelState[] frontWheels;
+	public WheelState[] backWheels;
+
 	public Vector3 resetPosition = Vector3.zero;
 	public float rotPadding = 0.8f;
 	public float rotSpeed = 0.1f;
 
 	public float speedPadding = 0.8f;
 	public float MAX_SPEED = 3.0f;
+	public float decelRate = 0.01f;
 
 	private float _speed;
 	private Quaternion _prevTargRot;
@@ -47,14 +51,34 @@ public class CarSteering : MonoBehaviour, ISteering
 
 	/// xRatio [-1, 1]
 	public void Move (float steering, float accel, float footbrake, float handbrake) {
-		ApplyRotation(steering);
-		ApplyMovement(accel);
+		bool steer = true;
+		bool motor = true;
+
+		for (int i = 0; i < backWheels.Length; i++)
+		{
+			backWheels[i].PollForGround();
+			motor &= backWheels[i].Grounded;
+		}
+		for (int i = 0; i < frontWheels.Length; i++)
+		{
+			frontWheels[i].PollForGround();
+			steer &= frontWheels[i].Grounded;
+		}
+
+		if (steer) {
+			ApplyRotation(steering);
+		}
+			
+		ApplyMovement(accel, motor);
 	}
 
-	private void ApplyMovement (float yRatio) {
-		Vector3 dir = transform.forward;
-		_speed = Mathf.Lerp(_speed, yRatio * MAX_SPEED, speedPadding);
+	private void ApplyMovement (float yRatio, bool motor) {
 
+		_speed = motor ?
+					Mathf.Lerp(_speed, yRatio * MAX_SPEED, speedPadding) :
+					Mathf.Lerp(_speed, _speed * decelRate, speedPadding);
+
+		Vector3 dir = transform.forward;
 		transform.position += dir * _speed;
 	}
 

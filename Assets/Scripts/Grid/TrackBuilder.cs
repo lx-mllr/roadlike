@@ -41,7 +41,6 @@ public class TrackBuilder : ITrackBuilder, IInitializable  {
 	}
 
 	public void Reset () {
-		Tile toDestroy;
 		while (_tiles.Count > 0)
 		{
 			RemoveTile();
@@ -67,7 +66,6 @@ public class TrackBuilder : ITrackBuilder, IInitializable  {
 		_currentTile.transform.position = pTilePos + nextOffset;
 		_currentTile.transform.rotation = _previousTile.transform.rotation * _currentTile.transform.rotation;
 
-		
 		if (_factorySettings.startingCounter >= _factorySettings.startingTiles.Length
 			&& _tiles.Count > _settings.generateAheadCount)
 		{

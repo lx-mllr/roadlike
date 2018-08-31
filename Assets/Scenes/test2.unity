@@ -90,7 +90,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -120,6 +120,16 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114762176304596202, guid: c6bb2f23e171232458112edc6ad4bf69,
+        type: 2}
+      propertyPath: backWheels.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114762176304596202, guid: c6bb2f23e171232458112edc6ad4bf69,
+        type: 2}
+      propertyPath: frontWheels.Array.size
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 4109095906553494, guid: c6bb2f23e171232458112edc6ad4bf69, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -152,9 +162,97 @@ Prefab:
       propertyPath: m_RootOrder
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 114762176304596202, guid: c6bb2f23e171232458112edc6ad4bf69,
+        type: 2}
+      propertyPath: frontWheels.Array.data[0]
+      value: 
+      objectReference: {fileID: 106739518}
+    - target: {fileID: 114762176304596202, guid: c6bb2f23e171232458112edc6ad4bf69,
+        type: 2}
+      propertyPath: frontWheels.Array.data[1]
+      value: 
+      objectReference: {fileID: 106739517}
+    - target: {fileID: 114762176304596202, guid: c6bb2f23e171232458112edc6ad4bf69,
+        type: 2}
+      propertyPath: backWheels.Array.data[0]
+      value: 
+      objectReference: {fileID: 106739516}
+    - target: {fileID: 114762176304596202, guid: c6bb2f23e171232458112edc6ad4bf69,
+        type: 2}
+      propertyPath: backWheels.Array.data[1]
+      value: 
+      objectReference: {fileID: 106739515}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6bb2f23e171232458112edc6ad4bf69, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1 &106739511 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1213916164340544, guid: c6bb2f23e171232458112edc6ad4bf69,
+    type: 2}
+  m_PrefabInternal: {fileID: 106739510}
+--- !u!1 &106739512 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1974039963512050, guid: c6bb2f23e171232458112edc6ad4bf69,
+    type: 2}
+  m_PrefabInternal: {fileID: 106739510}
+--- !u!1 &106739513 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1271962240578038, guid: c6bb2f23e171232458112edc6ad4bf69,
+    type: 2}
+  m_PrefabInternal: {fileID: 106739510}
+--- !u!1 &106739514 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1782406011330536, guid: c6bb2f23e171232458112edc6ad4bf69,
+    type: 2}
+  m_PrefabInternal: {fileID: 106739510}
+--- !u!114 &106739515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 106739511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aae6b190a03b45489a74a127177cc76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  suspsension: 1.5
+--- !u!114 &106739516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 106739512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aae6b190a03b45489a74a127177cc76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  suspsension: 1.5
+--- !u!114 &106739517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 106739513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aae6b190a03b45489a74a127177cc76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  suspsension: 1.5
+--- !u!114 &106739518
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 106739514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6aae6b190a03b45489a74a127177cc76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  suspsension: 1.5
 --- !u!1 &300917354
 GameObject:
   m_ObjectHideFlags: 0
