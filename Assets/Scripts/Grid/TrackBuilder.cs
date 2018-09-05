@@ -8,7 +8,7 @@ public class TrackBuilder : ITrackBuilder, IInitializable  {
 	readonly TrackBuilderSettings _settings;
     readonly Tile.Factory _tileFactory;
 	readonly RandomTileFactory.RTFSettings _factorySettings;
-
+	readonly BuilderFactory _spawnPatternFactory;
 
 	private Tile _previousTile = null;
 	private Tile _currentTile = null;
@@ -16,11 +16,14 @@ public class TrackBuilder : ITrackBuilder, IInitializable  {
 
 	public TrackBuilder (Tile.Factory tileFactory,
 						RandomTileFactory.RTFSettings RTFsettings,
-						TrackBuilderSettings TBsettings) 
+						TrackBuilderSettings TBsettings,
+						BuilderFactory SPFactory) 
 	{
 		_settings = TBsettings;
 		_tileFactory = tileFactory;
 		_factorySettings = RTFsettings;
+		_spawnPatternFactory = SPFactory;
+
 		_tiles = new ArrayList();
 	}
 
@@ -69,12 +72,8 @@ public class TrackBuilder : ITrackBuilder, IInitializable  {
 		if (_factorySettings.startingCounter >= _factorySettings.startingTiles.Length
 			&& _tiles.Count > _settings.generateAheadCount)
 		{
-			if (UnityEngine.Random.Range(0.0f, 1.0f) > 0.5f) {
-				_currentTile.SpawnCoin();
-			}
-			else {
-				_currentTile.SpawnHammer();
-			}
+			IBuilder pattern = _spawnPatternFactory.Create();
+			pattern.SpawnForTile(_currentTile);
 		}
 	}
 

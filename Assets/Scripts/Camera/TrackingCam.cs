@@ -11,7 +11,7 @@ public class TrackingCam : MonoBehaviour {
     private Vector3 _targetPosition;
 
     void OnEnable () {
-        _targetPosition = new Vector3(0.0f, transform.position.y, _steering.transform.position.z);
+        _targetPosition = new Vector3(_steering.transform.position.x, transform.position.y, _steering.transform.position.z);
     }
 
     void LateUpdate () {

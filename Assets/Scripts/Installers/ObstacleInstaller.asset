@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80cafb22d6eb52441824aa1e7016e53f, type: 3}
+  m_Name: ObstacleInstaller
+  m_EditorClassIdentifier: 
+  _spawnFactorySettings:
+    settings:
+    - {fileID: 11400000, guid: 6e117fb9c59fed24ca61cc391ce140ac, type: 2}
+  info:
+    hammer: {fileID: 114276143641203588, guid: 36dd32066b2882a419f6421f241f4069, type: 2}
+    mine: {fileID: 114913516622112848, guid: 0b0de6f916eb85c468ca37005791f1ea, type: 2}

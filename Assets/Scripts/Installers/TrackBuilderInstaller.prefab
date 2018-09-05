@@ -69,5 +69,3 @@ MonoBehaviour:
       generateAheadCount: 3
     coinPrefab: {fileID: 114446679961222884, guid: 393303465d08ff9478302eb69e8100e0,
       type: 2}
-    hammerPrefab: {fileID: 114276143641203588, guid: 36dd32066b2882a419f6421f241f4069,
-      type: 2}
