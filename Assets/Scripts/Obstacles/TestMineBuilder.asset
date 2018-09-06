@@ -9,11 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83be48cf3e0d5ac4b9b2925762981519, type: 3}
-  m_Name: MineBuilder
+  m_Name: TestMineBuilder
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
-  count: 0
-  minSpread: 0
-  maxSpread: 0
-  circleSize: {x: 0, y: 0}
-  rotVariance: 0
+  prefab: {fileID: 114913516622112848, guid: 0b0de6f916eb85c468ca37005791f1ea, type: 2}
+  minCount: 4
+  maxCount: 8
+  minSpread: 3
+  maxSpread: 4
+  circleSize: {x: 12, y: 20}
+  distReduction: 0.324
+  rotVariance: 0.289

@@ -40,6 +40,6 @@ public class GamePlayManager : IInitializable, ITickable {
     }
 
     public void ApplyForce (ApplyForceToCarSignal signal) {
-        _steering.rigidBody.AddExplosionForce(signal.power, signal.impactPoint, signal.radius, 1.5f, ForceMode.Impulse);
+        _steering.rigidBody.AddExplosionForce(signal.power, signal.impactPoint, signal.radius, signal.upMod, ForceMode.Impulse);
     }
 }

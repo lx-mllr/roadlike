@@ -12,8 +12,5 @@ MonoBehaviour:
   m_Name: ObstacleInstaller
   m_EditorClassIdentifier: 
   _spawnFactorySettings:
-    settings:
-    - {fileID: 11400000, guid: 6e117fb9c59fed24ca61cc391ce140ac, type: 2}
-  info:
-    hammer: {fileID: 114276143641203588, guid: 36dd32066b2882a419f6421f241f4069, type: 2}
-    mine: {fileID: 114913516622112848, guid: 0b0de6f916eb85c468ca37005791f1ea, type: 2}
+    builders:
+    - {fileID: 11400000, guid: 2a0762acf8559784c8afd58ad5b52cf3, type: 2}

@@ -57,6 +57,7 @@ GameObject:
   - component: {fileID: 4017196043651786}
   - component: {fileID: 95542073904224688}
   - component: {fileID: 114276143641203588}
+  - component: {fileID: 114155935605340800}
   m_Layer: 0
   m_Name: hammer
   m_TagString: Untagged
@@ -222,6 +223,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114155935605340800
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1820636114603234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 717a02054ef2699498e6bd4234fd7995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _containerSource: 2
 --- !u!114 &114189168060992298
 MonoBehaviour:
   m_ObjectHideFlags: 1
