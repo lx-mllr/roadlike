@@ -36,7 +36,6 @@ GameObject:
   - component: {fileID: 4300979606373892}
   - component: {fileID: 65203155845311210}
   - component: {fileID: 114033452180585526}
-  - component: {fileID: 114494228855134270}
   m_Layer: 0
   m_Name: back_right_wheel
   m_TagString: Wheel
@@ -71,7 +70,6 @@ GameObject:
   - component: {fileID: 4257397289571832}
   - component: {fileID: 65106170976696100}
   - component: {fileID: 114127666904866194}
-  - component: {fileID: 114358818686044640}
   m_Layer: 0
   m_Name: front_right_wheel
   m_TagString: Wheel
@@ -158,7 +156,6 @@ GameObject:
   - component: {fileID: 4257583088338454}
   - component: {fileID: 65657347330855672}
   - component: {fileID: 114174709947237412}
-  - component: {fileID: 114471478098097022}
   m_Layer: 0
   m_Name: front_left_wheel
   m_TagString: Wheel
@@ -225,7 +222,6 @@ GameObject:
   - component: {fileID: 4756772205937666}
   - component: {fileID: 65573621170765886}
   - component: {fileID: 114624318121461126}
-  - component: {fileID: 114409293401087962}
   m_Layer: 0
   m_Name: back_left_wheel
   m_TagString: Wheel
@@ -252,8 +248,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1445283499525904}
-  m_LocalRotation: {x: 0.0010932935, y: 0.000116833005, z: -0.00000218876, w: 0.99999946}
-  m_LocalPosition: {x: -0.0063378066, y: 0.3601141, z: -0.0054579973}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4493407672803518}
@@ -722,7 +718,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aae6b190a03b45489a74a127177cc76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  suspsension: 1.5
+  suspsension: 0.2
 --- !u!114 &114127666904866194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -734,7 +730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aae6b190a03b45489a74a127177cc76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  suspsension: 1.5
+  suspsension: 0.2
 --- !u!114 &114174709947237412
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -746,7 +742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aae6b190a03b45489a74a127177cc76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  suspsension: 1.5
+  suspsension: 0.2
 --- !u!114 &114311469876874470
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -764,54 +760,6 @@ MonoBehaviour:
   _useSceneContext: 1
   _context: {fileID: 0}
   _bindType: 2
---- !u!114 &114358818686044640
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1271962240578038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6aae6b190a03b45489a74a127177cc76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  suspsension: 1.5
---- !u!114 &114409293401087962
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1974039963512050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6aae6b190a03b45489a74a127177cc76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  suspsension: 1.5
---- !u!114 &114471478098097022
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1782406011330536}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6aae6b190a03b45489a74a127177cc76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  suspsension: 1.5
---- !u!114 &114494228855134270
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1213916164340544}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6aae6b190a03b45489a74a127177cc76, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  suspsension: 1.5
 --- !u!114 &114624318121461126
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -823,7 +771,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6aae6b190a03b45489a74a127177cc76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  suspsension: 1.5
+  suspsension: 0.2
 --- !u!114 &114762176304596202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -836,14 +784,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frontWheels:
-  - {fileID: 114471478098097022}
-  - {fileID: 114358818686044640}
+  - {fileID: 114174709947237412}
+  - {fileID: 114127666904866194}
   backWheels:
-  - {fileID: 114409293401087962}
-  - {fileID: 114494228855134270}
+  - {fileID: 114624318121461126}
+  - {fileID: 114033452180585526}
   resetPosition: {x: 0, y: 2, z: 0}
   rotPadding: 0.31
   rotSpeed: 0.1
   speedPadding: 0.2
   MAX_SPEED: 2.09
   decelRate: 0.9
+  gravAngleFactor: 0.09

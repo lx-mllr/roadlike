@@ -40,6 +40,8 @@ public class FollowCam : MonoBehaviour {
 	public Vector3 camDist_direction = new Vector3(-0.2f, 6.0f, -5.75f);
 	public Vector3 camTarg = new Vector3(-0.4f, 1.0f, 10.0f);
 	public float camDist_magnitude = 10;
+	public float impactForce = 3;
+	public AnimationCurve impactTransition = AnimationCurve.Linear(0, 0, 2, 0);
 	public bool drawCamVectors = false;
 
 	[Range(0.0f, 1.0f)]
@@ -54,6 +56,18 @@ public class FollowCam : MonoBehaviour {
 	public bool updateObliqueness = false;
 
 	private Camera _camera;
+
+	private Vector3 _impactOffset;
+	private float impactTransTime;
+
+	public void onApplyForce(ApplyForceToCarSignal signal) {
+		Vector3 sceenToWorld = _camera.ScreenToWorldPoint(new Vector3(Screen.width/2, Screen.height/2, _camera.nearClipPlane));
+		Vector3 impactToCam = Vector3.Normalize(signal.impactPoint - sceenToWorld);
+		float dot = Vector3.Dot(impactToCam, transform.right);
+		float offset = Mathf.Sign(dot) - dot;
+		_impactOffset = transform.right * (impactForce * offset);
+		impactTransTime = 0.0f;
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -74,25 +88,25 @@ public class FollowCam : MonoBehaviour {
 		
 		CamState currentState = new CamState(transform.position, transform.rotation);
 
-		// update if editor changed these values
-		camDist_direction.Normalize();
-		camDist_direction *= camDist_magnitude;
-
-		CamState targetState = updateTargetState();
+		float scale = impactTransition.Evaluate(impactTransTime);
+		impactTransTime += Time.deltaTime;
+		Vector3 impact = Vector3.Lerp(Vector3.zero, _impactOffset, scale);
+		Vector3 target = camDist_direction.normalized + impact;
+		target *= camDist_magnitude;
+		CamState targetState = getTargetState(target);
 
 		currentState.lerpTo(targetState, smoothingPos, smoothingRot);
-		//currentState.DrawLines();
-		//DrawCamVecs();
 		currentState.updateToTransform(transform);
 
 		if (drawCamVectors) {
 			DrawCamVecs();
+			currentState.DrawLines();
 		}
 	}
 
-	private CamState updateTargetState()
+	private CamState getTargetState(Vector3 target)
 	{
-		Vector3 pos = _steering.transform.rotation * camDist_direction;
+		Vector3 pos = _steering.transform.rotation * target;
 		pos += _steering.transform.position;
 
 		Vector3 eyeTarget = _steering.transform.rotation * camTarg;

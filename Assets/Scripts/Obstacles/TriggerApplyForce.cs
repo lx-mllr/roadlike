@@ -17,12 +17,12 @@ public class TriggerApplyForce : MonoBehaviour {
 		if (tagFilter.Length == 0 
 			|| other.tag == tagFilter)
 		{
-			var collisionPoint = other.ClosestPointOnBounds(transform.position);
-			var distSqr = (transform.position - collisionPoint).sqrMagnitude;
+			Vector3 collisionPoint = other.ClosestPointOnBounds(transform.position);
+
+			float distSqr = (transform.position - collisionPoint).sqrMagnitude;
 			
-			float scale = 1 - distSqr;
 			_signalBus.Fire(new ApplyForceToCarSignal () {
-				power = impactPower * scale,
+				power = impactPower,
 				impactPoint = collisionPoint,
 				radius = forceRadius,
 				upMod = upwardsMod

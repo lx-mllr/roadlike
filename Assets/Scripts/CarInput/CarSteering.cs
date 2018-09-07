@@ -15,6 +15,8 @@ public class CarSteering : MonoBehaviour, ISteering
 	public float MAX_SPEED = 3.0f;
 	public float decelRate = 0.01f;
 
+	public float gravAngleFactor = 0.15f;
+
 	private float _speed;
 	private Quaternion _prevTargRot;
 	private Quaternion targetRot;
@@ -65,10 +67,7 @@ public class CarSteering : MonoBehaviour, ISteering
 			steer &= frontWheels[i].Grounded;
 		}
 
-		if (steer) {
-			ApplyRotation(steering);
-		}
-			
+		ApplyRotation(steering, steer);
 		ApplyMovement(accel, motor);
 	}
 
@@ -82,11 +81,15 @@ public class CarSteering : MonoBehaviour, ISteering
 		transform.position += dir * _speed;
 	}
 
-	private void ApplyRotation (float xRatio) {
+	private void ApplyRotation (float xRatio, bool steer) {
 		float rotDir = xRatio;
 		rotDir *= rotSpeed;
 
 		_fwd = Vector3.RotateTowards(transform.forward, transform.right, rotDir, 1.0f);
+		if (!steer)
+		{
+			_fwd += new Vector3(0, -1, 1) * gravAngleFactor;
+		}
 		targetRot = Quaternion.FromToRotation(transform.forward, _fwd);
 
 		transform.rotation = Quaternion.Lerp(_prevTargRot, targetRot, rotPadding);
