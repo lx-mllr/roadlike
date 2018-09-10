@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Name: TestMineBuilder
   m_EditorClassIdentifier: 
   prefab: {fileID: 114913516622112848, guid: 0b0de6f916eb85c468ca37005791f1ea, type: 2}
-  minCount: 4
-  maxCount: 8
-  minSpread: 3
-  maxSpread: 4
-  circleSize: {x: 12, y: 20}
-  distReduction: 0.324
-  rotVariance: 0.289
+  minCount: 2
+  maxCount: 5
+  minSpread: 1
+  maxSpread: 3
+  circleSize: {x: 10, y: 10}
+  distReduction: 0.441
+  rotVariance: 0.603
