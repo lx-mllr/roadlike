@@ -37,18 +37,23 @@ public class FollowCam : MonoBehaviour {
 
 	[Inject] ISteering _steering;
 	
-	public Vector3 camDist_direction = new Vector3(-0.2f, 6.0f, -5.75f);
-	public Vector3 camTarg = new Vector3(-0.4f, 1.0f, 10.0f);
 	public float camDist_magnitude = 10;
+	public Vector3 camDist_direction = new Vector3(-0.2f, 6.0f, -5.75f);
+	public Vector3 camTargOffset = new Vector3(-0.4f, 1.0f, 10.0f);
 	public float impactForce = 3;
 	public AnimationCurve impactTransition = AnimationCurve.Linear(0, 0, 2, 0);
 	public bool drawCamVectors = false;
+
+	
+	[Range(0.0f, 1.0f)]
+	public float smoothingImpact = 0.55f;
 
 	[Range(0.0f, 1.0f)]
 	public float smoothingPos = 0.55f;
 	[Range(0.0f, 1.0f)]
 	public float smoothingRot = 0.35f;
 
+// Does not work with "no cascade" shadows
 	[Range(-1.0f, 1.0f)]
 	public float horizontalOblique = 0.0f;
 	[Range(-1.0f, 1.0f)]
@@ -61,11 +66,11 @@ public class FollowCam : MonoBehaviour {
 	private float impactTransTime;
 
 	public void onApplyForce(ApplyForceToCarSignal signal) {
-		Vector3 sceenToWorld = _camera.ScreenToWorldPoint(new Vector3(Screen.width/2, Screen.height/2, _camera.nearClipPlane));
-		Vector3 impactToCam = Vector3.Normalize(signal.impactPoint - sceenToWorld);
-		float dot = Vector3.Dot(impactToCam, transform.right);
-		float offset = Mathf.Sign(dot) - dot;
-		_impactOffset = transform.right * (impactForce * offset);
+		//Vector3 sceenToWorld = _camera.ScreenToWorldPoint(new Vector3(Screen.width/2, Screen.height/2, _camera.nearClipPlane));
+		Vector3 impactToCar = Vector3.Normalize(signal.impactPoint - _steering.transform.position);
+		float dot = Vector3.Dot(impactToCar, transform.right);
+		float offset = 1 - Mathf.Abs(dot);
+		_impactOffset = impactToCar * (impactForce * offset);
 		impactTransTime = 0.0f;
 	}
 
@@ -88,11 +93,7 @@ public class FollowCam : MonoBehaviour {
 		
 		CamState currentState = new CamState(transform.position, transform.rotation);
 
-		float scale = impactTransition.Evaluate(impactTransTime);
-		impactTransTime += Time.deltaTime;
-		Vector3 impact = Vector3.Lerp(Vector3.zero, _impactOffset, scale);
-		Vector3 target = camDist_direction.normalized + impact;
-		target *= camDist_magnitude;
+		Vector3 target = camDist_direction.normalized * camDist_magnitude;
 		CamState targetState = getTargetState(target);
 
 		currentState.lerpTo(targetState, smoothingPos, smoothingRot);
@@ -102,14 +103,19 @@ public class FollowCam : MonoBehaviour {
 			DrawCamVecs();
 			currentState.DrawLines();
 		}
+
+		impactTransTime += Time.deltaTime;
 	}
 
-	private CamState getTargetState(Vector3 target)
+	private CamState getTargetState(Vector3 posOffset)
 	{
-		Vector3 pos = _steering.transform.rotation * target;
-		pos += _steering.transform.position;
+		Vector3 pos = _steering.transform.position + posOffset;// = _steering.transform.rotation * posOffset;
+		//pos += _steering.transform.position;
 
-		Vector3 eyeTarget = _steering.transform.rotation * camTarg;
+		float scale = impactTransition.Evaluate(impactTransTime);
+		Vector3 impact = Vector3.Lerp(Vector3.zero, _impactOffset, scale);
+		Vector3 eyeTarget = camTargOffset + impact;
+		eyeTarget = _steering.transform.rotation * eyeTarget;
 		eyeTarget += _steering.transform.position;
 		Vector3 fwd = eyeTarget - pos;
 		fwd.Normalize();
@@ -124,7 +130,7 @@ public class FollowCam : MonoBehaviour {
 		Vector3 rotatedDir = _steering.transform.rotation * camDist_direction;
 		Debug.DrawLine(_steering.transform.position, _steering.transform.position + rotatedDir, Color.blue, 0.0f);
 
-		Vector3 rotatedTarg = _steering.transform.rotation * camTarg;
+		Vector3 rotatedTarg = _steering.transform.rotation * camTargOffset;
 		Debug.DrawLine(_steering.transform.position, _steering.transform.position + rotatedTarg, Color.black, 0.0f);
 	}
 

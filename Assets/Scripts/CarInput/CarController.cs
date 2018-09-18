@@ -51,6 +51,9 @@ public class CarController : MonoBehaviour, ISteering
     
     private Vector3 _resetPosition = Vector3.zero;
 
+    private Vector2 _inputRatios;
+    public Vector2 inputRatios { get { return _inputRatios; } }
+
     public bool Skidding { get; private set; }
     public float BrakeInput { get; private set; }
     public float CurrentSteerAngle{ get { return m_SteerAngle; }}
@@ -148,6 +151,8 @@ public class CarController : MonoBehaviour, ISteering
 
     public void Move(float steering, float accel, float footbrake, float handbrake)
     {
+        _inputRatios = new Vector2(steering, accel);
+        
         if (finishReset)
         {
             for (int i = 0; i < m_WheelColliders.Length; i++) {

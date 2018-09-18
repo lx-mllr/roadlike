@@ -19,12 +19,14 @@ public class CarSteering : MonoBehaviour, ISteering
 
 	private float _speed;
 	private Quaternion _prevTargRot;
-	private Quaternion targetRot;
 	private Vector3 _prevFwd;
-	private Vector3 _fwd;
+	private Vector3 _moveDir;
 
 	private Rigidbody _rigidBody;
 	public Rigidbody rigidBody { get { return _rigidBody; } }
+
+	private Vector2 _inputRatios;
+	public Vector2 inputRatios { get { return _inputRatios; } }
 
 	void Awake () {
 		_rigidBody = GetComponent<Rigidbody>();
@@ -41,21 +43,21 @@ public class CarSteering : MonoBehaviour, ISteering
 		_speed = 0.0f;
 
 		transform.position = resetPosition;
+		transform.forward = _prevFwd = Vector3.forward;
 
 		int xRot = (Random.value > 0.5f) ? 1 : -1;
 		int zRot = (Random.value > 0.5f) ? 1 : -1;
 		Quaternion resetRotation = Quaternion.Euler(xRot, 0, zRot);
 		transform.rotation = resetRotation;
-
-		_prevFwd = Vector3.forward;
 		_prevTargRot = Quaternion.identity;
 	}
 
-	/// xRatio [-1, 1]
+	/// sttering and accel -> [-1, 1]
 	public void Move (float steering, float accel, float footbrake, float handbrake) {
+		_inputRatios = new Vector2(steering, accel);
+	
 		bool steer = true;
 		bool motor = true;
-
 		for (int i = 0; i < backWheels.Length; i++)
 		{
 			backWheels[i].PollForGround();
@@ -67,7 +69,7 @@ public class CarSteering : MonoBehaviour, ISteering
 			steer &= frontWheels[i].Grounded;
 		}
 
-		ApplyRotation(steering, steer);
+		ApplyRotation(steering, steer, motor);
 		ApplyMovement(accel, motor);
 	}
 
@@ -77,25 +79,27 @@ public class CarSteering : MonoBehaviour, ISteering
 					Mathf.Lerp(_speed, yRatio * MAX_SPEED, speedPadding) :
 					Mathf.Lerp(_speed, _speed * decelRate, speedPadding);
 
-		Vector3 dir = transform.forward;
-		transform.position += dir * _speed;
+		transform.position += _moveDir.normalized * _speed;
 	}
 
-	private void ApplyRotation (float xRatio, bool steer) {
+	private void ApplyRotation (float xRatio, bool steer, bool motor) {
 		float rotDir = xRatio;
-		rotDir *= rotSpeed;
+		rotDir *= (motor) ? rotSpeed / 2 : rotSpeed;
 
-		_fwd = Vector3.RotateTowards(transform.forward, transform.right, rotDir, 1.0f);
-		if (!steer)
-		{
-			_fwd += new Vector3(0, -1, 1) * gravAngleFactor;
+		Vector3 fwd = Vector3.RotateTowards(_prevFwd, transform.right, rotDir, 1.0f);
+		if (!steer) {
+			//fwd += new Vector3(0, -1, 1) * gravAngleFactor;
 		}
-		targetRot = Quaternion.FromToRotation(transform.forward, _fwd);
+		Quaternion targetRot = Quaternion.FromToRotation(_prevFwd, fwd);
 
 		transform.rotation = Quaternion.Lerp(_prevTargRot, targetRot, rotPadding);
-		transform.forward =  Vector3.Lerp(_prevFwd, _fwd, rotPadding);
+		transform.forward =  Vector3.Lerp(_prevFwd, fwd, rotPadding);
 
-		_prevFwd = _fwd;
+		_prevFwd = fwd;
 		_prevTargRot = targetRot;
+
+		if (motor) {
+			_moveDir = fwd;
+		}
 	}
 }
