@@ -12,6 +12,9 @@ public class EditorInputManager : IInputManager
     private float speedTarget;
     private bool _enabled;
     public bool Enabled { get { return _enabled; } }
+    
+	private Vector2 _inputRatio;
+	public Vector2 inputRatio { get { return _inputRatio; } }
 
     public EditorInputManager(ISteering steering)
     {
@@ -37,13 +40,13 @@ public class EditorInputManager : IInputManager
             return;
         }
 
-        Vector2 inputRatio = Vector2.zero;
-        inputRatio.x = Input.GetAxis("Horizontal");
+        _inputRatio = Vector2.zero;
+        _inputRatio.x = Input.GetAxis("Horizontal");
 
 		
-        inputRatio.y = Mathf.Min(1, _prevRatio.y + yAcc);
+        _inputRatio.y = Mathf.Min(1, _prevRatio.y + yAcc);
 
-        _steering.Move(inputRatio.x, inputRatio.y, 0.0f, 0.0f);
-        _prevRatio = inputRatio;
+        _steering.Move(_inputRatio.x, _inputRatio.y, 0.0f, 0.0f);
+        _prevRatio = _inputRatio;
     }
 }

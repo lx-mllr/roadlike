@@ -16,6 +16,7 @@ public class CarSteering : MonoBehaviour, ISteering
 	public float decelRate = 0.01f;
 
 	public float gravAngleFactor = 0.15f;
+	public Vector3 reoreientDirection = Vector3.forward + Vector3.down;
 
 	private float _speed;
 	private Quaternion _prevTargRot;
@@ -24,9 +25,6 @@ public class CarSteering : MonoBehaviour, ISteering
 
 	private Rigidbody _rigidBody;
 	public Rigidbody rigidBody { get { return _rigidBody; } }
-
-	private Vector2 _inputRatios;
-	public Vector2 inputRatios { get { return _inputRatios; } }
 
 	void Awake () {
 		_rigidBody = GetComponent<Rigidbody>();
@@ -54,21 +52,20 @@ public class CarSteering : MonoBehaviour, ISteering
 
 	/// sttering and accel -> [-1, 1]
 	public void Move (float steering, float accel, float footbrake, float handbrake) {
-		_inputRatios = new Vector2(steering, accel);
 	
-		bool steer = true;
-		bool motor = true;
+		bool canSteer = true;
+		bool canDrive = true;
 		for (int i = 0; i < backWheels.Length; i++)
 		{
-			motor &= backWheels[i].IsGrounded();
+			canDrive &= backWheels[i].IsGrounded();
 		}
 		for (int i = 0; i < frontWheels.Length; i++)
 		{
-			steer &= frontWheels[i].IsGrounded();
+			canSteer &= frontWheels[i].IsGrounded();
 		}
 
-		ApplyRotation(steering, steer, motor);
-		ApplyMovement(accel, motor);
+		ApplyRotation(steering, canSteer, canDrive);
+		ApplyMovement(accel, canDrive);
 	}
 
 	private void ApplyMovement (float yRatio, bool motor) {
@@ -80,13 +77,13 @@ public class CarSteering : MonoBehaviour, ISteering
 		transform.position += _moveDir.normalized * _speed;
 	}
 
-	private void ApplyRotation (float xRatio, bool steer, bool motor) {
+	private void ApplyRotation (float xRatio, bool canSteer, bool canDrive) {
 		float rotDir = xRatio;
-		rotDir *= (motor) ? rotSpeed / 2 : rotSpeed;
+		rotDir *= (!canDrive && !canSteer) ? rotSpeed / 2 : rotSpeed;   // smaller RoM without road contact
 
 		Vector3 fwd = Vector3.RotateTowards(_prevFwd, transform.right, rotDir, 1.0f);
-		if (!steer) {
-			//fwd += new Vector3(0, -1, 1) * gravAngleFactor;
+		if (!canDrive && !canSteer) {
+			fwd += reoreientDirection * gravAngleFactor;
 		}
 		Quaternion targetRot = Quaternion.FromToRotation(_prevFwd, fwd);
 
@@ -96,7 +93,7 @@ public class CarSteering : MonoBehaviour, ISteering
 		_prevFwd = fwd;
 		_prevTargRot = targetRot;
 
-		if (motor) {
+		if (canDrive) {
 			_moveDir = fwd;
 		}
 	}

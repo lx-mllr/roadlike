@@ -14,6 +14,9 @@ public class SwipeInputManager : IInputManager {
     private float speedTarget;
     private bool _enabled;
     public bool Enabled { get { return _enabled; } }
+    
+	private Vector2 _inputRatio;
+	public Vector2 inputRatio { get { return _inputRatio; } }
 
     public SwipeInputManager(ISteering steering)
     {
@@ -59,18 +62,18 @@ public class SwipeInputManager : IInputManager {
             }
         }
 
-        Vector2 ratio = Vector2.zero;
+        _inputRatio = Vector2.zero;
         
         if (_touchStart.sqrMagnitude > 0 && touchCurrent.sqrMagnitude > 0)
         {
             Vector2 drag = touchCurrent - _touchStart;
-            ratio.x = ((drag.x / _screenSize.x) * 4);
+            _inputRatio.x = ((drag.x / _screenSize.x) * 4);
         }
         
 
-            ratio.y = Mathf.Min(1, _prevRatio.y + yAcc);
+            _inputRatio.y = Mathf.Min(1, _prevRatio.y + yAcc);
         
-        _steering.Move(ratio.x, ratio.y, 0.0f, 0.0f);
-        _prevRatio = ratio;
+        _steering.Move(_inputRatio.x, _inputRatio.y, 0.0f, 0.0f);
+        _prevRatio = _inputRatio;
     }   
 }

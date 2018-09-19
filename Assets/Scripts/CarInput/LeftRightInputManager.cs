@@ -16,6 +16,9 @@ public class LeftRightInputManager : IInputManager {
     private bool _enabled;
 	public bool Enabled { get { return _enabled; } }
 
+	private Vector2 _inputRatio;
+	public Vector2 inputRatio { get { return _inputRatio; } }
+
 	public LeftRightInputManager (ISteering steering)
 	{
 		_steering = steering;
@@ -37,14 +40,13 @@ public class LeftRightInputManager : IInputManager {
         _enabled = false;
     }
 	
-	public void Tick ()
-	{
+	public void Tick () {
 		if (!_enabled) {
 			return;
 		}
 
+		_inputRatio = Vector2.zero;
 		Vector2 touchPos = Vector2.zero;
-		Vector2 ratio = Vector2.zero;
 		Vector2 drag = Vector2.zero;
 
 		if (Input.touchCount > 0)
@@ -61,14 +63,14 @@ public class LeftRightInputManager : IInputManager {
 					scaledX *= -1;
 				}
 			}
-			ratio.x = scaledX;
+			_inputRatio.x = scaledX;
 		}
 
-		ratio.y = Mathf.Min(1, _prevRatio.y + yAcc);
+		_inputRatio.y = Mathf.Min(1, _prevRatio.y + yAcc);
 
-		_steering.Move(ratio.x, ratio.y, 0.0f, 0.0f);
+		_steering.Move(_inputRatio.x, _inputRatio.y, 0.0f, 0.0f);
 
-		_prevRatio = ratio;
+		_prevRatio = _inputRatio;
 		_prevTouch = touchPos;
 	}
 }
