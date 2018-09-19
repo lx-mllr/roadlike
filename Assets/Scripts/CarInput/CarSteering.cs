@@ -60,13 +60,11 @@ public class CarSteering : MonoBehaviour, ISteering
 		bool motor = true;
 		for (int i = 0; i < backWheels.Length; i++)
 		{
-			backWheels[i].PollForGround();
-			motor &= backWheels[i].Grounded;
+			motor &= backWheels[i].IsGrounded();
 		}
 		for (int i = 0; i < frontWheels.Length; i++)
 		{
-			frontWheels[i].PollForGround();
-			steer &= frontWheels[i].Grounded;
+			steer &= frontWheels[i].IsGrounded();
 		}
 
 		ApplyRotation(steering, steer, motor);
