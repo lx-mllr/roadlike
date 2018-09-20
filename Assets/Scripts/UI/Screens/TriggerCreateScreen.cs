@@ -9,9 +9,13 @@ public class TriggerCreateScreen : MonoBehaviour {
     public CanvasRenderer screenToCreate;
 
 	void OnTriggerEnter(Collider other) {
-            _signalBus.Fire(new CreateScreenSignal () { 
-                toCreate = screenToCreate
-            });
+            TriggerCreate();
+    }
+
+    public void TriggerCreate () {
+        _signalBus.Fire(new CreateScreenSignal () { 
+            toCreate = screenToCreate
+        });
     }
 
 }

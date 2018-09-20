@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 114059431082603816}
   - component: {fileID: 114120629669685046}
   - component: {fileID: 114884236905493634}
+  - component: {fileID: 114362926624948242}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -198,6 +199,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 114362926624948242}
+        m_MethodName: TriggerCreate
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &114202873412150064
@@ -224,6 +236,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinCount: {fileID: 114472658533601686}
+--- !u!114 &114362926624948242
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1676709345473668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 967e3eb22b324264d9c3c4bf4e1f9822, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenToCreate: {fileID: 222014085600078932, guid: 9d8107246ea31d0449ee2cc3687089dc,
+    type: 2}
 --- !u!114 &114472658533601686
 MonoBehaviour:
   m_ObjectHideFlags: 1

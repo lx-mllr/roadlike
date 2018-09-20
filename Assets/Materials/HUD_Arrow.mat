@@ -28,4 +28,5 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_CBC31853: 0
+    - _fillScale: 1
     m_Colors: []

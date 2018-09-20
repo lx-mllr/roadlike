@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 224809976362033462}
   - component: {fileID: 222014085600078932}
   - component: {fileID: 114404594582745020}
+  - component: {fileID: 114474139392995036}
+  - component: {fileID: 114635887573628284}
   m_Layer: 5
   m_Name: GameHUD
   m_TagString: Untagged
@@ -74,7 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -115,6 +117,19 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &114474139392995036
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1084603503536384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79c3dc6cdf94cf74ebc6b2a97ab4ceec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leftIcon: {fileID: 114489867337615656}
+  rightIcon: {fileID: 114467711350625824}
 --- !u!114 &114489867337615656
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -141,6 +156,18 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!114 &114635887573628284
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1084603503536384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 717a02054ef2699498e6bd4234fd7995, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _containerSource: 0
 --- !u!222 &222014085600078932
 CanvasRenderer:
   m_ObjectHideFlags: 1
