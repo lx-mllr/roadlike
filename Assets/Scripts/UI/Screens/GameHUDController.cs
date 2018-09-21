@@ -12,6 +12,11 @@ public class GameHUDController : MonoBehaviour {
 	public RawImage leftIcon;
 	public RawImage rightIcon;
 
+	private float leftFill;
+	private float rightFill;
+
+	private const string FILL_VALUE_KEY = "Vector1_CBC31853";
+
 	// Use this for initialization
 	void Start () {
 		_signalBus.Subscribe<GameEndSignal>(DestroyScreen);
@@ -22,8 +27,11 @@ public class GameHUDController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		RawImage turnDirection = _inputManager.inputRatio.x > 0 ? rightIcon : leftIcon;
-		turnDirection.material.SetFloat("Vector1_CBC31853", Mathf.Abs(_inputManager.inputRatio.x));		
+		leftFill = Mathf.Max(_inputManager.inputRatio.x * -1, 0f);
+		rightFill = Mathf.Max(_inputManager.inputRatio.x, 0f);
+
+		leftIcon.material.SetFloat(FILL_VALUE_KEY, leftFill);
+		rightIcon.material.SetFloat(FILL_VALUE_KEY, rightFill);		
 	}
 
 	
