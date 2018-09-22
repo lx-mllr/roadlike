@@ -737,7 +737,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftWheel: {fileID: 198845684042216772}
   rightWheel: {fileID: 198309883072327496}
-  threshold: 1.75
+  threshold: 0.1
 --- !u!114 &114127666904866194
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -810,11 +810,12 @@ MonoBehaviour:
   - {fileID: 114033452180585526}
   resetPosition: {x: 0, y: 2, z: 0}
   rotPadding: 0.31
-  rotSpeed: 0.1
-  speedPadding: 0.2
+  rotSpeed: 0.05
+  speedPadding: 0.1
   MAX_SPEED: 2.09
   decelRate: 0.9
-  gravAngleFactor: 0.02
+  gravAngleFactor: 0.08
+  reoreientDirection: {x: 0, y: 0, z: 1}
 --- !u!198 &198309883072327496
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -5977,7 +5978,7 @@ ParticleSystem:
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
-    m_Position: {x: 0, y: -0.62, z: 0}
+    m_Position: {x: 0, y: -0.49, z: 0}
     m_Rotation: {x: -90, y: 0, z: 0}
     m_Scale: {x: 1, y: 1, z: 1}
     placementMode: 0
