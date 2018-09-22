@@ -271,6 +271,7 @@ GameObject:
   - component: {fileID: 4221165080442644}
   - component: {fileID: 33153469170790612}
   - component: {fileID: 23963008117032614}
+  - component: {fileID: 114968243333476136}
   m_Layer: 2
   m_Name: DissolveSphere
   m_TagString: Untagged
@@ -1093,6 +1094,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea9abd7243863bf4fb4d9c0fa1891560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114968243333476136
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1998311424191816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bfeb66f5b18d1a4e9d6af914dc698ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.15
+  maxFade: 5
 --- !u!114 &114985148587623196
 MonoBehaviour:
   m_ObjectHideFlags: 1
