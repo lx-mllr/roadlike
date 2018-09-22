@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 33153469170790612}
   - component: {fileID: 23963008117032614}
   m_Layer: 2
-  m_Name: Sphere
+  m_Name: DissolveSphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -312,7 +312,7 @@ Transform:
   m_GameObject: {fileID: 1998311424191816}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 112.437065, y: 112.437065, z: 112.437065}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 4797099270325100}
   m_RootOrder: 0
