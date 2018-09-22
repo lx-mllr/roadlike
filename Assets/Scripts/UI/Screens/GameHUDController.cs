@@ -11,9 +11,10 @@ public class GameHUDController : MonoBehaviour {
 
 	public RawImage leftIcon;
 	public RawImage rightIcon;
+	public float fillPadding = 0.5f;
 
-	private float leftFill;
-	private float rightFill;
+	private float leftFill = 0f;
+	private float rightFill = 0f;
 
 	private const string FILL_VALUE_KEY = "Vector1_CBC31853";
 
@@ -27,8 +28,8 @@ public class GameHUDController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		leftFill = Mathf.Max(_inputManager.inputRatio.x * -1, 0f);
-		rightFill = Mathf.Max(_inputManager.inputRatio.x, 0f);
+		leftFill = Mathf.Lerp(leftFill, Mathf.Max(_inputManager.inputRatio.x * -1, 0f), fillPadding);
+		rightFill = Mathf.Lerp(rightFill, Mathf.Max(_inputManager.inputRatio.x, 0f), fillPadding);
 
 		leftIcon.material.SetFloat(FILL_VALUE_KEY, leftFill);
 		rightIcon.material.SetFloat(FILL_VALUE_KEY, rightFill);		
