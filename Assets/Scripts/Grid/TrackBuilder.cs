@@ -74,6 +74,7 @@ public class TrackBuilder : ITrackBuilder, IInitializable  {
 		{
 			IBuilder pattern = _spawnPatternFactory.Create();
 			pattern.SpawnForTile(_currentTile);
+			_currentTile.AnimateReveal();
 		}
 	}
 

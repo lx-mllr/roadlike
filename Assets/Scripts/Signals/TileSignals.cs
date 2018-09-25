@@ -6,5 +6,6 @@ public struct SpawnTileSignal
 
 public struct DespawnTileSignal
 {
+}
     
 }

@@ -6,6 +6,7 @@ using Zenject;
 public class Tile : MonoBehaviour {
 
 	[Inject] CoinView.Factory _coinFactory;
+	[Inject] SignalBus _signalBus;
 
 	// Use this for initialization
 	public Vector3 placementOffset;
@@ -13,6 +14,14 @@ public class Tile : MonoBehaviour {
 	public MeshCollider meshCollider;
 
 	private CoinView _coin;
+
+	// This step will happen before the Monobehaviours "Start" function
+	public void AnimateReveal () {
+		DissolveOverTime[] dots = GetComponentsInChildren<DissolveOverTime>();
+		for (int i = 0; i < dots.Length;  i++) {
+			dots[i].enabled = true;
+		}
+	}
 
 	public void SpawnCoin () {
 		_coin = _coinFactory.Create();

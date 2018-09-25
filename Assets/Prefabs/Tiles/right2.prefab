@@ -1017,13 +1017,13 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1678921773878016}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d865c4029f95e774f888af18fc9b036e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PropertyKey: Vector1_C6EA28A9
-  timeScale: 1
+  duration: 1
   invert: 1
 --- !u!114 &114056269603437236
 MonoBehaviour:
@@ -1055,13 +1055,13 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1791545242213692}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d865c4029f95e774f888af18fc9b036e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PropertyKey: Vector1_C6EA28A9
-  timeScale: 1
+  duration: 1
   invert: 1
 --- !u!114 &114285694766210848
 MonoBehaviour:
@@ -1080,13 +1080,13 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1106752746176684}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d865c4029f95e774f888af18fc9b036e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PropertyKey: Vector1_C6EA28A9
-  timeScale: 1
+  duration: 1
   invert: 1
 --- !u!114 &114446473297721458
 MonoBehaviour:
@@ -1213,13 +1213,13 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1820659605470724}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d865c4029f95e774f888af18fc9b036e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   PropertyKey: Vector1_C8B684F1
-  timeScale: 1
+  duration: 1
   invert: 1
 --- !u!114 &114750377614055160
 MonoBehaviour:

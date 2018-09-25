@@ -5,21 +5,32 @@ using UnityEngine;
 public class DissolveOverTime : MonoBehaviour {
 
 	public string PropertyKey = "";
-	public float timeScale = 1f;
+	public float duration = 1f;
 	public bool invert = false;
 
 	private Material _material;
-	private float _time;
+	private IEnumerator _coroutine;
 
 	// Use this for initialization
 	void Start () { 
 		_material = GetComponent<Renderer>().material;
-		_time = 0.0f;
+		_coroutine = Dissolve();
+		StartCoroutine(_coroutine);
+	}
+
+	void OnDestroy () {
+		if (_coroutine != null) {
+			StopCoroutine(_coroutine);
+		}
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		_time += Time.deltaTime / timeScale;
-		_material.SetFloat(PropertyKey, (invert) ? 1 - _time : _time);
+	IEnumerator Dissolve () {
+		float elapsed = 0f;
+		while (elapsed < duration)
+		{
+			elapsed += Time.deltaTime;
+			_material.SetFloat(PropertyKey, (invert) ? 1 - elapsed : elapsed);
+			yield return null;
+		}
 	}
 }
