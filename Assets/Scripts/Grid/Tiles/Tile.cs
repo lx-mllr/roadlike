@@ -17,9 +17,9 @@ public class Tile : MonoBehaviour {
 
 	// This step will happen before the Monobehaviours "Start" function
 	public void AnimateReveal () {
-		DissolveOverTime[] dots = GetComponentsInChildren<DissolveOverTime>();
-		for (int i = 0; i < dots.Length;  i++) {
-			dots[i].enabled = true;
+		FadeOverTime[] FoTs = GetComponentsInChildren<FadeOverTime>();
+		for (int i = 0; i < FoTs.Length;  i++) {
+			FoTs[i].enabled = true;
 		}
 	}
 

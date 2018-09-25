@@ -55,6 +55,7 @@ GameObject:
   - component: {fileID: 33413180275963866}
   - component: {fileID: 23566870090810280}
   - component: {fileID: 64254530722592278}
+  - component: {fileID: 114163714428944556}
   m_Layer: 8
   m_Name: Plane (3)
   m_TagString: Untagged
@@ -127,6 +128,7 @@ GameObject:
   - component: {fileID: 33217162354795850}
   - component: {fileID: 23842458584641396}
   - component: {fileID: 64871754964851070}
+  - component: {fileID: 114102097831497218}
   m_Layer: 8
   m_Name: Plane
   m_TagString: Untagged
@@ -832,8 +834,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PropertyKey: Vector1_C6EA28A9
-  duration: 1
+  duration: 1.1
   invert: 1
+--- !u!114 &114102097831497218
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1554086450690316}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d865c4029f95e774f888af18fc9b036e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PropertyKey: Vector1_E6519FC6
+  duration: 1
+  invert: 0
 --- !u!114 &114110742613509560
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -879,8 +895,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PropertyKey: Vector1_C8B684F1
-  duration: 1
+  duration: 0.8
   invert: 1
+--- !u!114 &114163714428944556
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1202729954097474}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d865c4029f95e774f888af18fc9b036e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PropertyKey: Vector1_E6519FC6
+  duration: 1
+  invert: 0
 --- !u!114 &114233879879960370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -893,7 +923,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PropertyKey: Vector1_C6EA28A9
-  duration: 1
+  duration: 1.1
   invert: 1
 --- !u!114 &114236645345813452
 MonoBehaviour:

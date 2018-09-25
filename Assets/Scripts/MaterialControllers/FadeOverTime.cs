@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DissolveOverTime : MonoBehaviour {
+public class FadeOverTime : MonoBehaviour {
 
 	public string PropertyKey = "";
 	public float duration = 1f;
@@ -32,5 +32,6 @@ public class DissolveOverTime : MonoBehaviour {
 			_material.SetFloat(PropertyKey, (invert) ? 1 - elapsed : elapsed);
 			yield return null;
 		}
+		_material.SetFloat(PropertyKey, (invert) ? 0f : 1f);
 	}
 }
