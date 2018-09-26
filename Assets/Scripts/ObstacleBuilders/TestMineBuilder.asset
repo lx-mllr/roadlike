@@ -14,8 +14,8 @@ MonoBehaviour:
   prefab: {fileID: 114913516622112848, guid: 0b0de6f916eb85c468ca37005791f1ea, type: 2}
   minCount: 2
   maxCount: 5
-  minSpread: 1
+  minSpread: 3
   maxSpread: 3
-  circleSize: {x: 10, y: 10}
-  distReduction: 0.441
+  circleSize: {x: 12, y: 12}
+  distReduction: 0.362
   rotVariance: 0.603
