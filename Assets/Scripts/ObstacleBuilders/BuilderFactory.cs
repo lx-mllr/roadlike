@@ -2,10 +2,6 @@ using System;
 using System.Collections.Generic;
 using Zenject;
 
-public interface IBuilder {
-    void SpawnForTile (Tile tile);
-}
-
 public class BuilderFactory : PlaceholderFactory<IBuilder> {
 }
 
