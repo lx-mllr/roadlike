@@ -112,8 +112,8 @@ public class FollowCam : MonoBehaviour {
 		Vector3 pos = _steering.transform.position + posOffset;// = _steering.transform.rotation * posOffset;
 		//pos += _steering.transform.position;
 
-		float scale = impactTransition.Evaluate(impactTransTime);
-		Vector3 impact = Vector3.Lerp(Vector3.zero, _impactOffset, scale);
+		float t_ImpactTrans = impactTransition.Evaluate(impactTransTime);
+		Vector3 impact = Vector3.Lerp(Vector3.zero, _impactOffset, t_ImpactTrans);
 		Vector3 eyeTarget = camTargOffset + impact;
 		eyeTarget = _steering.transform.rotation * eyeTarget;
 		eyeTarget += _steering.transform.position;
