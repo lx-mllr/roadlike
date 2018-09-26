@@ -10,6 +10,7 @@ public class InputInstaller : MonoInstaller<InputInstaller>
 
         #if UNITY_EDITOR
             Container.BindInterfacesAndSelfTo<EditorInputManager>().AsSingle();
+            Application.targetFrameRate = 30;
         #else
             Container.BindInterfacesAndSelfTo<LeftRightInputManager>().AsSingle();
             // Container.BindInterfacesAndSelfTo<SwipeInputManager>().AsSingle();
