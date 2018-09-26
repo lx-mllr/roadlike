@@ -10,8 +10,6 @@ public class TriggerCreateScreen : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other) {
             TriggerCreate();
-            Collider collider = GetComponent<Collider>();
-            collider.enabled = false;
     }
 
     public void TriggerCreate () {
