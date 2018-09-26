@@ -3,14 +3,14 @@ using UnityEngine;
 public class MineBuilder : IBuilder {
     readonly MineBuilderSettings _settings;
 
-    int _count;
-    int _spread;
+    int _count = 0;
+    int _spread = 0;
 
     public MineBuilder (MineBuilderSettings settings) {
         _settings = settings;
 
         _count = _settings.minCount + (int)(Random.value * (_settings.maxCount - _settings.minCount));
-        for (int i = _settings.minSpread; i < _settings.maxSpread; i++) {
+        for (int i = _settings.minSpread; i <= _settings.maxSpread; i++) {
             _spread = i;
             if (i % _count == 0) {
                 break;
