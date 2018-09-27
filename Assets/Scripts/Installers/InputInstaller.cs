@@ -16,7 +16,9 @@ public class InputInstaller : MonoInstaller<InputInstaller>
             // Container.BindInterfacesAndSelfTo<SwipeInputManager>().AsSingle();
         #endif
 
-        Container.BindSignal<StartButtonSignal>().ToMethod<IInputManager>(x => x.Enable).FromResolve();
+        Container.BindSignal<GameStartSignal>().ToMethod<IInputManager>(x => x.Enable).FromResolve();
+        Container.BindSignal<GameEndSignal>().ToMethod<IInputManager>(x => x.Reset).FromResolve();
+        
         Container.BindSignal<EnableInputSignal>().ToMethod<IInputManager>(x => x.Enable).FromResolve();
         Container.BindSignal<DisableInputSignal>().ToMethod<IInputManager>(x => x.Reset).FromResolve();
     }

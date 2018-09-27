@@ -7,6 +7,9 @@ public struct DisableInputSignal {
 public struct EnableInputSignal {
 }
 
+public struct GameStartSignal {
+}
+
 public struct GameEndSignal {
 }
 

@@ -18,8 +18,6 @@ public class TrackBuilderInstaller : MonoInstaller<TrackBuilderInstaller>
     {        
         Container.DeclareSignal<SpawnTileSignal>().OptionalSubscriber();
         Container.DeclareSignal<DespawnTileSignal>().OptionalSubscriber();
-        
-        Container.DeclareSignal<GameEndSignal>().OptionalSubscriber();
 
         InstallCoinSystem();
         InstallSimplePathSystem();

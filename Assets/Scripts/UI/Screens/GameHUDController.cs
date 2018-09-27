@@ -20,8 +20,6 @@ public class GameHUDController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		_signalBus.Subscribe<GameEndSignal>(DestroyScreen);
-
 		leftIcon.material = Instantiate(leftIcon.material);
 		rightIcon.material = Instantiate(rightIcon.material);
 	}
@@ -34,11 +32,4 @@ public class GameHUDController : MonoBehaviour {
 		leftIcon.material.SetFloat(FILL_VALUE_KEY, leftFill);
 		rightIcon.material.SetFloat(FILL_VALUE_KEY, rightFill);		
 	}
-
-	
-    public void DestroyScreen () {
-		_signalBus.Unsubscribe<GameEndSignal>(DestroyScreen);
-
-        Destroy(this.gameObject);
-    }
 }

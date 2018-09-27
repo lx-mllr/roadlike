@@ -13,6 +13,8 @@ public class GamePlayInstaller : MonoInstaller<GamePlayInstaller>
 
     public override void InstallBindings()
     {
+        Container.DeclareSignal<GameStartSignal>().OptionalSubscriber();
+        Container.DeclareSignal<GameEndSignal>().OptionalSubscriber();
         Container.DeclareSignal<CollectCoinSignal>();
         Container.DeclareSignal<ApplyForceToCarSignal>();
 
@@ -28,8 +30,8 @@ public class GamePlayInstaller : MonoInstaller<GamePlayInstaller>
         Container.BindInterfacesAndSelfTo<GamePlayManager>().AsSingle();
         Container.BindInstance<GamePlayManager.GMSettings>(_settings.gmSettings);
 
-        Container.BindSignal<StartButtonSignal>().ToMethod<GamePlayManager>(x => x.OnGameStart).FromResolve();
-        Container.BindSignal<GameEndSignal>().ToMethod<GamePlayManager>(x => x.Reset).FromResolve();
+        Container.BindSignal<GameStartSignal>().ToMethod<GamePlayManager>(x => x.OnGameStart).FromResolve();
+        Container.BindSignal<GameEndSignal>().ToMethod<GamePlayManager>(x => x.OnGameEnd).FromResolve();
         Container.BindSignal<ApplyForceToCarSignal>().ToMethod<GamePlayManager>(x => x.ApplyForce).FromResolve();
 
     }

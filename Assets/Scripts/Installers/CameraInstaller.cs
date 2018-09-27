@@ -16,7 +16,7 @@ public class CameraInstaller : MonoInstaller<CameraInstaller>
         Container.BindInstance(settings.CamSettings);
         Container.BindInterfacesAndSelfTo<CamManager>().AsSingle().NonLazy();
 
-        Container.BindSignal<StartButtonSignal>().ToMethod<CamManager>(x => x.onStartButton).FromResolve();
+        Container.BindSignal<GameStartSignal>().ToMethod<CamManager>(x => x.onStartButton).FromResolve();
         Container.BindSignal<GameEndSignal>().ToMethod<CamManager>(x => x.onShowMainScreen).FromResolve();
         Container.BindSignal<DisableInputSignal>().ToMethod<CamManager>(x => x.onInputDisable).FromResolve();
         Container.BindSignal<EnableInputSignal>().ToMethod<CamManager>(x => x.onInputEnable).FromResolve();

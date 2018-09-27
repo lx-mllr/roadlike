@@ -14,6 +14,6 @@ public class TriggerStart : MonoBehaviour {
 
     public void OnClick ()
     {
-        _signalBus.Fire<StartButtonSignal>();
+        _signalBus.Fire<GameStartSignal>();
     }
 }

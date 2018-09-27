@@ -10,7 +10,6 @@ public class GamePlayManager : IInitializable, ITickable {
     }
 
     [Inject] ISteering _steering;
-    [Inject] IInputManager _inputManager;
     [Inject] GMSettings _settings;
     [Inject] SignalBus _signalBus;
 
@@ -23,19 +22,15 @@ public class GamePlayManager : IInitializable, ITickable {
         _gameActive = true;
     }
 
-    public void Reset () {
+    public void OnGameEnd () {
         _gameActive = false;
         _steering.Reset();
+
+        // default signal will create main screen, and remove currently active (gameHUD)
+        _signalBus.Fire<CreateScreenSignal>();
     }
 
     public void Tick () {
-        if (_gameActive)
-        {
-            if (!_inputManager.Enabled &&
-                    _steering.rigidBody.velocity.sqrMagnitude < _settings.reEnableInputThreshold) {
-                _signalBus.Fire<EnableInputSignal>();
-            }
-        }
 
     }
 
