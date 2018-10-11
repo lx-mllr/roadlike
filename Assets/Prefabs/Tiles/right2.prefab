@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 114111635138142536}
   - component: {fileID: 114594176124338150}
   m_Layer: 0
-  m_Name: DespawnPrevious
+  m_Name: SpawnTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -150,7 +150,7 @@ GameObject:
   - component: {fileID: 114482020748586786}
   - component: {fileID: 114535183316755784}
   m_Layer: 0
-  m_Name: SpawnNextTrigger
+  m_Name: DespawnTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
