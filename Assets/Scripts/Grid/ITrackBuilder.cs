@@ -5,6 +5,6 @@ using UnityEngine;
 public interface ITrackBuilder {
 	void Start();
 	void Reset();
-	void Generate();
+	void OnSpawnTile(SpawnTileSignal signal);
 	void Despawn();
 }

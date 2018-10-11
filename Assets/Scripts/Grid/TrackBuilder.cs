@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -10,9 +10,7 @@ public class TrackBuilder : ITrackBuilder, IInitializable  {
 	readonly RandomTileFactory.RTFSettings _factorySettings;
 	readonly BuilderFactory _spawnPatternFactory;
 
-	private Tile _previousTile = null;
-	private Tile _currentTile = null;
-	private ArrayList _tiles;
+	private LinkedList<Tile> _tiles;
 
 	public TrackBuilder (Tile.Factory tileFactory,
 						RandomTileFactory.RTFSettings RTFsettings,
@@ -24,7 +22,7 @@ public class TrackBuilder : ITrackBuilder, IInitializable  {
 		_factorySettings = RTFsettings;
 		_spawnPatternFactory = SPFactory;
 
-		_tiles = new ArrayList();
+		_tiles = new LinkedList<Tile>();
 	}
 
 	public void Initialize () {
@@ -32,21 +30,22 @@ public class TrackBuilder : ITrackBuilder, IInitializable  {
 	}
 
 	public void Start () {
+		// start 1 tile back so main menu looks normal
 		Tile start = (Tile) _tileFactory.Create();
 		float initZ = -1 * start.meshCollider.bounds.size.z;
 		start.transform.position = new Vector3(0.0f, 0.0f, initZ);
-		_tiles.Add(start);
+		_tiles.AddLast(start);
 
-		for (int i = 0; i < _settings.generateAheadCount; i++)
-		{
-			Generate();
+		// Assuming (0,0,0) for spawn direction forces this to only generate straight tiles. 
+		for (int i = 0; i < _settings.generateAheadCount; i++) {
+			Generate(Vector3.zero);
 		}
 	}
 
 	public void Reset () {
 		while (_tiles.Count > 0)
 		{
-			RemoveTile();
+			RemoveOldestTile();
 		}
 
 		_tiles.Clear();
@@ -55,41 +54,42 @@ public class TrackBuilder : ITrackBuilder, IInitializable  {
 		Start();
 	}
 
-	public void Generate () {
-		_previousTile = (Tile) _tiles[_tiles.Count - 1];
-		_currentTile = (Tile) _tileFactory.Create();
-		_tiles.Add(_currentTile);
-		
-		Vector3 pTilePos = _previousTile.transform.position;
+	public void OnSpawnTile(SpawnTileSignal signal) {
+		Generate(signal.spawnDirection);
+	}
 
-		Vector3 pTileSize = _previousTile.meshCollider.bounds.size;
-		Vector3 nextOffset = _previousTile.transform.rotation * _currentTile.placementOffset;
+	private void Generate (Vector3 spawnDirection) {
+		Tile previousTile = _tiles.Last.Value;
+		Tile nextTile = _tileFactory.Create();
+		_tiles.AddLast(nextTile);
+		
+		Vector3 pTilePos = previousTile.transform.position;
+		Vector3 pTileSize = previousTile.meshCollider.bounds.size;
+
+		Quaternion nextRotation = previousTile.transform.rotation * Quaternion.Euler(spawnDirection);
+
+		Vector3 nextOffset = nextRotation * nextTile.placementOffset;
 		nextOffset = Vector3.Scale(pTileSize, nextOffset);
 
-		_currentTile.transform.position = pTilePos + nextOffset;
-		_currentTile.transform.rotation = _previousTile.transform.rotation * _currentTile.transform.rotation;
+		nextTile.transform.position = pTilePos + nextOffset;
+		nextTile.transform.rotation = nextRotation;
 
-		if (_factorySettings.startingCounter >= _factorySettings.startingTiles.Length
-			&& _tiles.Count > _settings.generateAheadCount)
+		if (_tiles.Count > _settings.generateAheadCount)
 		{
 			IBuilder pattern = _spawnPatternFactory.Create();
-			pattern.SpawnForTile(_currentTile);
-			_currentTile.AnimateReveal();
+			pattern.SpawnForTile(nextTile);
+			nextTile.AnimateReveal();
 		}
 	}
 
 	public void Despawn () {
-		RemoveTile();
+		RemoveOldestTile();
 	}
 
-	private void RemoveTile (int index = 0) {
-		if (index >= 0
-			 && index < _tiles.Count)
-		{
-			Tile toDestroy = (Tile) _tiles[0];
-			_tiles.RemoveAt(0);
-			GameObject.Destroy(toDestroy.gameObject);
-		}
+	private void RemoveOldestTile () {
+		Tile toDestroy = _tiles.First.Value;
+		_tiles.RemoveFirst();
+		GameObject.Destroy(toDestroy.gameObject);
 	}
 
 	 [Serializable]

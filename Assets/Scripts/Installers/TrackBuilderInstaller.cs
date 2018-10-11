@@ -31,7 +31,7 @@ public class TrackBuilderInstaller : MonoInstaller<TrackBuilderInstaller>
         Container.BindInstance(settings.tbSettings);
         Container.BindInterfacesAndSelfTo<TrackBuilder>().AsSingle().Lazy();
 
-        Container.BindSignal<SpawnTileSignal>().ToMethod<ITrackBuilder>(x => x.Generate).FromResolve();
+        Container.BindSignal<SpawnTileSignal>().ToMethod<ITrackBuilder>(x => x.OnSpawnTile).FromResolve();
         Container.BindSignal<DespawnTileSignal>().ToMethod<ITrackBuilder>(x => x.Despawn).FromResolve();
         Container.BindSignal<GameEndSignal>().ToMethod<ITrackBuilder>(x => x.Reset).FromResolve();
     }
