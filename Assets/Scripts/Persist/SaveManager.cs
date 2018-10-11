@@ -25,7 +25,12 @@ public class SaveManager {
 
         if (File.Exists(Application.persistentDataPath + fileName)) {
             FileStream file = File.Open(Application.persistentDataPath + fileName, FileMode.Open);
+            try {
             t = (T) formatter.Deserialize(file);
+            }
+            catch (Exception e) {
+                t = new T();
+            }
             file.Close();
         }
         else {

@@ -21,13 +21,14 @@ public class User : IInitializable {
         _saveMangager.Save(state_fileName, _state);
     }
 
-    public void IncreaseCoinCount() {
-        _state.coinCount++;
+    public void OnGameEnd(int roundScore) {
+        _state.highScore = (roundScore > _state.highScore) ? roundScore : _state.highScore;
+        SaveState();
     }
 
 }
 
 [Serializable]
 public struct UserState {
-    public int coinCount;
+    public int highScore;
 }

@@ -4,11 +4,11 @@ using Zenject;
 
 public class MainScreen : MonoBehaviour {
 
-    public Text coinCount;
+    public Text highscore;
 
     [Inject] User _user;
     
     void Start () {
-        coinCount.text = "Coin Count " + _user.state.coinCount.ToString();
+        highscore.text = "High Score " + _user.state.highScore.ToString();
     }
 }
