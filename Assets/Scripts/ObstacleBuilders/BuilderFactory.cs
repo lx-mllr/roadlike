@@ -5,7 +5,7 @@ using Zenject;
 public class BuilderFactory : PlaceholderFactory<IBuilder> {
 }
 
-public class ImplBuilderFactory : IFactory<IBuilder> {
+public class ImplBuilderFactory : IFactory<IBuilder>, IValidatable {
 
     [Serializable]
     public struct Settings {
@@ -27,12 +27,16 @@ public class ImplBuilderFactory : IFactory<IBuilder> {
         IBuilderSettings toCreate = _presets.builders[index];
 
         switch (toCreate.Id) {
-            case (int) BuilderId.MINE_BUILDER:
-                pattern = _container.Instantiate<MineBuilder>(new object[] {toCreate});
+            case (int) BuilderId.GROUPED_BUILDER:
+                pattern = _container.Instantiate<GroupedObstacleBuilder>(new object[] {toCreate});
                 break;
             //case (int) SpawnPatternID.DEFAULT:
         }
 
         return pattern;
+    }
+
+    public void Validate () {
+        _container.Instantiate<GroupedObstacleBuilder>();
     }
 }

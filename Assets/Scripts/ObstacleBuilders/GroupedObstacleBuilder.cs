@@ -1,12 +1,12 @@
 using UnityEngine;
 
-public class MineBuilder : IBuilder {
-    readonly MineBuilderSettings _settings;
+public class GroupedObstacleBuilder : IBuilder {
+    readonly GroupBuilderSettings _settings;
 
     int _count = 0;
     int _spread = 0;
 
-    public MineBuilder (MineBuilderSettings settings) {
+    public GroupedObstacleBuilder (GroupBuilderSettings settings) {
         _settings = settings;
 
         _count = _settings.minCount + (int)(Random.value * (_settings.maxCount - _settings.minCount));
@@ -23,7 +23,6 @@ public class MineBuilder : IBuilder {
         MineView rf;
         Vector3 newPos;
         Bounds tBounds = tile.meshCollider.bounds;
-
 
         for (; i < _count; i++) {
             newPos = tile.transform.position + getPos(i);
@@ -49,8 +48,7 @@ public class MineBuilder : IBuilder {
 
         Vector3 ret = Vector3.zero;
         Vector2 offset = _settings.circleSize;
-        for (int i = 0; i <= subLayer; i++)
-        {
+        for (int i = 0; i <= subLayer; i++) {
             ret.x += _settings.circleSize.x * Mathf.Sin(theta);
             ret.z += _settings.circleSize.y * Mathf.Cos(theta);
 

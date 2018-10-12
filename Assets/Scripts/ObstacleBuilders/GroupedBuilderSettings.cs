@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "MineBuilder", menuName = "BuilderSettings/Mine")]
-public class MineBuilderSettings : IBuilderSettings {        
+public class GroupBuilderSettings : IBuilderSettings {        
     public MineView prefab;
 
     public int minCount;
@@ -12,5 +12,5 @@ public class MineBuilderSettings : IBuilderSettings {
     [Range(0.0f, 0.5f)] public float distReduction;
     [Range(0.0f, 0.785f)] public float rotVariance;
     
-    override public int Id { get { return (int) BuilderId.MINE_BUILDER; } }
+    override public int Id { get { return (int) BuilderId.GROUPED_BUILDER; } }
 }
