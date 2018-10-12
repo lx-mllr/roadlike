@@ -78,9 +78,13 @@ public class ChunkTrackBuilder : ITrackBuilder, IInitializable {
     }
 
     private void Generate (Vector3 spawnDirection, bool animate = true) {
-        ChunkElement element = GetNextElement();
-        _tileFactorySettings.randomTiles = element.tiles;
-        _obstacleFactorySettings.builders = element.obstacleBuilders;
+        bool offStartingBlock = _tileFactorySettings.startingCounter >= _tileFactorySettings.startingTiles.Count;
+        
+        if (offStartingBlock) {
+            ChunkElement element = GetNextElement();
+            _tileFactorySettings.randomTiles = element.tiles;
+            _obstacleFactorySettings.builders = element.obstacleBuilders;
+        }
 		
         Tile previousTile = _tiles.Last.Value;
 		Tile nextTile = _tileFactory.Create();
@@ -97,7 +101,7 @@ public class ChunkTrackBuilder : ITrackBuilder, IInitializable {
 		nextTile.transform.position = pTilePos + nextOffset;
 		nextTile.transform.rotation = nextRotation;
 
-		if (_tileFactorySettings.startingCounter >= _tileFactorySettings.startingTiles.Count &&
+		if (offStartingBlock &&
                 _obstacleFactorySettings.builders.Count > 0) {
 			IBuilder pattern = _spawnPatternFactory.Create();
 			pattern.SpawnForTile(nextTile);
