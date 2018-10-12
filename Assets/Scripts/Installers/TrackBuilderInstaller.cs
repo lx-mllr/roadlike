@@ -9,7 +9,7 @@ public class TrackBuilderInstaller : MonoInstaller<TrackBuilderInstaller>
     [Serializable]
     public class SimpleTrackSettings {
         public RandomTileFactory.RTFSettings tileFactorySettings;
-        public TrackBuilder.TrackBuilderSettings tbSettings;
+        public TrackBuilder.TrackBuilderSettings trackBuilderSettings;
         
         public CoinView coinPrefab;
     }
@@ -28,7 +28,7 @@ public class TrackBuilderInstaller : MonoInstaller<TrackBuilderInstaller>
         Container.BindInstance(settings.tileFactorySettings);
         Container.BindFactory<Tile, Tile.Factory>().FromFactory<RandomTileFactory>();
 
-        Container.BindInstance(settings.tbSettings);
+        Container.BindInstance(settings.trackBuilderSettings);
         Container.BindInterfacesAndSelfTo<TrackBuilder>().AsSingle().Lazy();
 
         Container.BindSignal<SpawnTileSignal>().ToMethod<ITrackBuilder>(x => x.OnSpawnTile).FromResolve();
