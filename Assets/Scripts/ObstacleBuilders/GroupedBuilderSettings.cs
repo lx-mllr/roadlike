@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "MineBuilder", menuName = "BuilderSettings/Mine")]
-public class GroupBuilderSettings : IBuilderSettings {        
+public class GroupedBuilderSettings : IBuilderSettings {        
     public MineView prefab;
 
     public int minCount;

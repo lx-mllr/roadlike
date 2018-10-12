@@ -1,12 +1,12 @@
 using UnityEngine;
 
 public class GroupedObstacleBuilder : IBuilder {
-    readonly GroupBuilderSettings _settings;
+    readonly GroupedBuilderSettings _settings;
 
     int _count = 0;
     int _spread = 0;
 
-    public GroupedObstacleBuilder (GroupBuilderSettings settings) {
+    public GroupedObstacleBuilder (GroupedBuilderSettings settings) {
         _settings = settings;
 
         _count = _settings.minCount + (int)(Random.value * (_settings.maxCount - _settings.minCount));

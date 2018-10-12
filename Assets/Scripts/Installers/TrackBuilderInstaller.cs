@@ -10,6 +10,7 @@ public class TrackBuilderInstaller : MonoInstaller<TrackBuilderInstaller>
     public class SimpleTrackSettings {
         public RandomTileFactory.RTFSettings tileFactorySettings;
         public TrackBuilder.TrackBuilderSettings trackBuilderSettings;
+        public ChunkTrackBuilder.ChunkTrackBuilderSettings chunkTrackBuilderSettings;
         
         public CoinView coinPrefab;
     }
@@ -20,20 +21,32 @@ public class TrackBuilderInstaller : MonoInstaller<TrackBuilderInstaller>
         Container.DeclareSignal<DespawnTileSignal>().OptionalSubscriber();
 
         InstallCoinSystem();
-        InstallSimplePathSystem();
+        InstallPathSystem();
     }
 
-    public void InstallSimplePathSystem()
-    {
+    public void InstallPathSystem () {
+        // InstallSimplePathSystem();
+        InstallChunkPathSystem();
+
+        Container.BindSignal<SpawnTileSignal>().ToMethod<ITrackBuilder>(x => x.OnSpawnTile).FromResolve();
+        Container.BindSignal<DespawnTileSignal>().ToMethod<ITrackBuilder>(x => x.Despawn).FromResolve();
+        Container.BindSignal<GameEndSignal>().ToMethod<ITrackBuilder>(x => x.Reset).FromResolve();
+    }
+
+    public void InstallSimplePathSystem () {
         Container.BindInstance(settings.tileFactorySettings);
         Container.BindFactory<Tile, Tile.Factory>().FromFactory<RandomTileFactory>();
 
         Container.BindInstance(settings.trackBuilderSettings);
         Container.BindInterfacesAndSelfTo<TrackBuilder>().AsSingle().Lazy();
+    }
 
-        Container.BindSignal<SpawnTileSignal>().ToMethod<ITrackBuilder>(x => x.OnSpawnTile).FromResolve();
-        Container.BindSignal<DespawnTileSignal>().ToMethod<ITrackBuilder>(x => x.Despawn).FromResolve();
-        Container.BindSignal<GameEndSignal>().ToMethod<ITrackBuilder>(x => x.Reset).FromResolve();
+    public void InstallChunkPathSystem () {
+        Container.BindInstance(settings.tileFactorySettings);
+        Container.BindInstance(settings.chunkTrackBuilderSettings);
+
+        Container.BindFactory<Tile, Tile.Factory>().FromFactory<RandomTileFactory>();
+        Container.BindInterfacesAndSelfTo<ChunkTrackBuilder>().AsSingle().Lazy();
     }
 
     public void InstallCoinSystem() 

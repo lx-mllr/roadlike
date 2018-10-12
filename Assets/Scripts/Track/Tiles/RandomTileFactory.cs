@@ -1,5 +1,5 @@
 using System;
-using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using Zenject;
 
@@ -17,14 +17,14 @@ public class RandomTileFactory : IFactory<Tile> {
     public Tile Create()
     {
         Tile toCreate;
-        if (_settings.startingCounter < _settings.startingTiles.Length)
+        if (_settings.startingCounter < _settings.startingTiles.Count)
         {
             toCreate = _settings.startingTiles[_settings.startingCounter];
             _settings.startingCounter++;
         }
         else
         {
-            int index = (int) (UnityEngine.Random.Range(0.0f, 1.0f) * _settings.randomTiles.Length);
+            int index = (int) (UnityEngine.Random.Range(0.0f, 1.0f) * _settings.randomTiles.Count);
             toCreate = _settings.randomTiles[index];
         }
 
@@ -33,8 +33,8 @@ public class RandomTileFactory : IFactory<Tile> {
 
     [Serializable]
     public class RTFSettings {
-        public Tile[] randomTiles;
-        public Tile[] startingTiles;
+        public List<Tile> randomTiles;
+        public List<Tile> startingTiles;
         
         public int startingCounter;
     }

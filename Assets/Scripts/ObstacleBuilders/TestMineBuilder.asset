@@ -8,13 +8,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83be48cf3e0d5ac4b9b2925762981519, type: 3}
+  m_Script: {fileID: 11500000, guid: b99e4b27b1c5e12448129bc483963128, type: 3}
   m_Name: TestMineBuilder
   m_EditorClassIdentifier: 
   prefab: {fileID: 114913516622112848, guid: 0b0de6f916eb85c468ca37005791f1ea, type: 2}
   minCount: 2
-  maxCount: 6
-  minSpread: 2
+  maxCount: 5
+  minSpread: 3
   maxSpread: 3
   circleSize: {x: 12, y: 12}
   distReduction: 0.362
