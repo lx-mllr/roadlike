@@ -11,11 +11,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b99e4b27b1c5e12448129bc483963128, type: 3}
   m_Name: LargeMinePiles
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
-  minCount: 0
-  maxCount: 0
-  minSpread: 0
-  maxSpread: 0
-  circleSize: {x: 0, y: 0}
-  distReduction: 0
-  rotVariance: 0
+  prefab: {fileID: 1528086640982422, guid: 0b0de6f916eb85c468ca37005791f1ea, type: 2}
+  minCount: 5
+  maxCount: 10
+  minSpread: 3
+  maxSpread: 4
+  circleSize: {x: 12, y: 12}
+  distReduction: 0.2
+  rotVariance: 0.1

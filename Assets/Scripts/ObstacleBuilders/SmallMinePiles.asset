@@ -9,9 +9,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b99e4b27b1c5e12448129bc483963128, type: 3}
-  m_Name: TestMineBuilder
+  m_Name: SmallMinePiles
   m_EditorClassIdentifier: 
-  prefab: {fileID: 114913516622112848, guid: 0b0de6f916eb85c468ca37005791f1ea, type: 2}
+  prefab: {fileID: 1528086640982422, guid: 0b0de6f916eb85c468ca37005791f1ea, type: 2}
   minCount: 2
   maxCount: 5
   minSpread: 3

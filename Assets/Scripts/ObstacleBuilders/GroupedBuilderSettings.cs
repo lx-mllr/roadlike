@@ -1,8 +1,8 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "MineBuilder", menuName = "BuilderSettings/Mine")]
+[CreateAssetMenu(fileName = "GroupedBuilder", menuName = "BuilderSettings/Group")]
 public class GroupedBuilderSettings : IBuilderSettings {        
-    public MineView prefab;
+    public GameObject prefab;
 
     public int minCount;
     public int maxCount;

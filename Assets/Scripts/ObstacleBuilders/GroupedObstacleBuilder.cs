@@ -20,7 +20,7 @@ public class GroupedObstacleBuilder : IBuilder {
 
     public void SpawnForTile (Tile tile) {
         int i = 0;
-        MineView rf;
+        GameObject rf;
         Vector3 newPos;
         Bounds tBounds = tile.meshCollider.bounds;
 
@@ -34,8 +34,8 @@ public class GroupedObstacleBuilder : IBuilder {
         }
     }
 
-    private MineView spawnAndParent(Tile t) {
-        MineView m = GameObject.Instantiate(_settings.prefab);
+    private GameObject spawnAndParent(Tile t) {
+        GameObject m = GameObject.Instantiate(_settings.prefab);
         m.transform.parent = t.transform;
         return m;
     }

@@ -30,6 +30,9 @@ public class ImplBuilderFactory : IFactory<IBuilder>, IValidatable {
             case (int) BuilderId.GROUPED_BUILDER:
                 pattern = _container.Instantiate<GroupedObstacleBuilder>(new object[] {toCreateSettings});
                 break;
+            case (int) BuilderId.LINEAR_BUILDER:
+                pattern = _container.Instantiate<LinearBuilder>(new object[] {toCreateSettings});
+                break;
         }
 
         return pattern;
@@ -37,5 +40,6 @@ public class ImplBuilderFactory : IFactory<IBuilder>, IValidatable {
 
     public void Validate () {
         _container.Instantiate<GroupedObstacleBuilder>(new object[] {UnityEngine.ScriptableObject.CreateInstance(typeof(GroupedBuilderSettings))});
+        _container.Instantiate<LinearBuilder>(new object[] {UnityEngine.ScriptableObject.CreateInstance(typeof(LinearBuilderSettings))});
     }
 }

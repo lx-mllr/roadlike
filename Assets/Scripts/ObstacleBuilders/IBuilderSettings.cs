@@ -1,7 +1,8 @@
 using UnityEngine;
 
 public enum BuilderId {
-    GROUPED_BUILDER
+    GROUPED_BUILDER,
+    LINEAR_BUILDER
 }
 
 public class IBuilderSettings : ScriptableObject {

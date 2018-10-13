@@ -8,9 +8,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d676cc63e7cb75f44a905acac1a0b1ac, type: 3}
-  m_Name: HardMineTurn
+  m_Script: {fileID: 11500000, guid: 702449e712ed9b040b76da7843af28ea, type: 3}
+  m_Name: HammerTest
   m_EditorClassIdentifier: 
-  elements:
-  - {fileID: 11400000, guid: 70e5108f34111644ebb34100a4969b60, type: 2}
-  - {fileID: 11400000, guid: cbcc8031fa67f394eb1ea6de8c4499c4, type: 2}
+  prefab: {fileID: 1820636114603234, guid: 36dd32066b2882a419f6421f241f4069, type: 2}
+  minCount: 1
+  maxCount: 3
