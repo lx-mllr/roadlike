@@ -51,12 +51,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f5ea511ad6a38a449731b736f3a61b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settings:
+  chunkSettings:
     tileFactorySettings:
       randomTiles:
       - {fileID: 114008922178044368, guid: e722eeecd5cea9b469a4dc482b9a99dc, type: 2}
-      - {fileID: 114692435716853512, guid: 1bf65eae426776945a53f6100022f8ff, type: 2}
       - {fileID: 114750377614055160, guid: ca7d957fb117b974981bef5f1680c41a, type: 2}
+      - {fileID: 114692435716853512, guid: 1bf65eae426776945a53f6100022f8ff, type: 2}
       - {fileID: 114488587550490378, guid: d932256a51349d14bae1cf6e06b8ea3a, type: 2}
       startingTiles:
       - {fileID: 114008922178044368, guid: e722eeecd5cea9b469a4dc482b9a99dc, type: 2}
@@ -65,8 +65,6 @@ MonoBehaviour:
       - {fileID: 114008922178044368, guid: e722eeecd5cea9b469a4dc482b9a99dc, type: 2}
       - {fileID: 114488587550490378, guid: d932256a51349d14bae1cf6e06b8ea3a, type: 2}
       startingCounter: 0
-    trackBuilderSettings:
-      generateAheadCount: 0
     chunkTrackBuilderSettings:
       chunks:
       - {fileID: 11400000, guid: 78e171341d836f142bbbbb5ae735dde8, type: 2}
@@ -74,3 +72,18 @@ MonoBehaviour:
       startingCount: 3
     coinPrefab: {fileID: 114446679961222884, guid: 393303465d08ff9478302eb69e8100e0,
       type: 2}
+  simpleTrackSettings:
+    tileFactorySettings:
+      randomTiles:
+      - {fileID: 114008922178044368, guid: e722eeecd5cea9b469a4dc482b9a99dc, type: 2}
+      - {fileID: 114750377614055160, guid: ca7d957fb117b974981bef5f1680c41a, type: 2}
+      - {fileID: 114692435716853512, guid: 1bf65eae426776945a53f6100022f8ff, type: 2}
+      - {fileID: 114488587550490378, guid: d932256a51349d14bae1cf6e06b8ea3a, type: 2}
+      startingTiles:
+      - {fileID: 114008922178044368, guid: e722eeecd5cea9b469a4dc482b9a99dc, type: 2}
+      - {fileID: 114008922178044368, guid: e722eeecd5cea9b469a4dc482b9a99dc, type: 2}
+      - {fileID: 114008922178044368, guid: e722eeecd5cea9b469a4dc482b9a99dc, type: 2}
+      - {fileID: 114008922178044368, guid: e722eeecd5cea9b469a4dc482b9a99dc, type: 2}
+      startingCounter: 0
+    trackBuilderSettings:
+      generateAheadCount: 2

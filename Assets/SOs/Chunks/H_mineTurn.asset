@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d676cc63e7cb75f44a905acac1a0b1ac, type: 3}
-  m_Name: HardMineTurn
+  m_Name: H_mineTurn
   m_EditorClassIdentifier: 
   elements:
   - {fileID: 11400000, guid: 70e5108f34111644ebb34100a4969b60, type: 2}

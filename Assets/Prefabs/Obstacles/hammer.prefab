@@ -38,7 +38,6 @@ GameObject:
   - component: {fileID: 4188335760110182}
   - component: {fileID: 65707719081644646}
   - component: {fileID: 114448250069738216}
-  - component: {fileID: 114873099597261648}
   - component: {fileID: 114678534256419698}
   m_Layer: 2
   m_Name: LeftDestroyer
@@ -307,16 +306,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 15ba983f47f7fef4dbbdc1c0b40f6386, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114873099597261648
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1810308082066742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea9abd7243863bf4fb4d9c0fa1891560, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

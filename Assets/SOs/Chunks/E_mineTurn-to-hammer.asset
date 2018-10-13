@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d676cc63e7cb75f44a905acac1a0b1ac, type: 3}
-  m_Name: EasyMineTurn
+  m_Name: E_mineTurn-to-hammer
   m_EditorClassIdentifier: 
   elements:
   - {fileID: 11400000, guid: 313d5137363172448822fc0902dc4b6e, type: 2}

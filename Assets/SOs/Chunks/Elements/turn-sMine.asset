@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d775e7a672f62aa47af1fd613f2a23d6, type: 3}
-  m_Name: turn-Mine
+  m_Name: turn-sMine
   m_EditorClassIdentifier: 
   tiles:
   - {fileID: 114692435716853512, guid: 1bf65eae426776945a53f6100022f8ff, type: 2}

@@ -826,7 +826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PropertyKey: Vector1_C6EA28A9
-  duration: 1.1
+  duration: 0.8
   invert: 1
 --- !u!114 &114102097831497218
 MonoBehaviour:
@@ -840,7 +840,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PropertyKey: Vector1_E6519FC6
-  duration: 0.8
+  duration: 1.5
   invert: 0
 --- !u!114 &114110742613509560
 MonoBehaviour:
@@ -865,7 +865,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PropertyKey: Vector1_C8B684F1
-  duration: 0.8
+  duration: 0.6
   invert: 1
 --- !u!114 &114163714428944556
 MonoBehaviour:
@@ -879,7 +879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PropertyKey: Vector1_E6519FC6
-  duration: 0.8
+  duration: 1.5
   invert: 0
 --- !u!114 &114233879879960370
 MonoBehaviour:
@@ -893,7 +893,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PropertyKey: Vector1_C6EA28A9
-  duration: 1.1
+  duration: 0.8
   invert: 1
 --- !u!114 &114332648816537016
 MonoBehaviour:

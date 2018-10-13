@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d775e7a672f62aa47af1fd613f2a23d6, type: 3}
-  m_Name: straight-H
+  m_Name: str-hamm
   m_EditorClassIdentifier: 
   tiles:
   - {fileID: 114008922178044368, guid: e722eeecd5cea9b469a4dc482b9a99dc, type: 2}
