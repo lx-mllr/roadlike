@@ -4,15 +4,21 @@ using Zenject;
 
 public class TrackBuilderInstaller : MonoInstaller<TrackBuilderInstaller>
 {
-    public SimpleTrackSettings settings;
+    public ChunkTrackSettings chunkSettings;
+    public SimpleTrackSettings simpleTrackSettings;
+
+    [Serializable]
+    public class ChunkTrackSettings {
+        public RandomTileFactory.RTFSettings tileFactorySettings;
+        public ChunkTrackBuilder.ChunkTrackBuilderSettings chunkTrackBuilderSettings;
+        
+        public CoinView coinPrefab;
+    }
 
     [Serializable]
     public class SimpleTrackSettings {
         public RandomTileFactory.RTFSettings tileFactorySettings;
         public TrackBuilder.TrackBuilderSettings trackBuilderSettings;
-        public ChunkTrackBuilder.ChunkTrackBuilderSettings chunkTrackBuilderSettings;
-        
-        public CoinView coinPrefab;
     }
 
     public override void InstallBindings()
@@ -34,16 +40,16 @@ public class TrackBuilderInstaller : MonoInstaller<TrackBuilderInstaller>
     }
 
     public void InstallSimplePathSystem () {
-        Container.BindInstance(settings.tileFactorySettings);
+        Container.BindInstance(simpleTrackSettings.tileFactorySettings);
         Container.BindFactory<Tile, Tile.Factory>().FromFactory<RandomTileFactory>();
 
-        Container.BindInstance(settings.trackBuilderSettings);
+        Container.BindInstance(simpleTrackSettings.trackBuilderSettings);
         Container.BindInterfacesAndSelfTo<TrackBuilder>().AsSingle().Lazy();
     }
 
     public void InstallChunkPathSystem () {
-        Container.BindInstance(settings.tileFactorySettings);
-        Container.BindInstance(settings.chunkTrackBuilderSettings);
+        Container.BindInstance(chunkSettings.tileFactorySettings);
+        Container.BindInstance(chunkSettings.chunkTrackBuilderSettings);
 
         Container.BindFactory<Tile, Tile.Factory>().FromFactory<RandomTileFactory>();
         Container.BindInterfacesAndSelfTo<ChunkTrackBuilder>().AsSingle().Lazy();
@@ -51,6 +57,6 @@ public class TrackBuilderInstaller : MonoInstaller<TrackBuilderInstaller>
 
     public void InstallCoinSystem() 
     {
-        Container.BindFactory<CoinView, CoinView.Factory>().FromComponentInNewPrefab(settings.coinPrefab);
+        Container.BindFactory<CoinView, CoinView.Factory>().FromComponentInNewPrefab(chunkSettings.coinPrefab);
     }
 }
