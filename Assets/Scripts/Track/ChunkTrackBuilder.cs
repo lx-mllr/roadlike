@@ -66,6 +66,8 @@ public class ChunkTrackBuilder : ITrackBuilder, IInitializable {
 		_tiles.Clear();
 		_tileFactorySettings.startingCounter = 0;
 
+        _activeChunk = null;
+
 		Start();
     }
 
