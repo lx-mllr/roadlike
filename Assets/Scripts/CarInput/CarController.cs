@@ -92,6 +92,20 @@ public class CarController : MonoBehaviour, ISteering
         finishReset = true;
     }
 
+    public bool IsGrounded (out bool canSteer, out bool canDrive) {
+		canSteer = true;
+		canDrive = true;
+		for (int i = 2; i < 4; i++) // [2,3] is back wheels
+		{
+			canDrive &= m_WheelColliders[i].isGrounded;
+		}
+		for (int i = 0; i < 2; i++) // [0,1] is front wheels
+		{
+			canSteer &= m_WheelColliders[i].isGrounded;
+		}
+		return canSteer && canDrive;
+	}
+
     private void GearChanging()
     {
         float f = Mathf.Abs(CurrentSpeed/MaxSpeed);

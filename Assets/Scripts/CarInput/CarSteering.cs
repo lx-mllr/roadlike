@@ -31,9 +31,6 @@ public class CarSteering : MonoBehaviour, ISteering
 		Reset();
 	}
 
-	void Update () {
-	}
-
 	public void Reset () {
 		_rigidBody.velocity = Vector3.zero;
 		_rigidBody.angularVelocity = Vector3.zero;
@@ -50,11 +47,9 @@ public class CarSteering : MonoBehaviour, ISteering
 		_prevTargRot = Quaternion.identity;
 	}
 
-	/// sttering and accel -> [-1, 1]
-	public void Move (float steering, float accel, float footbrake, float handbrake) {
-	
-		bool canSteer = true;
-		bool canDrive = true;
+	public bool IsGrounded (out bool canSteer, out bool canDrive) {
+		canSteer = true;
+		canDrive = true;
 		for (int i = 0; i < backWheels.Length; i++)
 		{
 			canDrive &= backWheels[i].IsGrounded();
@@ -63,6 +58,15 @@ public class CarSteering : MonoBehaviour, ISteering
 		{
 			canSteer &= frontWheels[i].IsGrounded();
 		}
+		return canSteer && canDrive;
+	}
+
+	/// sttering and accel -> [-1, 1]
+	public void Move (float steering, float accel, float footbrake, float handbrake) {
+	
+		bool canSteer = true;
+		bool canDrive = true;
+		IsGrounded(out canSteer, out canDrive);
 
 		ApplyRotation(steering, canSteer, canDrive);
 		ApplyMovement(accel, canDrive);

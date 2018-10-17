@@ -35,7 +35,13 @@ public class GamePlayManager : IInitializable, ITickable {
     }
 
     public void Tick () {
-
+        if (_gameActive) {
+            // not moving and up.y negative should be a flipped car
+            if (_steering.rigidBody.velocity.sqrMagnitude == 0.0f
+                && _steering.transform.up.y < 0.0f) {
+                _signalBus.Fire<GameEndSignal>();
+            }
+        }
     }
 
     public void OnTileDespawn () {

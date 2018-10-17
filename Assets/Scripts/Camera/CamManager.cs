@@ -37,12 +37,13 @@ public class CamManager {
         _settings.uiCam.enabled = true;
     }
 
-    public void onInputDisable() {
+    public void onEnableTracking(EnableTrackingCamSignal signal) {
         _followMode.enabled = false;
         _trackingMode.enabled = true;
+        _trackingMode.targetPosition = signal.trackingPosition;
     }
 
-    public void onInputEnable() {
+    public void onDisableTracking(DisableTrackingCamSignal signal) {
         _followMode.enabled = true;
         _trackingMode.enabled = false;
     }

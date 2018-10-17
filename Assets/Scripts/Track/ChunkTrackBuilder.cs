@@ -22,7 +22,7 @@ public class ChunkTrackBuilder : ITrackBuilder, IInitializable {
     public class ChunkTrackBuilderSettings {
         public List<Chunk> chunks;
 
-        public int startingCount = 3;
+        public int preGenerateCount = 3;
     }
 
     public ChunkTrackBuilder (Tile.Factory tileFactory,
@@ -52,7 +52,7 @@ public class ChunkTrackBuilder : ITrackBuilder, IInitializable {
 		start.transform.position = new Vector3(0.0f, 0.0f, initZ);
 		_tiles.AddLast(start);
 
-        for (int i = 1; i < _settings.startingCount; i++) {
+        for (int i = 1; i < _settings.preGenerateCount; i++) {
             Generate(Vector3.zero, false);
         }
     }
