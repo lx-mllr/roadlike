@@ -11,4 +11,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d676cc63e7cb75f44a905acac1a0b1ac, type: 3}
   m_Name: Chunk
   m_EditorClassIdentifier: 
-  elements: []
+  elements:
+  - {fileID: 11400000, guid: e18123d361ba71148b85e79a7dbd4e9f, type: 2}

@@ -9,13 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b99e4b27b1c5e12448129bc483963128, type: 3}
-  m_Name: GroupedBuilder
+  m_Name: barrel groups
   m_EditorClassIdentifier: 
-  prefab: {fileID: 0}
-  minCount: 0
-  maxCount: 0
-  minSpread: 0
-  maxSpread: 0
-  circleSize: {x: 0, y: 0}
-  distReduction: 0
+  prefab: {fileID: 1162492502128568, guid: e81d526529e9b8f46899d80bb49bbd25, type: 2}
+  minCount: 10
+  maxCount: 15
+  minSpread: 2
+  maxSpread: 3
+  circleSize: {x: 12, y: 12}
+  distReduction: 0.5
   rotVariance: 0

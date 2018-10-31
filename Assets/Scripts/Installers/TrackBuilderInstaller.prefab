@@ -69,7 +69,8 @@ MonoBehaviour:
       chunks:
       - {fileID: 11400000, guid: 78e171341d836f142bbbbb5ae735dde8, type: 2}
       - {fileID: 11400000, guid: bfd3321f404d0c844b7dd2e3be69aa47, type: 2}
-      startingCount: 3
+      - {fileID: 11400000, guid: 02465c43f922a344596ee4809e09b77d, type: 2}
+      preGenerateCount: 3
     coinPrefab: {fileID: 114446679961222884, guid: 393303465d08ff9478302eb69e8100e0,
       type: 2}
   simpleTrackSettings:

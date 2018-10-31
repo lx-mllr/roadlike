@@ -14,11 +14,15 @@ public class CamManager {
     FollowCam _followMode;
     TrackingCam _trackingMode;
 
+    public static Camera activeCamera;
+
     public CamManager(CamSettings settings, FollowCam fCam, TrackingCam tCam)
     {
         _settings = settings;
         _followMode = fCam;
         _trackingMode = tCam;
+
+        activeCamera = _settings.uiCam;
     }
 
     public void onStartButton() {
@@ -29,12 +33,14 @@ public class CamManager {
 
         _trackingMode.enabled = false;
         _followMode.enabled = true; 
+        activeCamera = _settings.gameplayCam;
     }
 
     public void onShowMainScreen() {
         
         _settings.gameplayCam.enabled = false;
         _settings.uiCam.enabled = true;
+        activeCamera = _settings.uiCam;
     }
 
     public void onEnableTracking(EnableTrackingCamSignal signal) {
